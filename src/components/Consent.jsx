@@ -11,8 +11,8 @@ export default function Consent() {
       alert('Debes aceptar el consentimiento para continuar.');
       return;
     }
-    // Redirigir al Test Psicométrico
-    navigate('/test-psicometrico');
+    // Redirige al Test Psicométrico
+    navigate('/patient/test');
   };
 
   return (
