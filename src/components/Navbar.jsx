@@ -9,9 +9,10 @@ export default function Navbar() {
   const location = useLocation();
   const { user, logout } = useAuth();
 
+  // Verifica si la ruta actual coincide con "path"
   const isActive = (path) => location.pathname === path;
 
-  // Rutas que verá un paciente
+  // Links para paciente
   const patientLinks = [
     { to: '/patient/home', label: 'Inicio' },
     { to: '/patient/profile', label: 'Perfil' },
@@ -21,7 +22,7 @@ export default function Navbar() {
     { to: '/patient/resources', label: 'Recursos' },
   ];
 
-  // Rutas que verá la psicóloga
+  // Links para psicóloga
   const psychLinks = [
     { to: '/psych/home', label: 'Inicio' },
     { to: '/psych/manage-patients', label: 'Pacientes' },
@@ -31,101 +32,162 @@ export default function Navbar() {
 
   return (
     <>
-      <nav className="bg-white border-b border-gray-200 shadow-sm">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex justify-between h-16">
-            {/* Logo / Nombre */}
+      <nav className="bg-navbarBg border-b-2 border-navbarUnderline shadow-sm">
+        <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-10">
+          <div className="flex justify-between h-20 items-center">
+            {/* Logo y texto */}
             <div className="flex-shrink-0 flex items-center">
-              <Link
-                to="/"
-                className="text-2xl font-semibold text-green-600 hover:text-green-700 transition"
-              >
-                CEM Salud Mental
+              <Link to="/">
+                <img
+                  src="/images/Logo_CPC.png"
+                  alt="Centro Psicológico CEM"
+                  className="h-12 w-auto"
+                />
               </Link>
+              <span className="ml-3 text-2xl sm:text-3xl font-bold text-primaryText">
+                Centro Psicológico CEM
+              </span>
             </div>
 
-            {/* Menú de escritorio */}
-            <div className="hidden sm:ml-6 sm:flex sm:space-x-8">
+            {/* Menú de escritorio (oculto < sm) */}
+            <div className="hidden sm:flex sm:space-x-8 sm:items-center">
               {!user && (
                 <>
-                  <Link
-                    to="/"
-                    className={`inline-flex items-center px-1 pt-1 text-sm font-medium transition ${
-                      isActive('/')
-                        ? 'border-green-500 text-green-600'
-                        : 'border-transparent text-gray-700 hover:border-green-500 hover:text-green-600'
-                    }`}
-                  >
-                    Inicio
-                  </Link>
-                  <Link
-                    to="/login"
-                    className={`inline-flex items-center px-1 pt-1 text-sm font-medium transition ${
-                      isActive('/login')
-                        ? 'border-green-500 text-green-600'
-                        : 'border-transparent text-gray-700 hover:border-green-500 hover:text-green-600'
-                    }`}
-                  >
-                    Iniciar Sesión
+                  {/* Contenedor “Inicio” con hover de escala */}
+                  <div className="relative group transform transition duration-150 hover:scale-95">
+                    <Link
+                      to="/"
+                      className="text-lg font-normal text-primaryText px-2"
+                    >
+                      Inicio
+                    </Link>
+                    <span
+                      className={`
+                        absolute bottom-0 left-0 h-0.5 w-full bg-primaryText
+                        transform transition-transform duration-200
+                        ${isActive('/') ? 'scale-x-100' : 'scale-x-0 group-hover:scale-x-100'}
+                      `}
+                    />
+                  </div>
+
+                  {/* Contenedor “Recursos” con hover de escala */}
+                  <div className="relative group transform transition duration-150 hover:scale-95">
+                    <Link
+                      to="/resources"
+                      className="text-lg font-normal text-primaryText px-2"
+                    >
+                      Recursos
+                    </Link>
+                    <span
+                      className={`
+                        absolute bottom-0 left-0 h-0.5 w-full bg-primaryText
+                        transform transition-transform duration-200
+                        ${isActive('/resources') ? 'scale-x-100' : 'scale-x-0 group-hover:scale-x-100'}
+                      `}
+                    />
+                  </div>
+
+                  {/* Contenedor “Etc.” con hover de escala */}
+                  <div className="relative group transform transition duration-150 hover:scale-95">
+                    <Link
+                      to="/etc"
+                      className="text-lg font-normal text-primaryText px-2"
+                    >
+                      Etc.
+                    </Link>
+                    <span
+                      className={`
+                        absolute bottom-0 left-0 h-0.5 w-full bg-primaryText
+                        transform transition-transform duration-200
+                        ${isActive('/etc') ? 'scale-x-100' : 'scale-x-0 group-hover:scale-x-100'}
+                      `}
+                    />
+                  </div>
+
+                  {/* Ícono de login (hover:scale-95) */}
+                  <Link to="/login" className="ml-6 transform transition duration-150 hover:scale-95">
+                    <img
+                      src="/images/logo_inicio_sesion.png"
+                      alt="Iniciar Sesión"
+                      className="h-8 w-8"
+                    />
                   </Link>
                 </>
               )}
 
               {user?.role === 'patient' &&
                 patientLinks.map((link) => (
-                  <Link
+                  <div
                     key={link.to}
-                    to={link.to}
-                    className={`inline-flex items-center px-1 pt-1 text-sm font-medium transition ${
-                      isActive(link.to)
-                        ? 'border-green-500 text-green-600'
-                        : 'border-transparent text-gray-700 hover:border-green-500 hover:text-green-600'
-                    }`}
+                    className="relative group transform transition duration-150 hover:scale-95"
                   >
-                    {link.label}
-                  </Link>
+                    <Link
+                      to={link.to}
+                      className="text-lg font-normal text-primaryText px-2"
+                    >
+                      {link.label}
+                    </Link>
+                    <span
+                      className={`
+                        absolute bottom-0 left-0 h-0.5 w-full bg-primaryText
+                        transform transition-transform duration-200
+                        ${isActive(link.to) ? 'scale-x-100' : 'scale-x-0 group-hover:scale-x-100'}
+                      `}
+                    />
+                  </div>
                 ))}
 
               {user?.role === 'psychologist' &&
                 psychLinks.map((link) => (
-                  <Link
+                  <div
                     key={link.to}
-                    to={link.to}
-                    className={`inline-flex items-center px-1 pt-1 text-sm font-medium transition ${
-                      isActive(link.to)
-                        ? 'border-green-500 text-green-600'
-                        : 'border-transparent text-gray-700 hover:border-green-500 hover:text-green-600'
-                    }`}
+                    className="relative group transform transition duration-150 hover:scale-95"
                   >
-                    {link.label}
-                  </Link>
+                    <Link
+                      to={link.to}
+                      className="text-lg font-normal text-primaryText px-2"
+                    >
+                      {link.label}
+                    </Link>
+                    <span
+                      className={`
+                        absolute bottom-0 left-0 h-0.5 w-full bg-primaryText
+                        transform transition-transform duration-200
+                        ${isActive(link.to) ? 'scale-x-100' : 'scale-x-0 group-hover:scale-x-100'}
+                      `}
+                    />
+                  </div>
                 ))}
 
               {user && (
                 <button
                   onClick={() => setShowLogoutModal(true)}
-                  className="inline-flex items-center px-1 pt-1 border-b-2 border-transparent text-sm font-medium text-gray-700 hover:border-red-500 hover:text-red-600 transition"
+                  className="ml-6 transform transition duration-150 hover:scale-95"
+                  aria-label="Cerrar Sesión"
                 >
-                  Cerrar Sesión
+                  <img
+                    src="/images/logo_usuario.png"
+                    alt="Usuario"
+                    className="h-8 w-8"
+                  />
                 </button>
               )}
             </div>
 
-            {/* Botón móvil */}
-            <div className="-mr-2 flex items-center sm:hidden">
+            {/* Botón móvil (visible < sm) */}
+            <div className="flex items-center sm:hidden">
               <button
                 onClick={() => setIsOpen((prev) => !prev)}
-                className="inline-flex items-center justify-center p-2 rounded-md text-gray-600 hover:text-green-600 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-green-300"
+                className="p-2 rounded-md focus:outline-none focus:ring-2 focus:ring-inset focus:ring-primaryText"
+                aria-label="Abrir menú"
               >
-                <span className="sr-only">Abrir menú</span>
                 {isOpen ? (
                   <svg
-                    className="h-6 w-6"
+                    className="h-8 w-8 text-primaryText"
                     xmlns="http://www.w3.org/2000/svg"
                     fill="none"
                     viewBox="0 0 24 24"
                     stroke="currentColor"
-                    aria-hidden="true"
                   >
                     <path
                       strokeLinecap="round"
@@ -136,12 +198,11 @@ export default function Navbar() {
                   </svg>
                 ) : (
                   <svg
-                    className="h-6 w-6"
+                    className="h-8 w-8 text-primaryText"
                     xmlns="http://www.w3.org/2000/svg"
                     fill="none"
                     viewBox="0 0 24 24"
                     stroke="currentColor"
-                    aria-hidden="true"
                   >
                     <path
                       strokeLinecap="round"
@@ -158,65 +219,118 @@ export default function Navbar() {
 
         {/* Menú móvil colapsable */}
         {isOpen && (
-          <div className="sm:hidden">
-            <div className="pt-2 pb-3 space-y-1">
+          <div className="sm:hidden border-t border-navbarUnderline bg-navbarBg">
+            <div className="pt-4 pb-5 space-y-2">
               {!user && (
                 <>
-                  <Link
-                    to="/"
-                    onClick={() => setIsOpen(false)}
-                    className={`block pl-3 pr-4 py-2 border-l-4 text-base font-medium transition ${
-                      isActive('/')
-                        ? 'bg-green-50 border-green-500 text-green-700'
-                        : 'border-transparent text-gray-700 hover:bg-gray-50 hover:border-green-500 hover:text-green-600'
-                    }`}
+                  <div className="relative group transform transition duration-150 hover:scale-95">
+                    <Link
+                      to="/"
+                      onClick={() => setIsOpen(false)}
+                      className="block pl-4 py-2 text-lg font-normal text-primaryText"
+                    >
+                      Inicio
+                    </Link>
+                    <span
+                      className={`
+                        absolute bottom-0 left-4 h-0.5 w-[calc(100%-2rem)] bg-primaryText
+                        transform transition-transform duration-200
+                        ${isActive('/') ? 'scale-x-100' : 'scale-x-0 group-hover:scale-x-100'}
+                      `}
+                    />
+                  </div>
+
+                  <div className="relative group transform transition duration-150 hover:scale-95">
+                    <Link
+                      to="/resources"
+                      onClick={() => setIsOpen(false)}
+                      className="block pl-4 py-2 text-lg font-normal text-primaryText"
+                    >
+                      Recursos
+                    </Link>
+                    <span
+                      className={`
+                        absolute bottom-0 left-4 h-0.5 w-[calc(100%-2rem)] bg-primaryText
+                        transform transition-transform duration-200
+                        ${isActive('/resources') ? 'scale-x-100' : 'scale-x-0 group-hover:scale-x-100'}
+                      `}
+                    />
+                  </div>
+
+                  <div className="relative group transform transition duration-150 hover:scale-95">
+                    <Link
+                      to="/etc"
+                      onClick={() => setIsOpen(false)}
+                      className="block pl-4 py-2 text-lg font-normal text-primaryText"
+                    >
+                      Etc.
+                    </Link>
+                    <span
+                      className={`
+                        absolute bottom-0 left-4 h-0.5 w-[calc(100%-2rem)] bg-primaryText
+                        transform transition-transform duration-200
+                        ${isActive('/etc') ? 'scale-x-100' : 'scale-x-0 group-hover:scale-x-100'}
+                      `}
+                    />
+                  </div>
+
+                  <button
+                    onClick={() => {
+                      setIsOpen(false);
+                      // Redirige a /login
+                    }}
+                    className="flex flex-col items-center pl-4 py-2 transform transition duration-150 hover:scale-95"
                   >
-                    Inicio
-                  </Link>
-                  <Link
-                    to="/login"
-                    onClick={() => setIsOpen(false)}
-                    className={`block pl-3 pr-4 py-2 border-l-4 text-base font-medium transition ${
-                      isActive('/login')
-                        ? 'bg-green-50 border-green-500 text-green-700'
-                        : 'border-transparent text-gray-700 hover:bg-gray-50 hover:border-green-500 hover:text-green-600'
-                    }`}
-                  >
-                    Iniciar Sesión
-                  </Link>
+                    <img
+                      src="/images/logo_inicio_sesion.png"
+                      alt="Iniciar Sesión"
+                      className="h-8 w-8 mb-1"
+                    />
+                    <span className="text-primaryText text-lg font-normal">
+                      Iniciar Sesión
+                    </span>
+                  </button>
                 </>
               )}
 
               {user?.role === 'patient' &&
                 patientLinks.map((link) => (
-                  <Link
-                    key={link.to}
-                    to={link.to}
-                    onClick={() => setIsOpen(false)}
-                    className={`block pl-3 pr-4 py-2 border-l-4 text-base font-medium transition ${
-                      isActive(link.to)
-                        ? 'bg-green-50 border-green-500 text-green-700'
-                        : 'border-transparent text-gray-700 hover:bg-gray-50 hover:border-green-500 hover:text-green-600'
-                    }`}
-                  >
-                    {link.label}
-                  </Link>
+                  <div key={link.to} className="relative group transform transition duration-150 hover:scale-95">
+                    <Link
+                      to={link.to}
+                      onClick={() => setIsOpen(false)}
+                      className="block pl-4 py-2 text-lg font-normal text-primaryText"
+                    >
+                      {link.label}
+                    </Link>
+                    <span
+                      className={`
+                        absolute bottom-0 left-4 h-0.5 w-[calc(100%-2rem)] bg-primaryText
+                        transform transition-transform duration-200
+                        ${isActive(link.to) ? 'scale-x-100' : 'scale-x-0 group-hover:scale-x-100'}
+                      `}
+                    />
+                  </div>
                 ))}
 
               {user?.role === 'psychologist' &&
                 psychLinks.map((link) => (
-                  <Link
-                    key={link.to}
-                    to={link.to}
-                    onClick={() => setIsOpen(false)}
-                    className={`block pl-3 pr-4 py-2 border-l-4 text-base font-medium transition ${
-                      isActive(link.to)
-                        ? 'bg-green-50 border-green-500 text-green-700'
-                        : 'border-transparent text-gray-700 hover:bg-gray-50 hover:border-green-500 hover:text-green-600'
-                    }`}
-                  >
-                    {link.label}
-                  </Link>
+                  <div key={link.to} className="relative group transform transition duration-150 hover:scale-95">
+                    <Link
+                      to={link.to}
+                      onClick={() => setIsOpen(false)}
+                      className="block pl-4 py-2 text-lg font-normal text-primaryText"
+                    >
+                      {link.label}
+                    </Link>
+                    <span
+                      className={`
+                        absolute bottom-0 left-4 h-0.5 w-[calc(100%-2rem)] bg-primaryText
+                        transform transition-transform duration-200
+                        ${isActive(link.to) ? 'scale-x-100' : 'scale-x-0 group-hover:scale-x-100'}
+                      `}
+                    />
+                  </div>
                 ))}
 
               {user && (
@@ -225,9 +339,16 @@ export default function Navbar() {
                     setShowLogoutModal(true);
                     setIsOpen(false);
                   }}
-                  className="block w-full text-left pl-3 pr-4 py-2 border-l-4 border-transparent text-base font-medium text-gray-700 hover:bg-gray-50 hover:border-red-500 hover:text-red-600 transition"
+                  className="flex items-center pl-4 py-2 transform transition duration-150 hover:scale-95"
                 >
-                  Cerrar Sesión
+                  <img
+                    src="/images/logo_usuario.png"
+                    alt="Usuario"
+                    className="h-8 w-8 mr-2"
+                  />
+                  <span className="text-primaryText text-lg font-normal">
+                    Cerrar Sesión
+                  </span>
                 </button>
               )}
             </div>
@@ -249,7 +370,6 @@ export default function Navbar() {
             <h3 className="text-xl font-semibold text-gray-800 mb-4 text-center">
               ¿Estás seguro que desea cerrar sesión?
             </h3>
-
             <div className="flex justify-center gap-4">
               <button
                 onClick={() => {

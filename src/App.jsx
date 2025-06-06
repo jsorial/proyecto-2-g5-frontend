@@ -35,7 +35,7 @@ function App() {
         <div className="min-h-screen flex flex-col bg-gray-50">
           <Navbar />
 
-          <main className="flex-grow py-8">
+          <main className="flex-grow py-0">
             <Routes>
               {/* Rutas públicas */}
               <Route path="/" element={<AuthChoice />} />
