@@ -60,11 +60,9 @@ export default function ManagePatients() {
           : p
       )
     );
+    const actualizado = patients.find((p) => p.idDoc === idDoc);
     alert(
-      `Paciente ${idDoc} ${
-        patients.find((p) => p.idDoc === idDoc)?.estado === 'Activo'
-          ? 'deshabilitado'
-          : 'habilitado'
+      `Paciente ${idDoc} ${actualizado?.estado === 'Activo' ? 'deshabilitado' : 'habilitado'
       }.`
     );
   };
@@ -149,7 +147,7 @@ export default function ManagePatients() {
   };
 
   const exportToExcel = () => {
-    // Simulación de exportación a Excel; en un caso real usarías una librería como SheetJS (xlsx)
+    // Simulación de exportación a Excel; en un caso real usarías SheetJS (xlsx)
     alert('Exportando a Excel... (simulación)');
   };
 
@@ -159,8 +157,9 @@ export default function ManagePatients() {
   };
 
   return (
-    <div className="max-w-5xl mx-auto bg-white p-6 rounded-lg shadow border border-gray-200">
-      <h2 className="text-2xl font-semibold text-gray-800 mb-4 text-center">
+    // ESTA ARTE HACE QUE SEA MAS ANCHO max-w-5xl
+    <div className="max-w-6xl mx-auto mt-8 bg-white p-6 rounded-lg shadow border border-gray-200">
+      <h2 className="text-2xl font-semibold text-formTitle mb-4 text-center">
         Gestión de Pacientes
       </h2>
 
@@ -169,7 +168,7 @@ export default function ManagePatients() {
         {/* Crear nuevo paciente */}
         <button
           onClick={() => navigate('/psych/create-patient')}
-          className="px-4 py-2 bg-green-600 text-white font-medium rounded hover:bg-green-700 transition"
+          className="px-4 py-2 bg-formBtn text-white font-medium rounded hover:bg-primaryTextActive transition"
         >
           + Crear Paciente
         </button>
@@ -177,7 +176,7 @@ export default function ManagePatients() {
         {/* Abrir modal de exportación */}
         <button
           onClick={() => setShowExportModal(true)}
-          className="px-4 py-2 bg-blue-600 text-white font-medium rounded hover:bg-blue-700 transition"
+          className="px-4 py-2 bg-primaryBtn text-white font-medium rounded hover:bg-primaryTextActive transition"
         >
           Exportar
         </button>
@@ -191,14 +190,14 @@ export default function ManagePatients() {
           placeholder="Buscar por ID o nombre..."
           value={searchTerm}
           onChange={(e) => setSearchTerm(e.target.value)}
-          className="w-full sm:w-1/2 border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-green-300"
+          className="w-full sm:w-1/2 border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-primaryBtn"
         />
 
         {/* Filtro de estado */}
         <select
           value={statusFilter}
           onChange={(e) => setStatusFilter(e.target.value)}
-          className="w-full sm:w-1/3 border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-green-300"
+          className="w-full sm:w-1/3 border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-primaryBtn"
         >
           <option value="Todos">Todos</option>
           <option value="Activo">Activos</option>
@@ -213,20 +212,20 @@ export default function ManagePatients() {
         <div className="overflow-x-auto">
           <table className="w-full table-auto border-collapse">
             <thead>
-              <tr className="bg-gray-100">
-                <th className="border px-4 py-2 text-left text-gray-700">ID Documento</th>
-                <th className="border px-4 py-2 text-left text-gray-700">Nombres</th>
-                <th className="border px-4 py-2 text-left text-gray-700">
+              <tr className="bg-tableHeaderBg">
+                <th className="border px-4 py-2 text-left text-white">ID Documento</th>
+                <th className="border px-4 py-2 text-left text-white">Nombres</th>
+                <th className="border px-4 py-2 text-left text-white">
                   Apellidos
                 </th>
-                <th className="border px-4 py-2 text-left text-gray-700">
+                <th className="border px-4 py-2 text-left text-white">
                   Tipo Doc
                 </th>
-                <th className="border px-4 py-2 text-left text-gray-700">Email</th>
-                <th className="border px-4 py-2 text-left text-gray-700">Celular</th>
-                <th className="border px-4 py-2 text-left text-gray-700">Estado</th>
-                <th className="border px-4 py-2 text-left text-gray-700">Creado</th>
-                <th className="border px-4 py-2 text-center text-gray-700">Acciones</th>
+                <th className="border px-4 py-2 text-left text-white">Email</th>
+                <th className="border px-4 py-2 text-left text-white">Celular</th>
+                <th className="border px-4 py-2 text-left text-white">Estado</th>
+                <th className="border px-4 py-2 text-left text-white">Creado</th>
+                <th className="border px-4 py-2 text-center text-white">Acciones</th>
               </tr>
             </thead>
             <tbody>
@@ -241,33 +240,36 @@ export default function ManagePatients() {
                   <td className="border px-4 py-2">{p.emailPersonal}</td>
                   <td className="border px-4 py-2">{p.celular}</td>
                   <td
-                    className={`border px-4 py-2 font-medium ${
-                      p.estado === 'Activo' ? 'text-green-600' : 'text-red-600'
-                    }`}
+                    className={`border px-4 py-2 font-medium ${p.estado === 'Activo'
+                        ? 'text-stateActive'
+                        : 'text-stateInactive'
+                      }`}
                   >
                     {p.estado}
                   </td>
                   <td className="border px-4 py-2">{p.createdAt}</td>
-                  <td className="border px-4 py-2 text-center space-x-2">
+
+                  <td className="border px-4 py-2 flex justify-center space-x-2">
                     {/* Botón para editar */}
                     <button
                       onClick={() => navigate(`/psych/edit-patient/${p.idDoc}`)}
-                      className="px-2 py-1 bg-yellow-500 text-white text-sm rounded hover:bg-yellow-600 transition"
+                      className="px-2 py-1 bg-formBtn text-white text-sm rounded hover:bg-primaryTextActive transition"
                     >
                       Editar
                     </button>
+
                     {/* Botón para habilitar/deshabilitar */}
                     <button
                       onClick={() => toggleEnable(p.idDoc)}
-                      className={`px-2 py-1 text-white text-sm rounded transition ${
-                        p.estado === 'Activo'
-                          ? 'bg-red-500 hover:bg-red-600'
-                          : 'bg-green-500 hover:bg-green-600'
-                      }`}
+                      className={`px-2 py-1 text-white text-sm rounded transition ${p.estado === 'Activo'
+                          ? 'bg-primaryBtn hover:bg-primaryTextActive'
+                          : 'bg-primaryBtn hover:bg-primaryTextActive'
+                        }`}
                     >
                       {p.estado === 'Activo' ? 'Deshabilitar' : 'Habilitar'}
                     </button>
                   </td>
+
                 </tr>
               ))}
             </tbody>
@@ -301,7 +303,7 @@ export default function ManagePatients() {
                   type="checkbox"
                   checked={exportCSV}
                   onChange={() => setExportCSV((prev) => !prev)}
-                  className="form-checkbox h-5 w-5 text-green-500"
+                  className="form-checkbox h-5 w-5 text-primaryBtn"
                 />
                 <span className="text-gray-700">CSV</span>
               </label>
@@ -310,7 +312,7 @@ export default function ManagePatients() {
                   type="checkbox"
                   checked={exportExcel}
                   onChange={() => setExportExcel((prev) => !prev)}
-                  className="form-checkbox h-5 w-5 text-green-500"
+                  className="form-checkbox h-5 w-5 text-primaryBtn"
                 />
                 <span className="text-gray-700">Excel</span>
               </label>
@@ -319,7 +321,7 @@ export default function ManagePatients() {
                   type="checkbox"
                   checked={exportPDF}
                   onChange={() => setExportPDF((prev) => !prev)}
-                  className="form-checkbox h-5 w-5 text-green-500"
+                  className="form-checkbox h-5 w-5 text-primaryBtn"
                 />
                 <span className="text-gray-700">PDF</span>
               </label>
@@ -334,7 +336,7 @@ export default function ManagePatients() {
               </button>
               <button
                 onClick={performExport}
-                className="px-4 py-2 bg-green-600 text-white rounded hover:bg-green-700 transition"
+                className="px-4 py-2 bg-formBtn text-white rounded hover:bg-primaryTextActive transition"
               >
                 Exportar
               </button>

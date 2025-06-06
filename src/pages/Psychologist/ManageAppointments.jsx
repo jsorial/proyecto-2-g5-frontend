@@ -158,8 +158,8 @@ export default function ManageAppointments() {
   };
 
   return (
-    <div className="max-w-5xl mx-auto bg-white p-6 rounded-lg shadow border border-gray-200">
-      <h2 className="text-2xl font-semibold text-gray-800 mb-4 text-center">
+    <div className="max-w-6xl mx-auto mt-8 bg-white p-6 rounded-lg shadow border border-gray-200">
+      <h2 className="text-2xl font-semibold text-formTitle mb-4 text-center">
         Gestión de Citas
       </h2>
 
@@ -168,7 +168,7 @@ export default function ManageAppointments() {
         {/* Crear nueva cita */}
         <button
           onClick={() => navigate('/psych/create-appointment')}
-          className="px-4 py-2 bg-green-600 text-white font-medium rounded hover:bg-green-700 transition"
+          className="px-4 py-2 bg-formBtn text-white font-medium rounded-lg hover:bg-primaryTextActive transition"
         >
           + Crear Nueva Cita
         </button>
@@ -176,7 +176,7 @@ export default function ManageAppointments() {
         {/* Abrir modal de exportación */}
         <button
           onClick={() => setShowExportModal(true)}
-          className="px-4 py-2 bg-blue-600 text-white font-medium rounded hover:bg-blue-700 transition"
+          className="px-4 py-2 bg-primaryBtn text-white font-medium rounded-lg hover:bg-primaryTextActive transition"
         >
           Exportar
         </button>
@@ -189,13 +189,13 @@ export default function ManageAppointments() {
           placeholder="Buscar por ID, paciente o ID Paciente..."
           value={searchTerm}
           onChange={(e) => setSearchTerm(e.target.value)}
-          className="w-full sm:w-1/2 border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-green-300"
+          className="w-full sm:w-1/2 border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-primaryText"
         />
 
         <select
           value={statusFilter}
           onChange={(e) => setStatusFilter(e.target.value)}
-          className="w-full sm:w-1/3 border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-green-300"
+          className="w-full sm:w-1/3 border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-primaryText"
         >
           <option value="Todos">Todos</option>
           <option value="Confirmada">Confirmadas</option>
@@ -211,17 +211,17 @@ export default function ManageAppointments() {
         <div className="overflow-x-auto">
           <table className="w-full table-auto border-collapse">
             <thead>
-              <tr className="bg-gray-100">
-                <th className="border px-4 py-2 text-left text-gray-700">ID</th>
-                <th className="border px-4 py-2 text-left text-gray-700">Paciente</th>
-                <th className="border px-4 py-2 text-left text-gray-700">ID Paciente</th>
-                <th className="border px-4 py-2 text-left text-gray-700">Psicóloga</th>
-                <th className="border px-4 py-2 text-left text-gray-700">Fecha</th>
-                <th className="border px-4 py-2 text-left text-gray-700">Hora</th>
-                <th className="border px-4 py-2 text-left text-gray-700">Estado</th>
-                <th className="border px-4 py-2 text-left text-gray-700">Pagado</th>
-                <th className="border px-4 py-2 text-left text-gray-700">Creado En</th>
-                <th className="border px-4 py-2 text-center text-gray-700">Acciones</th>
+              <tr className="bg-tableHeaderBg">
+                <th className="border px-4 py-2 text-left text-white">ID</th>
+                <th className="border px-4 py-2 text-left text-white">Paciente</th>
+                <th className="border px-4 py-2 text-left text-white">ID Paciente</th>
+                <th className="border px-4 py-2 text-left text-white">Psicóloga</th>
+                <th className="border px-4 py-2 text-left text-white">Fecha</th>
+                <th className="border px-4 py-2 text-left text-white">Hora</th>
+                <th className="border px-4 py-2 text-left text-white">Estado</th>
+                <th className="border px-4 py-2 text-left text-white">Pagado</th>
+                <th className="border px-4 py-2 text-left text-white">Creado En</th>
+                <th className="border px-4 py-2 text-center text-white">Acciones</th>
               </tr>
             </thead>
             <tbody>
@@ -236,27 +236,28 @@ export default function ManageAppointments() {
                   <td
                     className={`border px-4 py-2 font-medium ${
                       c.estado === 'Confirmada'
-                        ? 'text-green-600'
+                        ? 'text-stateActive'
                         : c.estado === 'Pendiente'
-                        ? 'text-yellow-600'
-                        : 'text-red-600'
+                        ? 'text-primaryText'
+                        : 'text-stateInactive'
                     }`}
                   >
                     {c.estado}
                   </td>
                   <td
                     className={`border px-4 py-2 font-medium ${
-                      c.pagado ? 'text-green-600' : 'text-red-600'
+                      c.pagado ? 'text-stateActive' : 'text-stateInactive'
                     }`}
                   >
                     {c.pagado ? 'Sí' : 'No'}
                   </td>
                   <td className="border px-4 py-2">{c.createdAt}</td>
-                  <td className="border px-4 py-2 text-center space-x-2">
+
+                  <td className="border px-4 py-2 flex justify-center space-x-2">
                     {/* Botón para editar */}
                     <button
                       onClick={() => navigate(`/psych/edit-appointment/${c.id}`)}
-                      className="px-2 py-1 bg-yellow-500 text-white text-sm rounded hover:bg-yellow-600 transition"
+                      className="px-2 py-1 bg-formBtn text-white text-sm rounded-lg hover:bg-primaryTextActive transition"
                     >
                       Editar
                     </button>
@@ -264,7 +265,7 @@ export default function ManageAppointments() {
                     {c.estado !== 'Cancelada' && (
                       <button
                         onClick={() => confirmCancel(c.id)}
-                        className="px-2 py-1 bg-red-500 text-white text-sm rounded hover:bg-red-600 transition"
+                        className="px-2 py-1 bg-primaryBtn text-white text-sm rounded-lg hover:bg-primaryTextActive transition"
                       >
                         Cancelar
                       </button>
@@ -284,11 +285,16 @@ export default function ManageAppointments() {
             {/* Botón de cerrar modal */}
             <button
               onClick={() => setShowCancelModal(false)}
-              className="absolute top-2 right-2 text-gray-500 hover:text-gray-700 text-lg font-semibold"
+              className="absolute top-2 right-2 focus:outline-none"
+              aria-label="Cerrar"
             >
-              &times;
+              <img
+                src="/images/Equis_de_cuestionarios.png"
+                alt="Cerrar"
+                className="h-6 w-6"
+              />
             </button>
-            <h3 className="text-xl font-semibold text-gray-800 mb-4 text-center">
+            <h3 className="text-xl font-semibold text-formTitle mb-4 text-center">
               Confirmar Cancelación
             </h3>
             <p className="text-gray-600 text-center mb-6">
@@ -297,13 +303,13 @@ export default function ManageAppointments() {
             <div className="flex justify-center gap-4">
               <button
                 onClick={handleCancel}
-                className="px-4 py-2 bg-red-600 text-white rounded hover:bg-red-700 transition"
+                className="px-4 py-2 bg-formBtn text-white rounded-lg hover:bg-primaryTextActive transition"
               >
                 Sí, cancelar
               </button>
               <button
                 onClick={() => setShowCancelModal(false)}
-                className="px-4 py-2 bg-gray-300 text-gray-700 rounded hover:bg-gray-400 transition"
+                className="px-4 py-2 bg-navbarUnderline text-primaryText rounded-lg hover:bg-gray-300 transition"
               >
                 No, volver
               </button>
@@ -319,11 +325,16 @@ export default function ManageAppointments() {
             {/* Botón de cerrar modal */}
             <button
               onClick={() => setShowExportModal(false)}
-              className="absolute top-2 right-2 text-gray-500 hover:text-gray-700 text-lg font-semibold"
+              className="absolute top-2 right-2 focus:outline-none"
+              aria-label="Cerrar"
             >
-              &times;
+              <img
+                src="/images/Equis_de_cuestionarios.png"
+                alt="Cerrar"
+                className="h-6 w-6"
+              />
             </button>
-            <h3 className="text-xl font-semibold text-gray-800 mb-4 text-center">
+            <h3 className="text-xl font-semibold text-formTitle mb-4 text-center">
               Exportar Citas
             </h3>
             <p className="text-gray-600 mb-4 text-center">
@@ -335,7 +346,7 @@ export default function ManageAppointments() {
                   type="checkbox"
                   checked={exportCSV}
                   onChange={() => setExportCSV((prev) => !prev)}
-                  className="form-checkbox h-5 w-5 text-green-500"
+                  className="form-checkbox h-5 w-5 text-formBtn"
                 />
                 <span className="text-gray-700">CSV</span>
               </label>
@@ -344,7 +355,7 @@ export default function ManageAppointments() {
                   type="checkbox"
                   checked={exportExcel}
                   onChange={() => setExportExcel((prev) => !prev)}
-                  className="form-checkbox h-5 w-5 text-green-500"
+                  className="form-checkbox h-5 w-5 text-formBtn"
                 />
                 <span className="text-gray-700">Excel</span>
               </label>
@@ -353,7 +364,7 @@ export default function ManageAppointments() {
                   type="checkbox"
                   checked={exportPDF}
                   onChange={() => setExportPDF((prev) => !prev)}
-                  className="form-checkbox h-5 w-5 text-green-500"
+                  className="form-checkbox h-5 w-5 text-formBtn"
                 />
                 <span className="text-gray-700">PDF</span>
               </label>
@@ -361,13 +372,13 @@ export default function ManageAppointments() {
             <div className="mt-6 flex justify-end gap-3">
               <button
                 onClick={() => setShowExportModal(false)}
-                className="px-4 py-2 bg-gray-300 text-gray-700 rounded hover:bg-gray-400 transition"
+                className="px-4 py-2 bg-navbarUnderline text-primaryText rounded-lg hover:bg-gray-300 transition"
               >
                 Cancelar
               </button>
               <button
                 onClick={performExport}
-                className="px-4 py-2 bg-green-600 text-white rounded hover:bg-green-700 transition"
+                className="px-4 py-2 bg-formBtn text-white rounded-lg hover:bg-primaryTextActive transition"
               >
                 Exportar
               </button>

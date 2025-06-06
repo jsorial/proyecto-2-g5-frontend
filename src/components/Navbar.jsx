@@ -1,28 +1,27 @@
 // src/components/Navbar.jsx
 import React, { useState } from 'react';
-import { Link, useLocation } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { useAuth } from '../contexts/AuthContext';
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
-  const [showLogoutModal, setShowLogoutModal] = useState(false);
+  const [showUserMenu, setShowUserMenu] = useState(false);
+  const [showLogoutConfirm, setShowLogoutConfirm] = useState(false);
   const location = useLocation();
+  const navigate = useNavigate();
   const { user, logout } = useAuth();
 
-  // Verifica si la ruta actual coincide con "path"
   const isActive = (path) => location.pathname === path;
 
-  // Links para paciente
   const patientLinks = [
     { to: '/patient/home', label: 'Inicio' },
-    { to: '/patient/profile', label: 'Perfil' },
+    /*{ to: '/patient/profile', label: 'Perfil' },*/
     { to: '/patient/appointments', label: 'Mis Citas' },
     { to: '/patient/progress', label: 'Mi Progreso' },
     { to: '/patient/test', label: 'Test Psicométrico' },
     { to: '/patient/resources', label: 'Recursos' },
   ];
 
-  // Links para psicóloga
   const psychLinks = [
     { to: '/psych/home', label: 'Inicio' },
     { to: '/psych/manage-patients', label: 'Pacientes' },
@@ -53,7 +52,6 @@ export default function Navbar() {
             <div className="hidden sm:flex sm:space-x-8 sm:items-center">
               {!user && (
                 <>
-                  {/* Contenedor “Inicio” con hover de escala */}
                   <div className="relative group transform transition duration-150 hover:scale-95">
                     <Link
                       to="/"
@@ -70,7 +68,6 @@ export default function Navbar() {
                     />
                   </div>
 
-                  {/* Contenedor “Recursos” con hover de escala */}
                   <div className="relative group transform transition duration-150 hover:scale-95">
                     <Link
                       to="/resources"
@@ -87,25 +84,10 @@ export default function Navbar() {
                     />
                   </div>
 
-                  {/* Contenedor “Etc.” con hover de escala */}
-                  <div className="relative group transform transition duration-150 hover:scale-95">
-                    <Link
-                      to="/etc"
-                      className="text-lg font-normal text-primaryText px-2"
-                    >
-                      Etc.
-                    </Link>
-                    <span
-                      className={`
-                        absolute bottom-0 left-0 h-0.5 w-full bg-primaryText
-                        transform transition-transform duration-200
-                        ${isActive('/etc') ? 'scale-x-100' : 'scale-x-0 group-hover:scale-x-100'}
-                      `}
-                    />
-                  </div>
-
-                  {/* Ícono de login (hover:scale-95) */}
-                  <Link to="/login" className="ml-6 transform transition duration-150 hover:scale-95">
+                  <Link
+                    to="/login"
+                    className="ml-6 transform transition duration-150 hover:scale-95"
+                  >
                     <img
                       src="/images/logo_inicio_sesion.png"
                       alt="Iniciar Sesión"
@@ -161,9 +143,9 @@ export default function Navbar() {
 
               {user && (
                 <button
-                  onClick={() => setShowLogoutModal(true)}
+                  onClick={() => setShowUserMenu(true)}
                   className="ml-6 transform transition duration-150 hover:scale-95"
-                  aria-label="Cerrar Sesión"
+                  aria-label="Menú de usuario"
                 >
                   <img
                     src="/images/logo_usuario.png"
@@ -257,27 +239,10 @@ export default function Navbar() {
                     />
                   </div>
 
-                  <div className="relative group transform transition duration-150 hover:scale-95">
-                    <Link
-                      to="/etc"
-                      onClick={() => setIsOpen(false)}
-                      className="block pl-4 py-2 text-lg font-normal text-primaryText"
-                    >
-                      Etc.
-                    </Link>
-                    <span
-                      className={`
-                        absolute bottom-0 left-4 h-0.5 w-[calc(100%-2rem)] bg-primaryText
-                        transform transition-transform duration-200
-                        ${isActive('/etc') ? 'scale-x-100' : 'scale-x-0 group-hover:scale-x-100'}
-                      `}
-                    />
-                  </div>
-
                   <button
                     onClick={() => {
                       setIsOpen(false);
-                      // Redirige a /login
+                      navigate('/login');
                     }}
                     className="flex flex-col items-center pl-4 py-2 transform transition duration-150 hover:scale-95"
                   >
@@ -295,7 +260,10 @@ export default function Navbar() {
 
               {user?.role === 'patient' &&
                 patientLinks.map((link) => (
-                  <div key={link.to} className="relative group transform transition duration-150 hover:scale-95">
+                  <div
+                    key={link.to}
+                    className="relative group transform transition duration-150 hover:scale-95"
+                  >
                     <Link
                       to={link.to}
                       onClick={() => setIsOpen(false)}
@@ -315,7 +283,10 @@ export default function Navbar() {
 
               {user?.role === 'psychologist' &&
                 psychLinks.map((link) => (
-                  <div key={link.to} className="relative group transform transition duration-150 hover:scale-95">
+                  <div
+                    key={link.to}
+                    className="relative group transform transition duration-150 hover:scale-95"
+                  >
                     <Link
                       to={link.to}
                       onClick={() => setIsOpen(false)}
@@ -336,7 +307,7 @@ export default function Navbar() {
               {user && (
                 <button
                   onClick={() => {
-                    setShowLogoutModal(true);
+                    setShowUserMenu(true);
                     setIsOpen(false);
                   }}
                   className="flex items-center pl-4 py-2 transform transition duration-150 hover:scale-95"
@@ -356,33 +327,84 @@ export default function Navbar() {
         )}
       </nav>
 
+      {/* Modal de opciones de usuario (perfil / cerrar) */}
+      {showUserMenu && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50">
+          <div className="bg-white rounded-lg shadow-lg w-64 p-6 relative">
+            {/* Botón de cerrar */}
+            <button
+              onClick={() => setShowUserMenu(false)}
+              className="absolute top-2 right-2 focus:outline-none"
+              aria-label="Cerrar"
+            >
+              <img
+                src="/images/Equis_de_cuestionarios.png"
+                alt="Cerrar"
+                className="h-8 w-8"
+              />
+            </button>
+
+            <h3 className="text-lg font-semibold text-primaryText mb-4 text-center">
+              ¡Hola, {user?.nombres || 'Usuario'}!
+            </h3>
+            <div className="space-y-4">
+              <button
+                onClick={() => {
+                  setShowUserMenu(false);
+                  navigate(user?.role === 'patient' ? '/patient/profile' : '/psych/profile');
+                }}
+                className="w-full px-4 py-2 bg-formBtn text-white font-medium rounded-lg hover:bg-primaryTextActive transition"
+              >
+                Ver Perfil
+              </button>
+              <button
+                onClick={() => {
+                  setShowUserMenu(false);
+                  setShowLogoutConfirm(true);
+                }}
+                className="w-full px-4 py-2 bg-primaryBtn text-white font-medium rounded-lg hover:bg-primaryTextActive transition"
+              >
+                Cerrar Sesión
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
+
       {/* Modal de confirmación de cierre de sesión */}
-      {showLogoutModal && (
+      {showLogoutConfirm && (
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50">
           <div className="bg-white rounded-lg shadow-lg w-80 p-6 relative">
-            {/* Botón de cerrar modal */}
+            {/* Botón de cerrar */}
             <button
-              onClick={() => setShowLogoutModal(false)}
-              className="absolute top-2 right-2 text-gray-500 hover:text-gray-700 text-lg font-semibold"
+              onClick={() => setShowLogoutConfirm(false)}
+              className="absolute top-2 right-2 focus:outline-none"
+              aria-label="Cerrar"
             >
-              &times;
+              <img
+                src="/images/Equis_de_cuestionarios.png"
+                alt="Cerrar"
+                className="h-8 w-8"
+              />
             </button>
-            <h3 className="text-xl font-semibold text-gray-800 mb-4 text-center">
-              ¿Estás seguro que desea cerrar sesión?
+
+            <h3 className="text-xl font-semibold text-primaryText mb-4 text-center">
+              ¿Estás seguro que deseas cerrar sesión?
             </h3>
+
             <div className="flex justify-center gap-4">
               <button
                 onClick={() => {
                   logout();
-                  setShowLogoutModal(false);
+                  setShowLogoutConfirm(false);
                 }}
-                className="px-4 py-2 bg-red-600 text-white rounded hover:bg-red-700 transition"
+                className="w-full px-4 py-2 bg-formBtn text-white font-medium rounded-lg hover:bg-primaryTextActive transition"
               >
                 Sí
               </button>
               <button
-                onClick={() => setShowLogoutModal(false)}
-                className="px-4 py-2 bg-gray-300 text-gray-700 rounded hover:bg-gray-400 transition"
+                onClick={() => setShowLogoutConfirm(false)}
+                className="w-full px-4 py-2 bg-primaryBtn text-white font-medium rounded-lg hover:bg-primaryTextActive transition"
               >
                 No
               </button>

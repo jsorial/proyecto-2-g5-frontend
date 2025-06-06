@@ -1,7 +1,10 @@
 // src/pages/Psychologist/PsychHome.jsx
 import React, { useState, useEffect } from 'react';
+import { useAuth } from '../../contexts/AuthContext';
+import { Link } from 'react-router-dom';
 
 export default function PsychHome() {
+  const { user } = useAuth(); // Asumimos que user contiene { nombre: 'Dra. María López', ... }
   const [stats, setStats] = useState({
     pacientesActivos: 0,
     citasHoy: 0,
@@ -19,43 +22,82 @@ export default function PsychHome() {
   }, []);
 
   return (
-    <div className="max-w-3xl mx-auto space-y-8">
-      {/* Bienvenida */}
-      <section className="text-center bg-white p-8 rounded-lg shadow border border-gray-200">
-        <h2 className="text-2xl font-semibold text-gray-800 mb-4">Bienvenida, Psicóloga</h2>
-        <p className="text-gray-600">Aquí tienes un resumen rápido de tu actividad.</p>
+    <div className="flex flex-col space-y-8">
+      {/* ==================== Sección de Bienvenida ==================== */}
+      <section className="relative bg-loginBg rounded-lg overflow-hidden">
+        <div className="flex flex-col md:flex-row items-center">
+          {/* Imagen de Blue */}
+          <div className="md:w-1/2 flex justify-center py-8 md:py-0">
+            <img
+              src="/images/Blue.png"
+              alt="Blue, tu guía"
+              className="w-48 h-auto md:w-64"
+            />
+          </div>
+
+          {/* Texto de bienvenida y botón */}
+          <div className="md:w-1/2 px-6 py-8 md:px-10 md:py-0">
+            <h1 className="text-4xl md:text-5xl font-bold text-primaryText mb-2">
+              ¡Bienvenidx!
+            </h1>
+            <h2 className="text-3xl md:text-4xl font-semibold text-primaryText mb-4">
+              {user?.nombre || 'Psicóloga'}
+            </h2>
+            <p className="text-gray-700 mb-6 max-w-lg">
+              Soy Blue, y estoy muy emocionado por ver cómo nuestros pacientes han ido mejorando
+              y poder ayudarte en tu trabajo. ¿Quieres ver los resultados del test psicométrico?
+            </p>
+            <Link
+              to="/psych/results-test"
+              className="inline-block px-6 py-3 bg-primaryBtn text-white font-medium rounded-lg hover:bg-primaryTextActive transition"
+            >
+              Resultados Test Psicométrico
+            </Link>
+          </div>
+        </div>
       </section>
 
-      {/* Estadísticas */}
-      <section className="grid grid-cols-1 sm:grid-cols-3 gap-6">
-        <div className="bg-green-100 text-green-700 p-6 rounded-lg shadow border border-green-200 text-center">
-          <p className="text-xl font-bold">{stats.pacientesActivos}</p>
-          <p>Pacientes Activos</p>
-        </div>
-        <div className="bg-blue-100 text-blue-700 p-6 rounded-lg shadow border border-blue-200 text-center">
-          <p className="text-xl font-bold">{stats.citasHoy}</p>
-          <p>Citas Hoy</p>
-        </div>
-        <div className="bg-yellow-100 text-yellow-700 p-6 rounded-lg shadow border border-yellow-200 text-center">
-          <p className="text-xl font-bold">{stats.citasPendientes}</p>
-          <p>Citas Pendientes</p>
+      {/* ==================== Sección de Estadísticas ==================== */}
+      <section className="bg-white rounded-lg shadow border border-gray-200 p-8">
+        <h3 className="text-2xl font-semibold text-formTitle mb-6 text-center">
+          Nuestros Resultados Generales
+        </h3>
+
+        <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
+          {/* Pacientes Activos */}
+          <div className="bg-[#d4f5da] text-[#227a1f] p-6 rounded-lg shadow border border-green-200 text-center">
+            <p className="text-3xl font-bold">{stats.pacientesActivos}</p>
+            <p className="mt-2 font-medium">Pacientes Activos</p>
+          </div>
+
+          {/* Citas Hoy */}
+          <div className="bg-[#d7eaff] text-[#1f4f8f] p-6 rounded-lg shadow border border-blue-200 text-center">
+            <p className="text-3xl font-bold">{stats.citasHoy}</p>
+            <p className="mt-2 font-medium">Citas Hoy</p>
+          </div>
+
+          {/* Citas Pendientes */}
+          <div className="bg-[#fff5cc] text-[#7a5d00] p-6 rounded-lg shadow border border-yellow-200 text-center">
+            <p className="text-3xl font-bold">{stats.citasPendientes}</p>
+            <p className="mt-2 font-medium">Citas Pendientes</p>
+          </div>
         </div>
       </section>
 
-      {/* Accesos rápidos */}
+      {/* ==================== Accesos Rápidos ==================== */}
       <section className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-        <a
-          href="/psych/manage-patients"
-          className="block bg-purple-100 hover:bg-purple-200 text-purple-700 font-medium rounded-lg p-6 text-center transition"
+        <Link
+          to="/psych/manage-patients"
+          className="block bg-[#ea8bc5] hover:bg-pink-300 text-white font-medium rounded-lg p-6 text-center transition"
         >
           Gestionar Pacientes
-        </a>
-        <a
-          href="/psych/manage-appointments"
-          className="block bg-red-100 hover:bg-red-200 text-red-700 font-medium rounded-lg p-6 text-center transition"
+        </Link>
+        <Link
+          to="/psych/manage-appointments"
+          className="block bg-[#88a2d7] hover:bg-blue-300 text-white font-medium rounded-lg p-6 text-center transition"
         >
           Gestionar Citas
-        </a>
+        </Link>
       </section>
     </div>
   );

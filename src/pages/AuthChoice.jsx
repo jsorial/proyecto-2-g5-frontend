@@ -6,7 +6,7 @@ export default function AuthChoice() {
   return (
     <div className="flex flex-col bg-loginBg">
       {/* Hero Section */}
-      <div className="flex flex-col md:flex-row h-[calc(100vh-25rem)]">
+      <div className="flex flex-col md:flex-row h-[calc(100vh-20rem)]">
         {/* Izquierda: Imagen de Blue (guía) */}
         <div className="md:w-1/2 flex items-center justify-center">
           <img
@@ -72,61 +72,86 @@ export default function AuthChoice() {
         </div>
       </div>
 
-      {/* Nuestros Servicios Section */}
+       {/* Nuestros Servicios Section */}
       <div className="bg-loginBg py-12">
         <h3 className="text-3xl font-semibold text-primaryText text-center mb-8">
           Nuestros Servicios
         </h3>
         <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-10 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
           {/* Servicio 1 */}
-          <div className="bg-white border-2 border-primaryBtn rounded-lg p-6 flex flex-col items-center">
-            <img
-              src="/images/servicio1.png"
-              alt="Evaluación Psicológica Integral"
-              className="w-16 h-16 mb-4"
-            />
-            <h4 className="text-center text-lg font-semibold text-primaryText">
+          <div className="bg-white border-2 border-primaryBtn rounded-2xl p-6 flex flex-col items-center text-center">
+            <div className="bg-serviceIconBg rounded-full p-4 mb-4">
+              <img
+                src="/images/servicio1.png"
+                alt="Evaluación Psicológica Integral"
+                className="w-12 h-12"
+              />
+            </div>
+            <h4 className="text-primaryText text-lg font-semibold mb-2">
               Evaluación Psicológica Integral
             </h4>
+            <p className="text-gray-600 text-sm">
+              Evaluación de inteligencia, atención, personalidad, emocional, social
+              y familiar según motivo de consulta.
+            </p>
           </div>
 
           {/* Servicio 2 */}
-          <div className="bg-white border-2 border-primaryBtn rounded-lg p-6 flex flex-col items-center">
-            <img
-              src="/images/servicio2.png"
-              alt="Terapia de Habla, Lenguaje y Comunicación"
-              className="w-16 h-16 mb-4"
-            />
-            <h4 className="text-center text-lg font-semibold text-primaryText">
+          <div className="bg-white border-2 border-primaryBtn rounded-2xl p-6 flex flex-col items-center text-center">
+            <div className="bg-serviceIconBg rounded-full p-4 mb-4">
+              <img
+                src="/images/servicio2.png"
+                alt="Terapia de Habla, Lenguaje y Comunicación"
+                className="w-12 h-12"
+              />
+            </div>
+            <h4 className="text-primaryText text-lg font-semibold mb-2">
               Terapia de Habla, Lenguaje y Comunicación
             </h4>
+            <p className="text-gray-600 text-sm">
+              Evaluamos fonología, morfología, gramática, expresión y síntesis
+              de vocabulario, habilidades lingüísticas.
+            </p>
           </div>
 
           {/* Servicio 3 */}
-          <div className="bg-white border-2 border-primaryBtn rounded-lg p-6 flex flex-col items-center">
-            <img
-              src="/images/servicio3.png"
-              alt="Terapia Psicológica"
-              className="w-16 h-16 mb-4"
-            />
-            <h4 className="text-center text-lg font-semibold text-primaryText">
+          <div className="bg-white border-2 border-primaryBtn rounded-2xl p-6 flex flex-col items-center text-center">
+            <div className="bg-serviceIconBg rounded-full p-4 mb-4">
+              <img
+                src="/images/servicio3.png"
+                alt="Terapia Psicológica"
+                className="w-12 h-12"
+              />
+            </div>
+            <h4 className="text-primaryText text-lg font-semibold mb-2">
               Terapia Psicológica
             </h4>
+            <p className="text-gray-600 text-sm">
+              Brindamos tratamiento para trastornos y problemas psicológicos,
+              mejorando el estado emocional.
+            </p>
           </div>
 
           {/* Servicio 4 */}
-          <div className="bg-white border-2 border-primaryBtn rounded-lg p-6 flex flex-col items-center">
-            <img
-              src="/images/servicio4.png"
-              alt="Terapia de Pareja y Familia"
-              className="w-16 h-16 mb-4"
-            />
-            <h4 className="text-center text-lg font-semibold text-primaryText">
+          <div className="bg-white border-2 border-primaryBtn rounded-2xl p-6 flex flex-col items-center text-center">
+            <div className="bg-serviceIconBg rounded-full p-4 mb-4">
+              <img
+                src="/images/servicio4.png"
+                alt="Terapia de Pareja y Familia"
+                className="w-12 h-12"
+              />
+            </div>
+            <h4 className="text-primaryText text-lg font-semibold mb-2">
               Terapia de Pareja y Familia
             </h4>
+            <p className="text-gray-600 text-sm">
+              Terapia centrada en mejorar comunicación, convivencia y
+              conexión emocional en la familia.
+            </p>
           </div>
         </div>
       </div>
+      
     </div>
   );
 }

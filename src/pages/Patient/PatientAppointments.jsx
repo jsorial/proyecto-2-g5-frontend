@@ -6,7 +6,6 @@ export default function PatientAppointments() {
 
   useEffect(() => {
     // Aquí simularíamos fetch('/api/patient/appointments')
-    // Simulamos datos:
     const datosSimulados = [
       {
         id: 1,
@@ -27,31 +26,37 @@ export default function PatientAppointments() {
   }, []);
 
   return (
-    <div className="max-w-3xl mx-auto bg-white p-6 rounded-lg shadow border border-gray-200">
-      <h2 className="text-2xl font-semibold text-gray-800 mb-4">Mis Citas Programadas</h2>
+    // Se ha agregado `mt-8` para separar este bloque del Navbar
+    <div className="max-w-3xl mx-auto mt-8 bg-white p-6 rounded-lg shadow border border-gray-200">
+      <h2 className="text-2xl font-semibold text-formTitle mb-4">
+        Mis Citas Programadas
+      </h2>
+
       {appointments.length === 0 ? (
         <p className="text-gray-600">No tienes citas programadas.</p>
       ) : (
         <table className="w-full table-auto border-collapse">
           <thead>
-            <tr className="bg-gray-100">
-              <th className="border px-4 py-2 text-left text-gray-700">Fecha</th>
-              <th className="border px-4 py-2 text-left text-gray-700">Hora</th>
-              <th className="border px-4 py-2 text-left text-gray-700">Psicóloga</th>
-              <th className="border px-4 py-2 text-left text-gray-700">Estado</th>
+            <tr className="bg-tableHeaderBg">
+              <th className="border px-4 py-2 text-left text-white">Fecha</th>
+              <th className="border px-4 py-2 text-left text-white">Hora</th>
+              <th className="border px-4 py-2 text-left text-white">Psicóloga</th>
+              <th className="border px-4 py-2 text-left text-white">Estado</th>
             </tr>
           </thead>
           <tbody>
             {appointments.map((apt) => (
-              <tr key={apt.id} className="hover:bg-gray-50">
-                <td className="border px-4 py-2">{apt.fecha}</td>
-                <td className="border px-4 py-2">{apt.hora}</td>
-                <td className="border px-4 py-2">{apt.psicologa}</td>
-                <td className={`border px-4 py-2 font-medium ${
-                  apt.estado === 'Confirmada'
-                    ? 'text-green-600'
-                    : 'text-red-600'
-                }`}>
+              <tr key={apt.id} className="hover:bg-loginBg">
+                <td className="border px-4 py-2 text-gray-700">{apt.fecha}</td>
+                <td className="border px-4 py-2 text-gray-700">{apt.hora}</td>
+                <td className="border px-4 py-2 text-gray-700">{apt.psicologa}</td>
+                <td
+                  className={`border px-4 py-2 font-medium ${
+                    apt.estado === 'Confirmada'
+                      ? 'text-stateActive'
+                      : 'text-stateInactive'
+                  }`}
+                >
                   {apt.estado}
                 </td>
               </tr>
