@@ -1,0 +1,27 @@
+@import url("https://fonts.googleapis.com/css2?family=Anybody:wght@400&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Alegreya:wght@400&display=swap");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  @apply bg-gray-50 text-gray-800;
+}
+
+:root {
+  /* Colores estándar de tu proyecto */
+  --color-navbar-bg: #c7d3e5;
+  --color-login-bg: #f0f8fc;
+  --color-primary-btn: #6b85bb;
+  --color-primary-text: #6b85bb;
+  --color-primary-text-active: #4f6ca5; /* por ejemplo, tono más oscuro */
+
+   /* Nuevos colores solicitados */
+  --color-form-title: #55619e;         /* para títulos de formularios */
+  --color-form-btn: #58c9ec;           /* para botones del formulario */
+  --color-table-header-bg: #88a2d7;    /* fondo de cabecera de tablas */
+  --color-state-active: #ea8bc5;       /* para estados activos */
+  --color-state-inactive: #004aad;     /* para estados inactivos */
+  --color-progress-bar: #004aad;       /* para barra de progreso */
+}

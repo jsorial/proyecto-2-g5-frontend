@@ -7,3 +7,8 @@ git branch -M master
 git remote add origin https://github.com/jesussoria12/Prototipo.git
 git push -u origin master
   
+
+
+
+
+className="object-contain w-3/6 h-auto"
