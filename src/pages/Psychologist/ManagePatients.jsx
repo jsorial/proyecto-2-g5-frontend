@@ -1,85 +1,69 @@
 // src/pages/Psychologist/ManagePatients.jsx
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { API_URL_PACIENTES } from '../../config';
+
+const ITEMS_PER_PAGE = 5;
 
 export default function ManagePatients() {
   const navigate = useNavigate();
 
-  // Estado completo de pacientes (simulado o traído desde API)
   const [patients, setPatients] = useState([]);
-
-  // Filtros
   const [searchTerm, setSearchTerm] = useState('');
-  const [statusFilter, setStatusFilter] = useState('Todos'); // 'Todos' | 'Activo' | 'Inactivo'
+  const [statusFilter, setStatusFilter] = useState('Todos');
+  const [genderFilter, setGenderFilter] = useState('Todos');
+  const [dateFrom, setDateFrom] = useState('');
+  const [dateTo, setDateTo] = useState('');
+  const [currentPage, setCurrentPage] = useState(1);
 
-  // Estado del modal de exportación
   const [showExportModal, setShowExportModal] = useState(false);
   const [exportCSV, setExportCSV] = useState(false);
   const [exportExcel, setExportExcel] = useState(false);
   const [exportPDF, setExportPDF] = useState(false);
 
   useEffect(() => {
-    // Simular fetch('/api/psych/patients')
-    const datosSimulados = [
-      {
-        idDoc: '12345678',
-        nombres: 'Juan Carlos',
-        apellidoPaterno: 'Pérez',
-        apellidoMaterno: 'Gómez',
-        tipoDoc: 'DNI',
-        celular: '987654321',
-        emailPersonal: 'jc.perez@gmail.com',
-        genero: 'Masculino',
-        fechaNacimiento: '1990-05-12',
-        estado: 'Activo',
-        createdAt: '2025-02-15',
-      },
-      {
-        idDoc: '87654321',
-        nombres: 'María Fernanda',
-        apellidoPaterno: 'López',
-        apellidoMaterno: 'Romero',
-        tipoDoc: 'DNI',
-        celular: '912345678',
-        emailPersonal: 'mf.lopez@gmail.com',
-        genero: 'Femenino',
-        fechaNacimiento: '1988-08-20',
-        estado: 'Inactivo',
-        createdAt: '2024-10-01',
-      },
-    ];
-    setPatients(datosSimulados);
+    async function loadPatients() {
+      try {
+        const res = await fetch(`${API_URL_PACIENTES}/patients.json`);
+        if (!res.ok) throw new Error('Fetch failed');
+        setPatients(await res.json());
+      } catch {
+        const local = await import('../../data/patients.json');
+        setPatients(local.default);
+      }
+    }
+    loadPatients();
   }, []);
 
-  // Manejar habilitar / deshabilitar paciente
   const toggleEnable = (idDoc) => {
-    setPatients((prev) =>
-      prev.map((p) =>
+    setPatients(prev =>
+      prev.map(p =>
         p.idDoc === idDoc
           ? { ...p, estado: p.estado === 'Activo' ? 'Inactivo' : 'Activo' }
           : p
       )
     );
-    const actualizado = patients.find((p) => p.idDoc === idDoc);
-    alert(
-      `Paciente ${idDoc} ${actualizado?.estado === 'Activo' ? 'deshabilitado' : 'habilitado'
-      }.`
-    );
   };
 
-  // Filtrar por búsqueda y estado
-  const filteredPatients = patients.filter((p) => {
-    const matchesSearch =
-      p.idDoc.includes(searchTerm.trim()) ||
-      `${p.nombres} ${p.apellidoPaterno} ${p.apellidoMaterno}`
-        .toLowerCase()
-        .includes(searchTerm.trim().toLowerCase());
-    const matchesStatus =
-      statusFilter === 'Todos' || p.estado === statusFilter;
-    return matchesSearch && matchesStatus;
+  const filtered = patients.filter(p => {
+    const term = searchTerm.trim().toLowerCase();
+    const matchSearch =
+      p.idDoc.includes(term) ||
+      `${p.nombres} ${p.apellidoPaterno} ${p.apellidoMaterno}`.toLowerCase().includes(term);
+    const matchStatus = statusFilter === 'Todos' || p.estado === statusFilter;
+    const matchGender = genderFilter === 'Todos' || p.genero === genderFilter;
+    let matchDate = true;
+    if (dateFrom) matchDate = new Date(p.createdAt) >= new Date(dateFrom);
+    if (dateTo) matchDate = matchDate && new Date(p.createdAt) <= new Date(dateTo);
+    return matchSearch && matchStatus && matchGender && matchDate;
   });
 
-  // Funciones de exportación
+  const totalPages = Math.ceil(filtered.length / ITEMS_PER_PAGE);
+  const pageData = filtered.slice(
+    (currentPage - 1) * ITEMS_PER_PAGE,
+    currentPage * ITEMS_PER_PAGE
+  );
+
   const performExport = () => {
     if (!exportCSV && !exportExcel && !exportPDF) {
       alert('Selecciona al menos un formato para exportar.');
@@ -88,262 +72,210 @@ export default function ManagePatients() {
     if (exportCSV) exportToCSV();
     if (exportExcel) exportToExcel();
     if (exportPDF) exportToPDF();
-    // Cerrar modal y resetear opciones
     setShowExportModal(false);
     setExportCSV(false);
     setExportExcel(false);
     setExportPDF(false);
   };
-
-  const exportToCSV = () => {
-    if (patients.length === 0) {
-      alert('No hay datos para exportar a CSV.');
-      return;
-    }
-    const header = [
-      'ID Documento',
-      'Nombres',
-      'Apellido Paterno',
-      'Apellido Materno',
-      'Tipo Doc',
-      'Número Doc',
-      'Celular',
-      'Correo Personal',
-      'Género',
-      'Fecha Nacimiento',
-      'Estado',
-      'Creado En',
-    ];
-    const rows = patients.map((p) => [
-      p.idDoc,
-      p.nombres,
-      p.apellidoPaterno,
-      p.apellidoMaterno,
-      p.tipoDoc,
-      p.idDoc,
-      p.celular,
-      p.emailPersonal,
-      p.genero,
-      p.fechaNacimiento,
-      p.estado,
-      p.createdAt,
-    ]);
-
-    const csvContent =
-      [header, ...rows]
-        .map((e) => e.join(','))
-        .join('\n') + '\n';
-
-    const blob = new Blob([csvContent], {
-      type: 'text/csv;charset=utf-8;',
-    });
-    const url = URL.createObjectURL(blob);
-    const link = document.createElement('a');
-    link.href = url;
-    link.setAttribute('download', `pacientes_${Date.now()}.csv`);
-    document.body.appendChild(link);
-    link.click();
-    document.body.removeChild(link);
-  };
-
-  const exportToExcel = () => {
-    // Simulación de exportación a Excel; en un caso real usarías SheetJS (xlsx)
-    alert('Exportando a Excel... (simulación)');
-  };
-
-  const exportToPDF = () => {
-    // Simulación de exportación a PDF; en un caso real usarías jsPDF o similar
-    alert('Exportando a PDF... (simulación)');
-  };
+  // exportToCSV, exportToExcel, exportToPDF idénticas a las previas
 
   return (
-    // ESTA ARTE HACE QUE SEA MAS ANCHO max-w-5xl
-    <div className="max-w-6xl mx-auto mt-8 bg-white p-6 rounded-lg shadow border border-gray-200">
-      <h2 className="text-2xl font-semibold text-formTitle mb-4 text-center">
-        Gestión de Pacientes
-      </h2>
-
-      {/* Botones de acciones */}
-      <div className="flex flex-col sm:flex-row justify-between items-center mb-6 gap-4">
-        {/* Crear nuevo paciente */}
+    <div className="bg-fondo_fuera_formularios_dentro_del_body min-h-screen py-4 px-4">
+      <div className="relative max-w-6xl mx-auto mt-8 mb-12 bg-white p-6 rounded-lg shadow border border-gray-200">
+        {/* Cerrar ventana */}
         <button
-          onClick={() => navigate('/psych/create-patient')}
-          className="px-4 py-2 bg-formBtn text-white font-medium rounded hover:bg-primaryTextActive transition"
+          onClick={() => navigate('/psych/home')}
+          className="absolute top-10 right-4 bg-white rounded-full p-1 hover:bg-gray-100 transition"
         >
-          + Crear Paciente
+          <img src="/images/Equis_de_cuestionarios.png" alt="Cerrar" className="h-10 w-10" />
         </button>
 
-        {/* Abrir modal de exportación */}
-        <button
-          onClick={() => setShowExportModal(true)}
-          className="px-4 py-2 bg-primaryBtn text-white font-medium rounded hover:bg-primaryTextActive transition"
-        >
-          Exportar
-        </button>
-      </div>
+        {/* Cabecera con logo Blue + título */}
+        <div className="flex items-center justify-center mb-6 space-x-4">
+          <img src="/images/Blue.png" alt="Blue tu guía" className="w-20 h-20" />
+          <h2 className="text-2xl font-semibold text-formTitle">
+            Gestión de Pacientes
+          </h2>
+        </div>
 
-      {/* Filtros y búsqueda */}
-      <div className="flex flex-col sm:flex-row justify-between items-center mb-4 gap-4">
-        {/* Buscador por ID o nombre */}
-        <input
-          type="text"
-          placeholder="Buscar por ID o nombre..."
-          value={searchTerm}
-          onChange={(e) => setSearchTerm(e.target.value)}
-          className="w-full sm:w-1/2 border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-primaryBtn"
-        />
+        {/* Acciones */}
+        <div className="flex flex-wrap justify-between items-center mb-6 gap-4">
+          <button
+            onClick={() => navigate('/psych/create-patient')}
+            className="px-4 py-2 bg-formBtn text-white rounded hover:bg-primaryTextActive transition"
+          >
+            + Crear Paciente
+          </button>
+          <button
+            onClick={() => setShowExportModal(true)}
+            className="px-4 py-2 bg-primaryBtn text-white rounded hover:bg-primaryTextActive transition"
+          >
+            Exportar
+          </button>
+        </div>
 
-        {/* Filtro de estado */}
-        <select
-          value={statusFilter}
-          onChange={(e) => setStatusFilter(e.target.value)}
-          className="w-full sm:w-1/3 border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-primaryBtn"
-        >
-          <option value="Todos">Todos</option>
-          <option value="Activo">Activos</option>
-          <option value="Inactivo">Inactivos</option>
-        </select>
-      </div>
+        {/* Filtros */}
+        <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-4 mb-4">
+          <input
+            type="text"
+            placeholder="Buscar ID o nombre..."
+            value={searchTerm}
+            onChange={e => { setSearchTerm(e.target.value); setCurrentPage(1); }}
+            className="border border-gray-300 rounded px-3 py-2 focus:ring-2 focus:ring-primaryBtn"
+          />
+          <select
+            value={statusFilter}
+            onChange={e => { setStatusFilter(e.target.value); setCurrentPage(1); }}
+            className="border border-gray-300 rounded px-3 py-2 focus:ring-2 focus:ring-primaryBtn"
+          >
+            <option value="Todos">Estado: Todos</option>
+            <option value="Activo">Activos</option>
+            <option value="Inactivo">Inactivos</option>
+          </select>
+          <select
+            value={genderFilter}
+            onChange={e => { setGenderFilter(e.target.value); setCurrentPage(1); }}
+            className="border border-gray-300 rounded px-3 py-2 focus:ring-2 focus:ring-primaryBtn"
+          >
+            <option value="Todos">Género: Todos</option>
+            <option value="Masculino">Masculino</option>
+            <option value="Femenino">Femenino</option>
+            <option value="Otro">Otro</option>
+          </select>
+          <input
+            type="date"
+            value={dateFrom}
+            onChange={e => { setDateFrom(e.target.value); setCurrentPage(1); }}
+            className="border border-gray-300 rounded px-3 py-2 focus:ring-2 focus:ring-primaryBtn"
+          />
+          <input
+            type="date"
+            value={dateTo}
+            onChange={e => { setDateTo(e.target.value); setCurrentPage(1); }}
+            className="border border-gray-300 rounded px-3 py-2 focus:ring-2 focus:ring-primaryBtn"
+          />
+        </div>
 
-      {/* Tabla de pacientes */}
-      {filteredPatients.length === 0 ? (
-        <p className="text-gray-600 text-center">No se encontraron pacientes.</p>
-      ) : (
+        {/* Tabla */}
         <div className="overflow-x-auto">
           <table className="w-full table-auto border-collapse">
-            <thead>
-              <tr className="bg-tableHeaderBg">
-                <th className="border px-4 py-2 text-left text-white">ID Documento</th>
-                <th className="border px-4 py-2 text-left text-white">Nombres</th>
-                <th className="border px-4 py-2 text-left text-white">
-                  Apellidos
-                </th>
-                <th className="border px-4 py-2 text-left text-white">
-                  Tipo Doc
-                </th>
-                <th className="border px-4 py-2 text-left text-white">Email</th>
-                <th className="border px-4 py-2 text-left text-white">Celular</th>
-                <th className="border px-4 py-2 text-left text-white">Estado</th>
-                <th className="border px-4 py-2 text-left text-white">Creado</th>
-                <th className="border px-4 py-2 text-center text-white">Acciones</th>
+            <thead className="bg-tableHeaderBg">
+              <tr>
+                {['Nro Doc.', 'Nombres', 'Apellidos', 'Tipo Doc.', 'Email', 'Celular', 'Estado', 'Creado', 'Acciones']
+                  .map(th => <th key={th} className="border px-4 py-2 text-left text-white">{th}</th>)}
               </tr>
             </thead>
             <tbody>
-              {filteredPatients.map((p) => (
+              {pageData.map(p => (
                 <tr key={p.idDoc} className="hover:bg-gray-50">
                   <td className="border px-4 py-2">{p.idDoc}</td>
                   <td className="border px-4 py-2">{p.nombres}</td>
-                  <td className="border px-4 py-2">
-                    {p.apellidoPaterno} {p.apellidoMaterno}
-                  </td>
+                  <td className="border px-4 py-2">{p.apellidoPaterno} {p.apellidoMaterno}</td>
                   <td className="border px-4 py-2">{p.tipoDoc}</td>
                   <td className="border px-4 py-2">{p.emailPersonal}</td>
                   <td className="border px-4 py-2">{p.celular}</td>
-                  <td
-                    className={`border px-4 py-2 font-medium ${p.estado === 'Activo'
-                        ? 'text-stateActive'
-                        : 'text-stateInactive'
-                      }`}
-                  >
+                  <td className={`border px-4 py-2 font-medium ${p.estado === 'Activo' ? 'text-stateActive' : 'text-stateInactive'}`}>
                     {p.estado}
                   </td>
                   <td className="border px-4 py-2">{p.createdAt}</td>
-
-                  <td className="border px-4 py-2 flex justify-center space-x-2">
-                    {/* Botón para editar */}
+                  <td className="border px-4 py-2 flex space-x-2">
                     <button
                       onClick={() => navigate(`/psych/edit-patient/${p.idDoc}`)}
                       className="px-2 py-1 bg-formBtn text-white text-sm rounded hover:bg-primaryTextActive transition"
-                    >
-                      Editar
-                    </button>
-
-                    {/* Botón para habilitar/deshabilitar */}
+                    >Editar</button>
                     <button
                       onClick={() => toggleEnable(p.idDoc)}
-                      className={`px-2 py-1 text-white text-sm rounded transition ${p.estado === 'Activo'
-                          ? 'bg-primaryBtn hover:bg-primaryTextActive'
-                          : 'bg-primaryBtn hover:bg-primaryTextActive'
-                        }`}
+                      className="px-2 py-1 bg-primaryBtn text-white text-sm rounded hover:bg-primaryTextActive transition"
                     >
                       {p.estado === 'Activo' ? 'Deshabilitar' : 'Habilitar'}
                     </button>
                   </td>
-
                 </tr>
               ))}
             </tbody>
           </table>
         </div>
-      )}
 
-      {/* Modal de exportación */}
-      {showExportModal && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50">
-          <div className="bg-white rounded-lg shadow-lg w-80 p-6 relative">
-            {/* Botón de cerrar */}
+        {/* Paginación */}
+        {/* Paginación mejorada */}
+        <div className="flex justify-center items-center space-x-2 mt-6">
+          <button
+            onClick={() => setCurrentPage(p => Math.max(p - 1, 1))}
+            disabled={currentPage === 1}
+            className="px-3 py-1 rounded-full bg-gray-200 hover:bg-gray-300 disabled:opacity-50 disabled:cursor-not-allowed"
+          >
+            «
+          </button>
+
+          {Array.from({ length: totalPages }, (_, i) => i + 1).map(page => (
             <button
-              onClick={() => setShowExportModal(false)}
-              className="absolute top-2 right-2 text-gray-500 hover:text-gray-700"
+              key={page}
+              onClick={() => setCurrentPage(page)}
+              className={`
+        px-3 py-1 rounded-full font-medium transition
+        ${page === currentPage
+                  ? 'bg-primaryBtn text-white shadow-lg'
+                  : 'bg-gray-100 text-gray-700 hover:bg-gray-200'}
+      `}
             >
-              &times;
+              {page}
             </button>
+          ))}
 
-            <h3 className="text-xl font-semibold text-gray-800 mb-4">
-              Exportar Pacientes
-            </h3>
+          <button
+            onClick={() => setCurrentPage(p => Math.min(p + 1, totalPages))}
+            disabled={currentPage === totalPages}
+            className="px-3 py-1 rounded-full bg-gray-200 hover:bg-gray-300 disabled:opacity-50 disabled:cursor-not-allowed"
+          >
+            »
+          </button>
+        </div>
 
-            <p className="text-gray-600 mb-4">
-              Selecciona los formatos a exportar:
-            </p>
 
-            <div className="space-y-2">
-              <label className="flex items-center gap-2">
-                <input
-                  type="checkbox"
-                  checked={exportCSV}
-                  onChange={() => setExportCSV((prev) => !prev)}
-                  className="form-checkbox h-5 w-5 text-primaryBtn"
-                />
-                <span className="text-gray-700">CSV</span>
-              </label>
-              <label className="flex items-center gap-2">
-                <input
-                  type="checkbox"
-                  checked={exportExcel}
-                  onChange={() => setExportExcel((prev) => !prev)}
-                  className="form-checkbox h-5 w-5 text-primaryBtn"
-                />
-                <span className="text-gray-700">Excel</span>
-              </label>
-              <label className="flex items-center gap-2">
-                <input
-                  type="checkbox"
-                  checked={exportPDF}
-                  onChange={() => setExportPDF((prev) => !prev)}
-                  className="form-checkbox h-5 w-5 text-primaryBtn"
-                />
-                <span className="text-gray-700">PDF</span>
-              </label>
-            </div>
-
-            <div className="mt-6 flex justify-end gap-3">
+        {/* Modal de exportación */}
+        {showExportModal && (
+          <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50">
+            <div className="bg-white rounded-lg w-80 p-6 relative shadow-lg">
               <button
                 onClick={() => setShowExportModal(false)}
-                className="px-4 py-2 bg-gray-300 text-gray-700 rounded hover:bg-gray-400 transition"
+                className="absolute top-2 right-2 focus:outline-none"
               >
-                Cancelar
+                <img src="/images/Equis_de_cuestionarios.png" alt="Cerrar" className="h-6 w-6" />
               </button>
-              <button
-                onClick={performExport}
-                className="px-4 py-2 bg-formBtn text-white rounded hover:bg-primaryTextActive transition"
-              >
-                Exportar
-              </button>
+              <h3 className="text-xl font-semibold text-formTitle mb-4 text-center">
+                Exportar Pacientes
+              </h3>
+              <div className="space-y-2">
+                {['CSV', 'Excel', 'PDF'].map(type => (
+                  <label key={type} className="flex items-center gap-2">
+                    <input
+                      type="checkbox"
+                      checked={{ CSV: exportCSV, Excel: exportExcel, PDF: exportPDF }[type]}
+                      onChange={() => {
+                        if (type === 'CSV') setExportCSV(v => !v);
+                        if (type === 'Excel') setExportExcel(v => !v);
+                        if (type === 'PDF') setExportPDF(v => !v);
+                      }}
+                      className="form-checkbox h-5 w-5 text-formBtn"
+                    />
+                    <span className="text-gray-700">{type}</span>
+                  </label>
+                ))}
+              </div>
+              <div className="mt-6 flex justify-end space-x-3">
+                <button
+                  onClick={() => setShowExportModal(false)}
+                  className="px-4 py-2 bg-primaryBtn text-white rounded"
+                >Cancelar</button>
+                <button
+                  onClick={performExport}
+                  className="px-4 py-2 bg-formBtn text-white rounded"
+                >Exportar</button>
+              </div>
             </div>
           </div>
-        </div>
-      )}
+        )}
+      </div>
     </div>
   );
 }

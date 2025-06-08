@@ -15,17 +15,17 @@ export default function Navbar() {
 
   const patientLinks = [
     { to: '/patient/home', label: 'Inicio' },
-    /*{ to: '/patient/profile', label: 'Perfil' },*/
+    /*{ to: '/patient/profile', label: 'Perfil' },
     { to: '/patient/appointments', label: 'Mis Citas' },
     { to: '/patient/progress', label: 'Mi Progreso' },
     { to: '/patient/test', label: 'Test Psicométrico' },
-    { to: '/patient/resources', label: 'Recursos' },
+    { to: '/patient/resources', label: 'Recursos' },*/
   ];
 
   const psychLinks = [
     { to: '/psych/home', label: 'Inicio' },
-    { to: '/psych/manage-patients', label: 'Pacientes' },
-    { to: '/psych/manage-appointments', label: 'Citas' },
+   /* { to: '/psych/manage-patients', label: 'Pacientes' },
+    { to: '/psych/manage-appointments', label: 'Citas' },*/
     { to: '/psych/progress', label: 'Progreso Pacientes' },
   ];
 
@@ -68,6 +68,7 @@ export default function Navbar() {
                     />
                   </div>
 
+                  {/* Menú de escritorio (oculto < sm) 
                   <div className="relative group transform transition duration-150 hover:scale-95">
                     <Link
                       to="/resources"
@@ -82,7 +83,7 @@ export default function Navbar() {
                         ${isActive('/resources') ? 'scale-x-100' : 'scale-x-0 group-hover:scale-x-100'}
                       `}
                     />
-                  </div>
+                  </div>*/}
 
                   <Link
                     to="/login"
@@ -222,6 +223,7 @@ export default function Navbar() {
                     />
                   </div>
 
+                  {/* Menú móvil colapsable 
                   <div className="relative group transform transition duration-150 hover:scale-95">
                     <Link
                       to="/resources"
@@ -237,7 +239,7 @@ export default function Navbar() {
                         ${isActive('/resources') ? 'scale-x-100' : 'scale-x-0 group-hover:scale-x-100'}
                       `}
                     />
-                  </div>
+                  </div>*/}
 
                   <button
                     onClick={() => {

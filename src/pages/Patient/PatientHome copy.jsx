@@ -35,7 +35,7 @@ export default function AuthChoice() {
       <div className="flex flex-col-reverse lg:flex-row items-center max-w-7xl mx-auto flex-1 px-6 py-16">
         <div className="lg:w-1/2 text-center lg:text-left">
           <h1 className="text-4xl lg:text-5xl font-bold text-primaryText mb-4">
-            ¡Bienvenido a tu espacio de bienestar!
+            ¡Bienvenid@ Jose Garcia a tu espacio de bienestar!
           </h1>
           <p className="text-gray-700 mb-8 max-w-md mx-auto lg:mx-0">
             Soy <strong>Blue</strong>, tu guía. Aquí encontrarás herramientas, tests y recursos
@@ -43,16 +43,10 @@ export default function AuthChoice() {
           </p>
           <div className="space-x-4">
             <Link
-              to="/login"
+              to="/patient/test"
               className="px-6 py-3 bg-primaryBtn text-white font-medium rounded-lg hover:bg-primaryTextActive transition"
             >
               Realizar Test Psicométrico
-            </Link>
-            <Link
-              to="/login"
-              className="px-6 py-3 bg-transparent border-2 border-primaryBtn text-primaryBtn font-medium rounded-lg hover:bg-primaryBtn hover:text-white transition"
-            >
-              Iniciar Sesión
             </Link>
           </div>
         </div>
@@ -89,7 +83,7 @@ export default function AuthChoice() {
               de bienestar emocional.
             </p>
             <Link
-              to="/nosotros"
+              to="/patient/nosotros"
               className="px-5 py-2 bg-primaryBtn text-white font-medium rounded-lg hover:bg-primaryTextActive transition"
             >
               Conocer más

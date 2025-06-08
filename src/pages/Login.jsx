@@ -55,13 +55,13 @@ export default function Login() {
       {/* Botón "X" para cerrar y volver a selección de rol */}
       <button
         onClick={() => setRole(null)}
-        className="absolute top-4 right-4"
+        className="absolute top-6 right-4 bg-white rounded-full p-1 hover:bg-gray-100 transition"
         aria-label="Cerrar"
       >
         <img
           src="/images/Equis_de_cuestionarios.png"
           alt="Cerrar"
-          className="h-15 w-10"
+          className="h-10 w-10"
         />
       </button>
 

@@ -3,7 +3,7 @@ import React from 'react';
 
 export default function Footer() {
   return (
-    <footer className="bg-loginBg border-t border-navbarUnderline">
+    <footer className="bg-footerBg border-t border-navbarUnderline">
       <div className="max-w-7xl mx-auto py-8 px-6 sm:px-8 lg:px-10 text-center">
         {/* Derechos */}
         <p className="font-semibold text-primaryText">

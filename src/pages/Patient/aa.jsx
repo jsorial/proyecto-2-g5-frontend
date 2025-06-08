@@ -12,12 +12,6 @@ const DATE_FILTERS = [
   { label: 'Todo', days: null },
 ];
 
-const METRIC_OPTIONS = [
-  { value: 'all', label: 'Ambos' },
-  { value: 'ansiedad', label: 'Ansiedad' },
-  { value: 'estres', label: 'Estrés' },
-];
-
 export default function PatientProgress() {
   const navigate = useNavigate();
   const [history, setHistory] = useState([]);
@@ -26,16 +20,16 @@ export default function PatientProgress() {
   const [weeklyGoal, setWeeklyGoal] = useState({ done: 1, target: 3 });
   const [loading, setLoading] = useState(true);
   const [dateFilter, setDateFilter] = useState(DATE_FILTERS[0]);
-  const [metricFilter, setMetricFilter] = useState(METRIC_OPTIONS[0].value);
 
-  // Para registro de ánimo
+  // Estados nuevos:
+
   const [moodEntry, setMoodEntry] = useState('');
   const [moodHistory, setMoodHistory] = useState(() => {
+    // cargar de localStorage o API
     const saved = localStorage.getItem('moodHistory');
     return saved ? JSON.parse(saved) : [];
   });
-
-  // Carga inicial
+  // Carga datos
   useEffect(() => {
     async function load() {
       try {
@@ -65,9 +59,12 @@ export default function PatientProgress() {
     load();
   }, []);
 
-  // Aplicar filtro de fecha
+  // Filtra según dateFilter
   useEffect(() => {
-    if (!dateFilter.days) return setFilteredHist(history);
+    if (!dateFilter.days) {
+      setFilteredHist(history);
+      return;
+    }
     const cutoff = new Date();
     cutoff.setDate(cutoff.getDate() - dateFilter.days);
     setFilteredHist(history.filter(h => new Date(h.date) >= cutoff));
@@ -82,9 +79,10 @@ export default function PatientProgress() {
   }
 
   const last = history[history.length - 1] || {};
-  const doneRatio = (weeklyGoal.done / weeklyGoal.target) * 100;
+  const totalBlocks = Math.ceil(filteredHist.length / 1);
+  const answeredCount = filteredHist.length;
 
-  // Guardar ánimo
+  // Guardar estado de ánimo en localStorage (o enviar a API)
   const saveMood = () => {
     if (!moodEntry.trim()) return;
     const today = new Date().toISOString().slice(0, 10);
@@ -95,30 +93,19 @@ export default function PatientProgress() {
     alert('¡Registro guardado! 👍');
   };
 
-  // Marcar meta cumplida
+  // Marcar una meta cumplida
   const markDone = () => {
-    setWeeklyGoal(g => ({
-      ...g,
-      done: Math.min(g.done + 1, g.target)
-    }));
+    setWeeklyGoal(g => {
+      const done = Math.min(g.done + 1, g.target);
+      return { ...g, done };
+    });
   };
-
-  // Datos para la gráfica según filtro de métrica
-  const chartData = filteredHist.map(h => ({
-    date: h.date,
-    ...(metricFilter !== 'estres' && { ansiedad: h.ansiedad }),
-    ...(metricFilter !== 'ansiedad' && { estres: h.estres }),
-  }));
 
   return (
     <div className="bg-fondo_fuera_formularios_dentro_del_body min-h-screen py-12 px-8">
-      {/* Título con Avatar */}
-      <div className="flex items-center mb-8">
-        <img src="/images/Blue.png" alt="Blue" className="w-16 h-16 mr-4" />
-        <h1 className="text-3xl font-bold text-primaryText">Mi Progreso</h1>
-      </div>
+      <h1 className="text-3xl font-bold text-primaryText mb-8">Mi Progreso</h1>
 
-      {/* Tarjetas rápidas */}
+      {/* Cards superiores */}
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-10">
         {[
           {
@@ -134,92 +121,65 @@ export default function PatientProgress() {
           {
             label: 'Meta Semanal',
             content: `${weeklyGoal.done}/${weeklyGoal.target} cumplidas`,
-            action: markDone,
-            actionLabel: '+1 cumplida'
           },
         ].map((card, idx) => (
           <div
             key={idx}
-            className="bg-primaryBtn p-6 rounded-lg shadow hover:shadow-lg transition"
+            className="bg-[#f5f5f5] p-6 rounded-lg shadow border border-gray-200
+                       hover:shadow-lg hover:-translate-y-1 transition-transform"
           >
-            <div className="flex justify-between items-center mb-2">
-              <h3 className="text-blancoBg text-sm">{card.label}</h3>
-              {card.action && (
-                <button
-                  onClick={card.action}
-                  className="text-blancoBg text-xs hover:underline"
-                >
-                  {card.actionLabel}
-                </button>
-              )}
-            </div>
-            <p className="text-2xl font-semibold text-negroBtn">{card.content}</p>
+            <h3 className="text-gray-600 text-sm">{card.label}</h3>
+            <p className="mt-2 text-2xl font-semibold text-formTitle">
+              {card.content}
+            </p>
           </div>
         ))}
       </div>
 
-      {/* Filtros */}
-      <div className="flex flex-wrap items-center gap-4 mb-6">
+      {/* Filtro de fechas */}
+      <div className="flex items-center mb-4 space-x-4">
         <span className="font-medium text-gray-700">Ver:</span>
         {DATE_FILTERS.map(f => (
           <button
             key={f.label}
             onClick={() => setDateFilter(f)}
-            className={`px-3 py-1 rounded-full text-sm transition ${
-              dateFilter.label === f.label
+            className={`
+              px-3 py-1 rounded-full text-sm transition
+              ${dateFilter.label === f.label
                 ? 'bg-formBtn text-white'
-                : 'bg-gray-200 text-gray-700 hover:bg-gray-300'
-            }`}
+                : 'bg-gray-200 text-gray-700 hover:bg-gray-300'}
+            `}
           >
             {f.label}
-          </button>
-        ))}
-
-        <span className="ml-6 font-medium text-gray-700">Métrica:</span>
-        {METRIC_OPTIONS.map(opt => (
-          <button
-            key={opt.value}
-            onClick={() => setMetricFilter(opt.value)}
-            className={`px-3 py-1 rounded-full text-sm transition ${
-              metricFilter === opt.value
-                ? 'bg-formBtn text-white'
-                : 'bg-gray-200 text-gray-700 hover:bg-gray-300'
-            }`}
-          >
-            {opt.label}
           </button>
         ))}
       </div>
 
       {/* Gráfica */}
-      <div className="bg-white p-6 rounded-lg shadow mb-8">
-        <h4 className="text-lg font-medium text-gray-700 mb-4">Evolución</h4>
+      <div className="bg-white p-6 rounded-lg shadow border border-gray-200 mb-8">
+        <h4 className="text-lg font-medium text-gray-700 mb-4">Evolución en el tiempo</h4>
         <ResponsiveContainer width="100%" height={250}>
-          <LineChart data={chartData}>
+          <LineChart data={filteredHist}>
             <CartesianGrid strokeDasharray="3 3" />
             <XAxis dataKey="date" tick={{ fontSize: 12 }} />
-            <YAxis allowDecimals={false} />
+            <YAxis />
             <Tooltip />
-            {metricFilter !== 'estres' && (
-              <Line type="monotone" dataKey="ansiedad" stroke="#6b85bb" dot={{ r: 3 }} name="Ansiedad"/>
-            )}
-            {metricFilter !== 'ansiedad' && (
-              <Line type="monotone" dataKey="estres" stroke="#58c9ec" dot={{ r: 3 }} name="Estrés"/>
-            )}
+            <Line type="monotone" dataKey="ansiedad" stroke="#6b85bb" dot={{ r: 3 }} />
+            <Line type="monotone" dataKey="estres" stroke="#58c9ec" dot={{ r: 3 }} />
           </LineChart>
         </ResponsiveContainer>
       </div>
 
-      {/* Historial en tabla */}
-      <div className="bg-white p-6 rounded-lg shadow mb-8">
+      {/* Tabla */}
+      <div className="bg-white p-6 rounded-lg shadow border border-gray-200 mb-8">
         <h4 className="text-lg font-medium text-gray-700 mb-4">Historial de Evaluaciones</h4>
         <div className="overflow-y-auto max-h-64">
-          <table className="w-full text-sm">
+          <table className="w-full table-auto border-collapse text-sm">
             <thead className="bg-progressBar text-white">
               <tr>
                 <th className="px-3 py-2">Fecha</th>
-                {metricFilter !== 'estres' && <th className="px-3 py-2">Ansiedad</th>}
-                {metricFilter !== 'ansiedad' && <th className="px-3 py-2">Estrés</th>}
+                <th className="px-3 py-2">Ansiedad</th>
+                <th className="px-3 py-2">Estrés</th>
                 <th className="px-3 py-2">Ver</th>
               </tr>
             </thead>
@@ -227,12 +187,12 @@ export default function PatientProgress() {
               {filteredHist.map(entry => (
                 <tr key={entry.date} className="even:bg-gray-50">
                   <td className="px-3 py-2">{entry.date}</td>
-                  {metricFilter !== 'estres' && <td className="px-3 py-2">{entry.ansiedad}</td>}
-                  {metricFilter !== 'ansiedad' && <td className="px-3 py-2">{entry.estres}</td>}
+                  <td className="px-3 py-2">{entry.ansiedad}</td>
+                  <td className="px-3 py-2">{entry.estres}</td>
                   <td className="px-3 py-2">
                     <button
                       onClick={() => navigate(`/patient/test/${entry.date}`)}
-                      className="px-2 py-1 bg-primaryBtn text-white rounded hover:bg-primaryTextActive text-xs"
+                      className="px-2 py-1 bg-primaryBtn text-white text-xs rounded hover:bg-primaryTextActive"
                     >
                       Ver
                     </button>
@@ -244,43 +204,52 @@ export default function PatientProgress() {
         </div>
       </div>
 
-      {/* Registro de ánimo */}
-      <div className="bg-primaryBtn p-6 rounded-lg shadow grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
-        <div >
-          <h5 className="text-blancoBg font-medium mb-2">Registro de Ánimo</h5>
+      {/* Panel Bienestar */}
+      <div className="bg-[#f5f5f5] p-6 rounded-lg shadow border border-gray-200 grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+        {/* 1) Metas Semanales */}
+        <div>
+          <div className="flex justify-between items-center mb-2">
+            <h5 className="text-gray-700 font-medium">Metas Semanales</h5>
+            <button
+              onClick={markDone}
+              className="text-sm text-formBtn hover:underline"
+            >
+              + 1 cumplida
+            </button>
+          </div>
+          <div className="w-full bg-gray-200 rounded-full h-3">
+            <div
+              className="h-3 rounded-full bg-formBtn transition-width"
+              style={{ width: `${(weeklyGoal.done / weeklyGoal.target) * 100}%` }}
+            />
+          </div>
+          <p className="text-xs text-gray-600 mt-1">
+            {weeklyGoal.done} / {weeklyGoal.target} tareas
+          </p>
+        </div>
+
+        {/* 2) Registro de Ánimo */}
+        <div className="flex flex-col">
+          <h5 className="text-gray-700 font-medium mb-2">Registro de Ánimo</h5>
           <textarea
             placeholder="¿Cómo te sientes hoy?"
-            className="w-full h-28 border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-primaryText resize-none"
+            className="flex-1 border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-primaryText mb-2 resize-none"
             value={moodEntry}
             onChange={e => setMoodEntry(e.target.value)}
           />
           <button
             onClick={saveMood}
-            className="mt-2 px-4 py-2 bg-formBtn text-white rounded-lg hover:bg-primaryTextActive transition"
+            className="self-end px-4 py-2 bg-formBtn text-white rounded-lg hover:bg-primaryTextActive transition"
           >
-            Guardar Ánimo
+            Guardar
           </button>
-          <p className="text-xs text-blancoBg mt-2">
-            Últimos: {moodHistory.slice(-3).map(m => m.date).join(', ') || '—'}
-          </p>
-        </div>
-
-        {/* Meta semanal y progreso */}
-        <div>
-          <h5 className="text-blancoBg font-medium mb-2">Meta Semanal</h5>
-          <div className="w-full bg-gray-200 rounded-full h-3 mb-2">
-            <div
-              className="h-3 rounded-full bg-formBtn transition-width"
-              style={{ width: `${doneRatio}%` }}
-            />
-          </div>
-          <p className="text-sm text-blancoBg">
-            {weeklyGoal.done} / {weeklyGoal.target} tareas completadas
-          </p>
+          <small className="text-gray-500 mt-2">
+            Últimos registros: {moodHistory.slice(-3).map(m => m.date).join(', ') || '—'}
+          </small>
         </div>
       </div>
 
-      {/* Acción extra */}
+      {/* Botón acción */}
       <div className="text-center mb-12">
         <button
           onClick={() => navigate('/patient/schedule-extra')}
@@ -289,6 +258,8 @@ export default function PatientProgress() {
           Agendar sesión extra
         </button>
       </div>
+
+
     </div>
   );
 }

@@ -7,24 +7,30 @@ import Footer from './components/Footer';
 import Consent from './components/Consent';
 
 import AuthChoice from './pages/AuthChoice';
+import Nosotros from './pages/Nosotros';
+import PatientNosotros from './pages/Patient/PatientNosotros';
 import Login from './pages/Login';
+import ForgotPassword from './pages/ForgotPassword';
 import NotFoundPage from './pages/NotFoundPage';
 
-import PatientDashboard from './pages/Patient/PatientDashboard';
+import PatientHome from './pages/Patient/PatientHome';
+import PsychHome from './pages/Psychologist/PsychHome';
 import PatientProfile from './pages/Patient/PatientProfile';
 import PatientTest from './pages/Patient/PatientTest';
 import PatientAppointments from './pages/Patient/PatientAppointments';
 import PatientProgress from './pages/Patient/PatientProgress';
-import PatientResources from './pages/Patient/PatientDashboard'; // ejemplo
-
-import PsychDashboard from './pages/Psychologist/PsychDashboard';
+import PatientResources from './pages/Patient/PatientResources'; // ejemplo
+import PatientCreateAppointment from './pages/Patient/PatientCreateAppointment';
 import ManagePatients from './pages/Psychologist/ManagePatients';
 import CreatePatient from './pages/Psychologist/CreatePatient';       // Importa creación
 import EditPatient from './pages/Psychologist/EditPatient';           // Importa edición
 import ManageAppointments from './pages/Psychologist/ManageAppointments';
 import CreateAppointment from './pages/Psychologist/CreateAppointment';
 import EditAppointment from './pages/Psychologist/EditAppointment';
+import TestResults from './pages/Psychologist/TestResults';
+import TestOverview from './pages/Psychologist/TestOverview';
 import PsychProgress from './pages/Psychologist/PsychProgress';
+import TestResultDetail from './pages/Psychologist/TestResultDetail';
 import ProtectedRoute from './components/ProtectedRoute';
 import { AuthProvider } from './contexts/AuthContext';
 
@@ -39,13 +45,15 @@ function App() {
             <Routes>
               {/* Rutas públicas */}
               <Route path="/" element={<AuthChoice />} />
+              <Route path="/nosotros" element={<Nosotros />} />
+              <Route path="/forgot-password" element={<ForgotPassword />} />
               <Route path="/login" element={<Login />} />
               <Route path="/consentimiento" element={<Consent />} />
 
               {/* Rutas de paciente (protegidas) */}
               <Route
                 path="/patient/home"
-                element={<ProtectedRoute allowedRoles={['patient']} element={<PatientDashboard />} />}
+                element={<ProtectedRoute allowedRoles={['patient']} element={<PatientHome />} />}
               />
               <Route
                 path="/patient/profile"
@@ -68,10 +76,23 @@ function App() {
                 element={<ProtectedRoute allowedRoles={['patient']} element={<PatientResources />} />}
               />
 
+              <Route
+                path="/patient/nosotros"
+                element={<ProtectedRoute allowedRoles={['patient']} element={<PatientNosotros />} />}
+              />
+
+              <Route
+                path="/patient/schedule-extra"
+                element={<ProtectedRoute allowedRoles={['patient']} element={<PatientCreateAppointment />} preset="extra" />}
+              />
+
+
+
+
               {/* Rutas de psicóloga (protegidas) */}
               <Route
                 path="/psych/home"
-                element={<ProtectedRoute allowedRoles={['psychologist']} element={<PsychDashboard />} />}
+                element={<ProtectedRoute allowedRoles={['psychologist']} element={<PsychHome />} />}
               />
               <Route
                 path="/psych/manage-patients"
@@ -104,6 +125,20 @@ function App() {
                 path="/psych/progress"
                 element={<ProtectedRoute allowedRoles={['psychologist']} element={<PsychProgress />} />}
               />
+
+              <Route path="/psych/psych/:id/progress" element={<PsychProgress />} />
+              <Route path="/psych/test-results/:testId" element={<TestResultDetail />} />
+
+              <Route
+                path="/psych/results-test"
+                element={<ProtectedRoute allowedRoles={['psychologist']} element={<TestResults />} />}
+              />
+
+              <Route
+                path="/psych/test-overview"
+                element={<ProtectedRoute allowedRoles={['psychologist']} element={<TestOverview />} />}
+              />
+
 
               {/* 404 */}
               <Route path="*" element={<NotFoundPage />} />
