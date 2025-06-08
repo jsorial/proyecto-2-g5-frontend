@@ -5,9 +5,9 @@ import { Link } from 'react-router-dom';
 export default function AuthChoice() {
   // Simular estadísticas del paciente  
   const stats = [
-    { icon: '📝', label: 'Tests Realizados', value: 3, bg: 'bg-formBtn/20', text: 'text-formBtn' },
-    { icon: '📅', label: 'Próxima Cita', value: '2025-06-10', bg: 'bg-primaryBtn/20', text: 'text-primaryBtn' },
-    { icon: '📚', label: 'Recursos Accedidos', value: 5, bg: 'bg-stateActive/20', text: 'text-stateActive' },
+    { icon: '📝', label: 'Tests Realizados', value: 3, bg: 'bg-green-50', text: 'text-green-700' },
+    { icon: '📅', label: 'Próxima Cita', value: '2025-06-10', bg: 'bg-blue-50', text: 'text-blue-700' },
+    { icon: '📚', label: 'Recursos Accedidos', value: 5, bg: 'bg-yellow-50', text: 'text-yellow-700' },
   ];
 
   const services = [
