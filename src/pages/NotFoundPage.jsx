@@ -30,12 +30,7 @@ export default function NotFoundPage() {
         >
           Volver al Inicio
         </Link>
-        <Link
-          to="/patient/resources"
-          className="px-5 py-2 bg-primaryBtn text-white font-medium rounded-lg hover:bg-primaryTextActive transition"
-        >
-          Ver Recursos
-        </Link>
+      
       </div>
     </div>
   );
