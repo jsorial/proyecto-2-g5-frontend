@@ -31,35 +31,45 @@ export default function AuthChoice() {
       {/* Navbar */}
 
 
-      {/* Hero */}
-      <div className="flex flex-col-reverse lg:flex-row items-center max-w-7xl mx-auto flex-1 px-6 py-16">
-        <div className="lg:w-1/2 text-center lg:text-left">
-          <h1 className="text-4xl lg:text-5xl font-bold text-primaryText mb-4">
-            ¡Bienvenido a tu espacio de bienestar!
-          </h1>
-          <p className="text-gray-700 mb-8 max-w-md mx-auto lg:mx-0">
-            Soy <strong>Blue</strong>, tu guía. Aquí encontrarás herramientas, tests y recursos
-            para acompañarte en tu proceso de salud mental. ¿Listx para comenzar?
-          </p>
-          <div className="space-x-4">
-            <Link
-              to="/login"
-              className="px-6 py-3 bg-primaryBtn text-white font-medium rounded-lg hover:bg-primaryTextActive transition"
-            >
-              Realizar Test Psicométrico
-            </Link>
-            <Link
-              to="/login"
-              className="px-6 py-3 bg-transparent border-2 border-primaryBtn text-primaryBtn font-medium rounded-lg hover:bg-primaryBtn hover:text-white transition"
-            >
-              Iniciar Sesión
-            </Link>
+      {/* HERO */}
+      <header className="bg-gradient-to-r from-primaryBtn/60 to-formBtn/60 text-white py-12">
+        <div className="max-w-7xl mx-auto flex flex-col lg:flex-row items-center px-6">
+          {/* Texto */}
+          <div className="lg:w-1/2 space-y-6">
+            <h1 className="text-5xl font-black tracking-tight animate-fade-in">
+              ¡Bienvenido a tu espacio de bienestar!
+            </h1>
+            <p className="text-lg text-gray-700 animate-fade-in delay-200">
+              Soy <strong>Blue</strong>, tu guía. Aquí encontrarás herramientas, tests y recursos
+              para acompañarte en tu proceso de salud mental. ¿Listx para comenzar?
+            </p>
+            <div className="space-x-4 animate-fade-in delay-400">
+              <Link
+                to="/login"
+                className="inline-block px-6 py-3 bg-white text-primaryBtn font-semibold rounded-full shadow hover:shadow-lg transition"
+              >
+                ✏️ Realizar Test Psicométrico
+              </Link>
+              <Link
+                to="/login"
+                className="inline-flex  px-6 py-3 bg-white text-formBtn font-semibold rounded-full shadow hover:shadow-lg transition"
+              >
+                <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 12H3m0 0l4-4m-4 4l4 4m6-8v8" />
+                </svg> Iniciar Sesión
+              </Link>
+            </div>
+          </div>
+          {/* Imagen */}
+          <div className="lg:w-1/2 mt-10 lg:mt-0 flex justify-center">
+            <img
+              src="/images/Blue.png"
+              alt="Blue, tu guía"
+              className="w-64 md:w-80 animate-bounce-slow"
+            />
           </div>
         </div>
-        <div className="lg:w-1/2 mb-8 lg:mb-0 flex justify-center">
-          <img src="/images/Blue.png" alt="Blue tu guía" className="w-64 md:w-80 animate-bounce-slow" />
-        </div>
-      </div>
+      </header>
 
       {/* Nosotros */}
       <section className="bg-white py-12">
