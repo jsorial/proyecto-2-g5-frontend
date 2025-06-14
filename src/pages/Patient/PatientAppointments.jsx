@@ -97,7 +97,7 @@ export default function PatientAppointments() {
             <select
               value={filterMonth}
               onChange={e => setFilterMonth(e.target.value)}
-              className="mt-1 block w-full border-gray-300 rounded"
+              className="mt-1 block w-full border border-primaryBtn rounded"
             >
               <option value="all">Todos</option>
               {months.map(m => (
@@ -114,7 +114,7 @@ export default function PatientAppointments() {
             <select
               value={filterYear}
               onChange={e => setFilterYear(e.target.value)}
-              className="mt-1 block w-full border-gray-300 rounded"
+              className="mt-1 block w-full border border-primaryBtn rounded"
             >
               <option value="all">Todos</option>
               {years.map(y => (
@@ -129,7 +129,7 @@ export default function PatientAppointments() {
             <select
               value={filterType}
               onChange={e => setFilterType(e.target.value)}
-              className="mt-1 block w-full border-gray-300 rounded"
+              className="mt-1 block w-full border border-primaryBtn rounded"
             >
               <option value="all">Todos</option>
               {types.map(t => (
@@ -144,7 +144,7 @@ export default function PatientAppointments() {
             <select
               value={filterState}
               onChange={e => setFilterState(e.target.value)}
-              className="mt-1 block w-full border-gray-300 rounded"
+              className="mt-1 block w-full border border-primaryBtn rounded"
             >
               <option value="all">Todos</option>
               {states.map(s => (

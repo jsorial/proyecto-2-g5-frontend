@@ -55,7 +55,7 @@ export default function PatientCreateAppointment() {
             <div className="relative max-w-3xl mx-auto mt-8 mb-12 bg-white p-8 rounded-lg shadow border border-gray-200">
                 <button
                     onClick={() => navigate('/patient/appointments')}
-                    className="absolute top-4 right-4 focus:outline-none"
+                    className="absolute top-6 right-2 bg-white rounded-full p-1 hover:bg-gray-100 transition"
                     aria-label="Cerrar"
                 >
                     <img

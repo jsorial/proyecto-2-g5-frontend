@@ -118,10 +118,10 @@ export default function ManagePatients() {
         <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-4 mb-4">
           <input
             type="text"
-            placeholder="Buscar ID o nombre..."
+            placeholder="Buscar Nro. Doc. o nombre..."
             value={searchTerm}
             onChange={e => { setSearchTerm(e.target.value); setCurrentPage(1); }}
-            className="border border-gray-300 rounded px-3 py-2 focus:ring-2 focus:ring-primaryBtn"
+            className="border border-gray-300 rounded px-2 py-2 focus:ring-2 focus:ring-primaryBtn"
           />
           <select
             value={statusFilter}
@@ -238,9 +238,9 @@ export default function ManagePatients() {
             <div className="bg-white rounded-lg w-80 p-6 relative shadow-lg">
               <button
                 onClick={() => setShowExportModal(false)}
-                className="absolute top-2 right-2 focus:outline-none"
+                className="absolute top-4 right-2 bg-white rounded-full p-1 hover:bg-gray-100 transition"
               >
-                <img src="/images/Equis_de_cuestionarios.png" alt="Cerrar" className="h-6 w-6" />
+                <img src="/images/Equis_de_cuestionarios.png" alt="Cerrar" className="h-10 w-10" />
               </button>
               <h3 className="text-xl font-semibold text-formTitle mb-4 text-center">
                 Exportar Pacientes

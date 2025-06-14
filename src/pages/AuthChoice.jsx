@@ -43,23 +43,39 @@ export default function AuthChoice() {
               Soy <strong>Blue</strong>, tu guía. Aquí encontrarás herramientas, tests y recursos
               para acompañarte en tu proceso de salud mental. ¿Listx para comenzar?
             </p>
-            <div className="space-x-4 animate-fade-in delay-400">
+
+
+
+            <div className="flex flex-col sm:flex-row sm:space-x-4 space-y-4 sm:space-y-0 animate-fade-in delay-400 items-center ">
               <Link
                 to="/login"
-                className="inline-block px-6 py-3 bg-white text-primaryBtn font-semibold rounded-full shadow hover:shadow-lg transition"
+                className="inline-block px-6 py-3 bg-white text-primaryBtn font-semibold rounded-full shadow hover:shadow-lg transition text-center"
               >
                 ✏️ Realizar Test Psicométrico
               </Link>
               <Link
                 to="/login"
-                className="inline-flex  px-6 py-3 bg-white text-formBtn font-semibold rounded-full shadow hover:shadow-lg transition"
+                className="inline-flex items-center px-6 py-3 bg-white text-formBtn font-semibold rounded-full shadow hover:shadow-lg transition text-center"
               >
-                <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  className="h-5 w-5 mr-2"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 12H3m0 0l4-4m-4 4l4 4m6-8v8" />
-                </svg> Iniciar Sesión
+                </svg>
+                Iniciar Sesión
               </Link>
             </div>
+
+
+
+
           </div>
+
+
           {/* Imagen */}
           <div className="lg:w-1/2 mt-10 lg:mt-0 flex justify-center">
             <img

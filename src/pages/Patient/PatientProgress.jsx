@@ -114,7 +114,7 @@ export default function PatientProgress() {
     <div className="bg-fondo_fuera_formularios_dentro_del_body min-h-screen py-12 px-8">
       {/* Título con Avatar */}
       <div className="flex items-center mb-8">
-        <img src="/images/Blue.png" alt="Blue" className="w-16 h-16 mr-4" />
+        <img src="/images/Blue.png" alt="Blue" className="w-16 h-16 mr-4 animate-bounce-slow" />
         <h1 className="text-3xl font-bold text-primaryText">Mi Progreso</h1>
       </div>
 

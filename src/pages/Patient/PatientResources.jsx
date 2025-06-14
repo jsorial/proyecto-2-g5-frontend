@@ -45,12 +45,16 @@ export default function PatientResources() {
 
   return (
     <div className="bg-fondo_fuera_formularios_dentro_del_body min-h-screen py-12 px-4">
-      <h1 className="text-4xl font-bold text-primaryText text-center mb-6">
+      <div className="max-w-6xl mx-auto flex flex-col lg:flex-row items-center lg:items-start lg:justify-between mb-8 space-y-6 lg:space-y-0 lg:space-x-8">
+    
+    {/* Texto y filtros */}
+    <div className="flex-1">
+      <h1 className="text-4xl font-bold text-primaryText text-center lg:text-left mb-6">
         Recursos de Bienestar
       </h1>
 
       {/* Búsqueda */}
-      <div className="max-w-3xl mx-auto mb-6">
+      <div className="mb-6">
         <input
           type="text"
           placeholder="Buscar recurso..."
@@ -61,7 +65,7 @@ export default function PatientResources() {
       </div>
 
       {/* Filtro por categoría */}
-      <div className="max-w-6xl mx-auto mb-8 flex justify-center space-x-4">
+      <div className="flex flex-wrap gap-4 justify-center lg:justify-start">
         {CATEGORIES.map(cat => (
           <button
             key={cat.value}
@@ -69,19 +73,30 @@ export default function PatientResources() {
             className={`px-4 py-2 rounded-lg font-medium transition
               ${filter === cat.value
                 ? 'bg-formBtn text-white'
-                : 'bg-gray-200 text-gray-700 hover:bg-gray-300'}`}
+                : 'bg-white border border-primaryBtn text-gray-700 hover:bg-gray-300'}`}
           >
             {cat.label}
           </button>
         ))}
       </div>
+    </div>
+
+    {/* Imagen */}
+    <div className="w-full lg:w-60 flex justify-center lg:justify-end">
+      <img
+        src="/images/Blue.png" // Asegúrate de que la ruta sea correcta
+        alt="Ilustración Bienestar"
+        className="w-48 h-48 object-contain animate-bounce-slow"
+      />
+    </div>
+  </div>
 
       {/* Grid de tarjetas */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
         {filtered.map(res => (
           <div
             key={res.id}
-            className="bg-white rounded-lg shadow border border-gray-200 overflow-hidden hover:shadow-lg transition"
+            className="bg-white rounded-lg shadow border border-primaryBtn overflow-hidden hover:shadow-lg transition"
           >
             <div className="h-40 bg-loginBg flex items-center justify-center p-4">
               <img

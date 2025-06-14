@@ -65,8 +65,9 @@ export default function PatientProfile() {
         {/** ------------------ INSERTAR AQUÍ LA “X” PARA SALIR DEL TEST ------------------ **/}
         <button
           onClick={() => navigate('/patient/home')}
-          className="absolute top-4 right-4 focus:outline-none"
-          aria-label="Cerrar Test"
+        
+          className="absolute top-6 right-4 bg-white rounded-full p-1 hover:bg-gray-100 transition"
+          aria-label="Cerrar Perfil"
         >
           <img
             src="/images/Equis_de_cuestionarios.png"

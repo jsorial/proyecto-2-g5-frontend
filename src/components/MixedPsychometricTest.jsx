@@ -148,7 +148,7 @@ export default function MixedPsychometricTest() {
     setLoading(true);
     try {
       // Simula POST y respuesta
-      await new Promise(r => setTimeout(r, 10000));
+      await new Promise(r => setTimeout(r, 4000));
       // Ejemplo de resultados calculados al vuelo:
       const ans = Object.values(answers).filter(v => typeof v === 'number').reduce((s, n) => s + n, 0);
       const est = ans;
@@ -199,8 +199,8 @@ export default function MixedPsychometricTest() {
   return (
     <div className="bg-fondo_fuera_formularios_dentro_del_body min-h-screen py-12">
       {/* Hero de Blue */}
-      <div className="relative max-w-5xl mx-auto mb-8 flex items-center bg-loginBg p-6 rounded-lg">
-        <img src="/images/Blue.png" alt="Blue" className="w-24 mr-6" />
+      <div className="relative max-w-5xl mx-auto mb-8 flex items-center bg-white border border-primaryBtn  p-6 rounded-lg">
+        <img src="/images/Blue.png" alt="Blue" className="w-24 mr-6 animate-bounce-slow" />
 
         <div>
           <h1 className="text-3xl font-bold text-primaryText">
@@ -218,7 +218,7 @@ export default function MixedPsychometricTest() {
         <button
           onClick={() => navigate('/patient/home')}
           aria-label="Cerrar Test"
-          className="ml-auto focus:outline-none"
+          className="absolute top-4 right-2 bg-white rounded-full p-1 hover:bg-gray-100 transition"
         >
           <img
             src="/images/Equis_de_cuestionarios.png"

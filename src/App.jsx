@@ -33,6 +33,8 @@ import PsychProgress from './pages/Psychologist/PsychProgress';
 import TestResultDetail from './pages/Psychologist/TestResultDetail';
 import ProtectedRoute from './components/ProtectedRoute';
 import { AuthProvider } from './contexts/AuthContext';
+import PatientSurvey from './pages/Patient/PatientSurvey';
+
 
 function App() {
   return (
@@ -81,10 +83,18 @@ function App() {
                 element={<ProtectedRoute allowedRoles={['patient']} element={<PatientNosotros />} />}
               />
 
+
+
               <Route
                 path="/patient/schedule-extra"
                 element={<ProtectedRoute allowedRoles={['patient']} element={<PatientCreateAppointment />} preset="extra" />}
               />
+
+              <Route
+                path="/patient/survey"
+                element={<ProtectedRoute allowedRoles={['patient']} element={<PatientSurvey />} />}
+              />
+     
 
 
 

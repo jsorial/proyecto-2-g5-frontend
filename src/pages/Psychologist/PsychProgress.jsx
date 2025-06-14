@@ -190,7 +190,7 @@ export default function PatientProgress() {
               <YAxis allowDecimals={false} />
               <Tooltip />
               <Legend />
-              <Bar dataKey="count" fill="#ea8bc5" name="Pacientes" />
+              <Bar dataKey="count" fill="#6b85bb" name="Pacientes" />
             </BarChart>
           </ResponsiveContainer>
         </div>

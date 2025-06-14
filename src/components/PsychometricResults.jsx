@@ -45,10 +45,10 @@ export default function PsychometricResults({ puntajeAnsiedad, puntajeEstres }) 
   return (
     <div className="bg-fondo_fuera_formularios_dentro_del_body min-h-screen py-12">
       {/* Hero */}
-      <div className="relative max-w-6xl mx-auto mb-8 flex items-center bg-loginBg p-6 rounded-lg">
-        <img src="/images/Blue.png" alt="Blue" className="w-24 h-auto" />
+      <div className="relative max-w-6xl mx-auto mb-8 flex items-center bg-white border border-primaryBtn p-6 rounded-lg">
+        <img src="/images/Blue.png" alt="Blue" className="w-24 h-auto animate-bounce-slow" />
         <div>
-          <h1 className="text-3xl font-bold text-primaryText">Resultados Psicométricos</h1>
+          <h1 className="text-3xl font-bold text-primaryText">Resultado del Test</h1>
           <p className="mt-1 text-gray-600">
             Ansiedad: <strong>{puntajeAnsiedad}</strong> · Estrés: <strong>{puntajeEstres}</strong>
           </p>
@@ -60,8 +60,8 @@ export default function PsychometricResults({ puntajeAnsiedad, puntajeEstres }) 
         </div>
         <button
           onClick={() => navigate('/patient/home')}
-          aria-label="Cerrar Test"
-          className="ml-auto focus:outline-none"
+          aria-label="Cerrar Resultados de Test"
+          className="absolute top-4 right-2 bg-white rounded-full p-1 hover:bg-gray-100 transition"
         >
           <img
             src="/images/Equis_de_cuestionarios.png"
@@ -91,6 +91,8 @@ export default function PsychometricResults({ puntajeAnsiedad, puntajeEstres }) 
               </ResponsiveContainer>
             )
           }
+
+          
         </div>
 
         {/* Metric cards */}
@@ -148,7 +150,9 @@ export default function PsychometricResults({ puntajeAnsiedad, puntajeEstres }) 
 
         {/* Historial detallado */}
         <div className="bg-white p-6 rounded-lg shadow border border-gray-200">
+
           <h3 className="text-formTitle font-semibold mb-4">Historial de Evaluaciones</h3>
+
           <div className="overflow-x-auto">
             <table className="w-full table-auto text-left">
               <thead className="bg-tableHeaderBg">
@@ -178,7 +182,19 @@ export default function PsychometricResults({ puntajeAnsiedad, puntajeEstres }) 
               </tbody>
             </table>
           </div>
+
         </div>
+
+        {/* Botón opcional de encuesta de satisfacción */}
+      <div className="max-w-6xl mx-auto mt-8 text-center">
+       <button
+         onClick={() => navigate('/patient/survey')}
+          className="px-6 py-3 bg-formBtn text-white font-medium rounded-lg hover:bg-primaryTextActive transition"
+       >
+         Evaluar satisfacción (opcional)
+       </button>
+     </div>
+
       </div>
     </div>
   );

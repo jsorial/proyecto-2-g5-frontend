@@ -30,29 +30,32 @@ export default function Nosotros() {
 
   return (
     <div className="bg-fondo_fuera_formularios_dentro_del_body min-h-screen">
-      {/* Hero */}
-      <header className="relative bg-gradient-to-r from-primaryBtn/60 to-formBtn/60 text-white py-12">
-        <div className="container mx-auto px-4 flex flex-col lg:flex-row items-center justify-between gap-8">
 
-          {/* Texto */}
-          <div className="lg:w-1/2 text-center lg:text-center">
-            <h1 className="text-5xl font-extrabold mb-4">Conócenos</h1>
-            <h1 className="text-2xl font-bold mb-2 text-white ">
-              Somos un equipo de profesionales apasionados por tu bienestar mental y emocional.
-            </h1>
-          </div>
+       {/* HERO */}
+            <header className="bg-gradient-to-r from-primaryBtn/60 to-formBtn/60 text-white py-12">
+              <div className="max-w-7xl mx-auto flex flex-col lg:flex-row items-center px-6">
+                {/* Texto */}
+                <div className="lg:w-1/2 space-y-6">
+                  <h1 className="text-5xl font-black tracking-tight animate-fade-in">
+                    ¡Conócenos!
+                  </h1>
+                  <p className="text-lg text-gray-700 animate-fade-in delay-200">
+                    Somos <strong>un equipo de profesionales</strong>, apasionados por tu bienestar mental y emocional.
+                  </p>
 
-          {/* Imagen */}
-          <div className="lg:w-1/2 flex justify-center">
-            <img
-              src="/images/Blue.png"
-              alt="Blue, tu guía"
-              className="w-64 md:w-80 animate-bounce-slow"
-            />
-          </div>
-
-        </div>
-      </header>
+                </div>
+      
+      
+                {/* Imagen */}
+                <div className="lg:w-1/2 mt-10 lg:mt-0 flex justify-center">
+                  <img
+                    src="/images/Blue.png"
+                    alt="Blue, tu guía"
+                    className="w-64 md:w-80 animate-bounce-slow"
+                  />
+                </div>
+              </div>
+            </header>
 
 
 

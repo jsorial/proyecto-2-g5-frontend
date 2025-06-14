@@ -88,7 +88,7 @@ export default function TestResults() {
     <div className="bg-fondo_fuera_formularios_dentro_del_body min-h-screen py-12 px-4">
       {/* Hero con título y paciente */}
       <div className="relative max-w-4xl mx-auto flex items-center bg-white p-6 rounded-lg shadow mb-8">
-        <img src="/images/Blue.png" alt="Blue" className="w-20 h-auto mr-6 animate-fade-in" />
+        <img src="/images/Blue.png" alt="Blue" className="w-20 h-auto mr-6 animate-bounce-slow" />
         <div>
           <h1 className="text-3xl font-bold text-primaryText">
             Detalle del Test Psicométrico
@@ -100,7 +100,8 @@ export default function TestResults() {
         </div>
         <button
           onClick={() => navigate('/psych/progress')}
-          className="absolute top-4 right-4 focus:outline-none"
+         
+          className="absolute top-6 right-4 bg-white rounded-full p-1 hover:bg-gray-100 transition"
           aria-label="Cerrar"
         >
           <img src="/images/Equis_de_cuestionarios.png" alt="Cerrar" className="w-10 h-10"/>

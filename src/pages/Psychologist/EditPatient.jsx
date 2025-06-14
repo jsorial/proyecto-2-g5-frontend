@@ -49,7 +49,7 @@ export default function EditPatient() {
         {/* Cerrar con tu equis */}
         <button
           onClick={() => navigate('/psych/manage-patients')}
-          className="absolute top-4 right-4 focus:outline-none"
+          className="absolute top-6 right-2 bg-white rounded-full p-1 hover:bg-gray-100 transition"
           aria-label="Cerrar"
         >
           <img
@@ -146,7 +146,7 @@ export default function EditPatient() {
               />
             </div>
             <div>
-              <label className="block text-formTitle mb-1">Correo Personal *</label>
+              <label className="block text-formTitle mb-1">Correo *</label>
               <input
                 type="email"
                 name="emailPersonal"

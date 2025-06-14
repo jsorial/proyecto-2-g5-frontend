@@ -42,7 +42,7 @@ export default function CreateAppointment() {
         {/* Botón para cerrar con tu “X” */}
         <button
           onClick={() => navigate('/psych/manage-appointments')}
-          className="absolute top-4 right-4 focus:outline-none"
+          className="absolute top-6 right-4 bg-white rounded-full p-1 hover:bg-gray-100 transition"
           aria-label="Cerrar"
         >
           <img

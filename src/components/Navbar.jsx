@@ -336,13 +336,13 @@ export default function Navbar() {
             {/* Botón de cerrar */}
             <button
               onClick={() => setShowUserMenu(false)}
-              className="absolute top-2 right-2 focus:outline-none"
+              className="absolute top-4 right-2 bg-white rounded-full p-1 hover:bg-gray-100 transition"
               aria-label="Cerrar"
             >
               <img
                 src="/images/Equis_de_cuestionarios.png"
                 alt="Cerrar"
-                className="h-8 w-8"
+                className="h-10 w-10"
               />
             </button>
 
@@ -380,13 +380,13 @@ export default function Navbar() {
             {/* Botón de cerrar */}
             <button
               onClick={() => setShowLogoutConfirm(false)}
-              className="absolute top-2 right-2 focus:outline-none"
+              className="absolute top-4 right-2 bg-white rounded-full p-1 hover:bg-gray-100 transition"
               aria-label="Cerrar"
             >
               <img
                 src="/images/Equis_de_cuestionarios.png"
                 alt="Cerrar"
-                className="h-8 w-8"
+                className="h-10 w-10"
               />
             </button>
 
