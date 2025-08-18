@@ -3,23 +3,22 @@ import React from 'react';
 import { Navigate } from 'react-router-dom';
 import { useAuth } from '../contexts/AuthContext';
 
-/**
- * <ProtectedRoute allowedRoles={['patient']} element={<SomePage />} />
- * Solo permite acceder si user.role está en allowedRoles.
- */
-export default function ProtectedRoute({ allowedRoles, element }) {
-  const { user } = useAuth();
+export default function ProtectedRoute({ allowedRoles = [], element }) {
+  const { user, loading } = useAuth();
+
+  if (loading) {
+    return <LoadingScreen />;
+  }
 
   if (!user) {
-    // No autenticado
+    // no está autenticado
     return <Navigate to="/login" replace />;
   }
 
-  if (!allowedRoles.includes(user.role)) {
-    // Role no permitido
-    return <Navigate to="/" replace />;
+  if (allowedRoles.length > 0 && !allowedRoles.includes(user.USER_ROL)) {
+    // autenticado pero no tiene rol permitido
+    return <Navigate to="/forbidden" replace />;
   }
 
-  // Usuario autenticado y rol permitido
   return element;
 }

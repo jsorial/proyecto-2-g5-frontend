@@ -1,0 +1,32 @@
+[
+  {
+    "id": "cita_1001",
+    "paciente_id": "u_pac_01",
+    "psicologo_id": "u_psico_01",
+    "fecha_inicio": "2025-08-20T15:00:00-05:00",
+    "fecha_fin": "2025-08-20T15:50:00-05:00",
+    "modalidad": "VIRTUAL",
+    "estado": "PROGRAMADA",
+    "enlace_virtual": "https://meet.cem/cita_1001",
+    "lugar": null,
+    "notas_privadas_psicologo": "Primera sesión, revisar test previo.",
+    "creada_por": "u_psico_01",
+    "fecha_creacion": "2025-08-17T18:00:00Z",
+    "ultima_actualizacion": "2025-08-17T18:00:00Z"
+  },
+  {
+    "id": "cita_1002",
+    "paciente_id": "u_pac_02",
+    "psicologo_id": "u_psico_02",
+    "fecha_inicio": "2025-08-21T09:00:00-05:00",
+    "fecha_fin": "2025-08-21T09:45:00-05:00",
+    "modalidad": "VIRTUAL",
+    "estado": "CONFIRMADA",
+    "enlace_virtual": "https://meet.cem/cita_1002",
+    "lugar": null,
+    "notas_privadas_psicologo": null,
+    "creada_por": "u_psico_02",
+    "fecha_creacion": "2025-08-17T18:05:00Z",
+    "ultima_actualizacion": "2025-08-17T18:20:00Z"
+  }
+]

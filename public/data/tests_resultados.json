@@ -1,0 +1,19 @@
+[
+  {
+    "id": "tr_0001",
+    "test_id": "test_ansiedad_estres_v1",
+    "paciente_id": "u_pac_01",
+    "fecha_resolucion": "2025-08-17T16:10:00-05:00",
+    "respuestas": [
+      { "pregunta_id": "q1", "valor": 4 },
+      { "pregunta_id": "q2", "valor": 3 },
+      { "pregunta_id": "q3", "valor": 4 },
+      { "pregunta_id": "q4", "valor": 2 }
+    ],
+    "puntajes_por_dimension": { "ANSIEDAD": 4.0, "ESTRES": 2.5 },
+    "nivel_por_dimension": { "ANSIEDAD": "ALTO", "ESTRES": "MEDIO" },
+    "recomendaciones": ["Programar cita de seguimiento en 7 días.", "Ejercicios de respiración 10 min diarios."],
+    "visible_para_paciente": true,
+    "visible_para_psicologo": true
+  }
+]

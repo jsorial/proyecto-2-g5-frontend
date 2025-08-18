@@ -1,55 +1,55 @@
 // src/contexts/AuthContext.jsx
-import React, { createContext, useContext, useState } from 'react';
+import React, { createContext, useContext, useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-
-// Estructura del usuario simulado
-// role: 'patient' o 'psychologist'
+import { authenticate } from '../utils/auth';
 
 const AuthContext = createContext();
 
-export function useAuth() {
-  return useContext(AuthContext);
-}
-
 export function AuthProvider({ children }) {
-  const navigate = useNavigate();
-  const [user, setUser] = useState(null);
+  const [user, setUser]       = useState(undefined);
+  const [loading, setLoading] = useState(true);
+  const navigate              = useNavigate();
 
-  // Simular login de paciente
-  const loginPatient = (email) => {
-    // Aquí podrías validar email/contraseña con backend, pero en esta simulación
-    // simplemente creamos un objeto "user"
-    const simulatedUser = {
-      role: 'patient',
-      email,
-      nombre: 'Paciente Ejemplo',
-      id: Math.floor(Math.random() * 10000), // id único simulado
-    };
-    setUser(simulatedUser);
-    // Redirigir a la home del paciente
-    navigate('/patient/home');
-  };
+  useEffect(() => {
+    const raw = localStorage.getItem('usmp_user');
+    if (raw) setUser(JSON.parse(raw));
+    else     setUser(null);
+    setLoading(false);
+  }, []);
 
-  // Simular login de psicóloga
-  const loginPsych = (email) => {
-    const simulatedUser = {
-      role: 'psychologist',
-      email,
-      nombre: 'Psicóloga Ejemplo',
-      id: Math.floor(Math.random() * 10000),
-    };
-    setUser(simulatedUser);
-    navigate('/psych/home');
+  const login = async (email, password) => {
+    const u = await authenticate(email, password);
+    if (u) {
+      setUser(u);
+      localStorage.setItem('usmp_user', JSON.stringify(u));
+
+      // ⬇️ Redirección según rol (ajusta rutas a las tuyas reales)
+      const nextByRole = {
+        'PACIENTE'  : '/',             // o '/paciente'
+        'PSICOLOGO' : '/',        // o '/psych/home'
+        'ADMIN'     : '/'
+      };
+      const to = nextByRole[u.rol?.toUpperCase()] ?? '/';
+      navigate(to, { replace: true });
+
+      return true;
+    }
+    return false;
   };
 
   const logout = () => {
     setUser(null);
-    navigate('/');
+    localStorage.removeItem('usmp_user');
+    navigate('/login', { replace: true });
   };
 
   return (
-    <AuthContext.Provider value={{ user, loginPatient, loginPsych, logout }}>
+    <AuthContext.Provider value={{ user, login, logout, loading }}>
       {children}
     </AuthContext.Provider>
   );
+}
+
+export function useAuth() {
+  return useContext(AuthContext);
 }

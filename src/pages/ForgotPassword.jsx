@@ -20,7 +20,7 @@ export default function ForgotPassword() {
                 <img
                     src="/images/forgot2.jpg"
                     alt="Blue, tu guía"
-                   className="object-cover w-full h-full"
+                    className="object-cover w-full h-full"
                 />
             </div>
 
@@ -30,15 +30,14 @@ export default function ForgotPassword() {
                 <div className="relative w-full max-w-sm bg-white rounded-lg shadow-lg border border-gray-200 p-8">
                     {/* Botón “X” para cerrar y volver atrás */}
                     <button
-                        onClick={() => navigate(-1)}
+                        type="button"
+                        onClick={() => navigate('/')}
                         className="absolute top-6 right-4 bg-white rounded-full p-1 hover:bg-gray-100 transition"
-                        aria-label="Cerrar"
-                    >
+                        aria-label="Cerrar"    >
                         <img
                             src="/images/Equis_de_cuestionarios.png"
                             alt="Cerrar"
-                            className="h-10 w-10"
-                        />
+                            className="h-10 w-10" />
                     </button>
 
                     <h2 className="text-2xl font-semibold text-primaryText text-center mb-6">

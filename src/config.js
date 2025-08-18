@@ -13,4 +13,7 @@ export const API_URL_MIS_TEST_HISTORIAL = import.meta.env.VITE_API_URL_MIS_TEST_
 export const API_URL_RECURSOS = import.meta.env.VITE_API_URL_RECURSOS;
 
 
+export const API_URL_USUARIOS = import.meta.env.VITE_API_URL_USUARIOS;
+
+
 

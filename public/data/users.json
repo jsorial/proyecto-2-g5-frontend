@@ -1,0 +1,168 @@
+[
+  {
+    "id": "u_admin_01",
+    "rol": "ADMIN",
+    "email": "admin@cem.com",
+    "password_hash": "cem123",
+    "nombres": "CEM",
+    "apellidos": "Admin",
+    "telefono": "+51 900 000 000",
+    "foto_url": null,
+    "estado": "ACTIVO",
+    "fecha_creacion": "2025-08-01T10:00:00Z",
+    "fecha_ultimo_login": "2025-08-17T18:30:00Z",
+    "consentimientos": { "terminos": true, "privacidad": true },
+    "perfil": {
+      "cargo": "Administrador General",
+      "scopes_extra": ["config:write", "users:assign_psychologist"]
+    }
+  },
+  {
+    "id": "u_psico_01",
+    "rol": "PSICOLOGO",
+    "email": "maria.ruiz@cem.com",
+    "password_hash": "cem123",
+    "nombres": "María",
+    "apellidos": "Ruiz Fernández",
+    "telefono": "+51 999 111 222",
+    "foto_url": "https://cdn.cem/perfiles/maria.jpg",
+    "estado": "ACTIVO",
+    "fecha_creacion": "2025-08-10T15:35:00Z",
+    "fecha_ultimo_login": "2025-08-17T17:00:00Z",
+    "consentimientos": { "terminos": true, "privacidad": true },
+    "perfil": {
+      "numero_colegiatura": "CPSP-12345",
+      "especialidades": ["Ansiedad", "Estrés laboral"],
+      "modalidades_atencion": ["PRESENCIAL", "VIRTUAL"],
+      "bio": "Psicóloga con enfoque cognitivo-conductual.",
+      "agenda_config": { "duracion_cita_min": 50, "zona_horaria": "America/Lima" }
+    }
+  },
+  {
+    "id": "u_psico_02",
+    "rol": "PSICOLOGO",
+    "email": "luis.santos@cem.com",
+    "password_hash": "cem123",
+    "nombres": "Luis",
+    "apellidos": "Santos Paredes",
+    "telefono": "+51 988 555 444",
+    "foto_url": null,
+    "estado": "ACTIVO",
+    "fecha_creacion": "2025-08-11T14:10:00Z",
+    "fecha_ultimo_login": null,
+    "consentimientos": { "terminos": true, "privacidad": true },
+    "perfil": {
+      "numero_colegiatura": "CPSP-67890",
+      "especialidades": ["Estrés", "Depresión leve"],
+      "modalidades_atencion": ["VIRTUAL"],
+      "bio": "Experiencia en programas corporativos.",
+      "agenda_config": { "duracion_cita_min": 45, "zona_horaria": "America/Lima" }
+    }
+  }, {
+    "id": "u_psico_03",
+    "rol": "PSICOLOGO",
+    "email": "jsorial@usmp.pe",
+    "password_hash": "cem123",
+    "nombres": "Jsorial",
+    "apellidos": "Soria Soria",
+    "telefono": "+51 988 555 444",
+    "foto_url": null,
+    "estado": "ACTIVO",
+    "fecha_creacion": "2025-08-11T14:10:00Z",
+    "fecha_ultimo_login": null,
+    "consentimientos": { "terminos": true, "privacidad": true },
+    "perfil": {
+      "numero_colegiatura": "CPSP-67890",
+      "especialidades": ["Estrés", "Depresión leve"],
+      "modalidades_atencion": ["VIRTUAL"],
+      "bio": "Experiencia en programas corporativos.",
+      "agenda_config": { "duracion_cita_min": 45, "zona_horaria": "America/Lima" }
+    }
+  },
+  {
+    "id": "u_pac_01",
+    "rol": "PACIENTE",
+    "email": "ana.lopez@mail.com",
+    "password_hash": "cem123",
+    "nombres": "Ana",
+    "apellidos": "López Ramos",
+    "telefono": "+51 987 111 000",
+    "foto_url": null,
+    "estado": "ACTIVO",
+    "fecha_creacion": "2025-08-12T09:00:00Z",
+    "fecha_ultimo_login": "2025-08-17T15:40:00Z",
+    "consentimientos": { "terminos": true, "privacidad": true },
+    "perfil": {
+      "fecha_nacimiento": "2002-05-10",
+      "sexo": "F",
+      "direccion": "Lima, Perú",
+      "contacto_emergencia": { "nombre": "María López", "telefono": "+51 987 321 654" },
+      "psicologo_asignado_id": "u_psico_01",
+      "onboarding_completado": true
+    }
+  },
+  {
+    "id": "u_pac_02",
+    "rol": "PACIENTE",
+    "email": "carlos.mejia@mail.com",
+    "password_hash": "cem123",
+    "nombres": "Carlos",
+    "apellidos": "Mejía Torres",
+    "telefono": "+51 980 333 222",
+    "foto_url": null,
+    "estado": "ACTIVO",
+    "fecha_creacion": "2025-08-12T09:10:00Z",
+    "fecha_ultimo_login": null,
+    "consentimientos": { "terminos": true, "privacidad": true },
+    "perfil": {
+      "fecha_nacimiento": "2000-11-20",
+      "sexo": "M",
+      "direccion": "Chiclayo, Perú",
+      "contacto_emergencia": null,
+      "psicologo_asignado_id": "u_psico_02",
+      "onboarding_completado": false
+    }
+  }, {
+    "id": "u_pac_03",
+    "rol": "PACIENTE",
+    "email": "yisusoria@gmail.com",
+    "password_hash": "cem123",
+    "nombres": "Jesus",
+    "apellidos": "Prueba 1",
+    "telefono": "+51 987 222 000",
+    "foto_url": null,
+    "estado": "ACTIVO",
+    "fecha_creacion": "2025-08-12T09:00:00Z",
+    "fecha_ultimo_login": "2025-08-17T15:40:00Z",
+    "consentimientos": { "terminos": true, "privacidad": true },
+    "perfil": {
+      "fecha_nacimiento": "2002-05-10",
+      "sexo": "F",
+      "direccion": "Lima, Perú",
+      "contacto_emergencia": { "nombre": "Jesus Soria", "telefono": "+51 987 321 654" },
+      "psicologo_asignado_id": "u_psico_01",
+      "onboarding_completado": true
+    }
+  }, {
+    "id": "u_pac_04",
+    "rol": "PACIENTE",
+    "email": "jesus_soria@usmp.pe",
+    "password_hash": "cem123",
+    "nombres": "Jesus",
+    "apellidos": "Prueba 2",
+    "telefono": "+51 987 222 000",
+    "foto_url": null,
+    "estado": "ACTIVO",
+    "fecha_creacion": "2025-08-12T09:00:00Z",
+    "fecha_ultimo_login": "2025-08-17T15:40:00Z",
+    "consentimientos": { "terminos": true, "privacidad": true },
+    "perfil": {
+      "fecha_nacimiento": "2002-05-10",
+      "sexo": "F",
+      "direccion": "Lima, Perú",
+      "contacto_emergencia": { "nombre": "Jesus 2", "telefono": "+51 987 321 654" },
+      "psicologo_asignado_id": "u_psico_01",
+      "onboarding_completado": true
+    }
+  }
+]

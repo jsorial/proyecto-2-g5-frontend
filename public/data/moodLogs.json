@@ -1,9 +1,0 @@
-[
-  { "date":"2025-05-01","mood":"happy" },
-  { "date":"2025-05-02","mood":"neutral" },
-  { "date":"2025-05-03","mood":"sad" },
-  { "date":"2025-05-04","mood":"happy" },
-  { "date":"2025-05-05","mood":"neutral" },
-  { "date":"2025-05-06","mood":"happy" },
-  { "date":"2025-05-07","mood":"neutral" }
-]

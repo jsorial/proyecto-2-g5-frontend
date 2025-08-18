@@ -6,9 +6,9 @@ export default function AcceDenSection({ title, children }) {
     <div className="mx-auto my-8 max-w-3xl bg-neutral-50 rounded-2xl p-8 shadow-lg border-4 border-claroRed">
       <h3
         style={{
-          WebkitTextStroke: "1px #A80000",
-          WebkitTextFillColor: "#E60000",
-          backgroundImage: "linear-gradient(90deg, #E60000, #A80000)",
+          WebkitTextStroke: "1px #6b85bb",
+          WebkitTextFillColor: "#4f6ca5",
+          backgroundImage: "linear-gradient(90deg, #4f6ca5, #6b85bb)",
           WebkitBackgroundClip: "text",
           transition: "all 0.3s ease-in-out",
         }}
