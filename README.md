@@ -13,7 +13,7 @@ git commit -m "first commit"
 
 git branch -M master
 
-git remote add origin https://github.com/jesussoria12/Prototipo.git
+git remote add origin https://github.com/jsorial/proyecto-2-g5.git
 
 git push -u origin master
   
