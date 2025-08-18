@@ -1,0 +1,602 @@
+[
+    {
+        "id": 1,
+        "type": "likert",
+        "text": "En las últimas dos semanas, ¿con qué frecuencia has sentido nerviosismo o inquietud?",
+        "categoria": "ansiedad"
+    },
+    {
+        "id": 2,
+        "type": "likert",
+        "text": "En las últimas dos semanas, ¿con qué frecuencia te ha costado dejar de preocuparte?",
+        "categoria": "ansiedad"
+    },
+    {
+        "id": 3,
+        "type": "likert",
+        "text": "En las últimas dos semanas, ¿con qué frecuencia te has sentido tan inquieto/a que no podías quedarte quieto/a?",
+        "categoria": "ansiedad"
+    },
+    {
+        "id": 4,
+        "type": "likert",
+        "text": "En las últimas dos semanas, ¿con qué frecuencia has tenido dificultades para relajarte?",
+        "categoria": "ansiedad"
+    },
+    {
+        "id": 5,
+        "type": "texto",
+        "text": "Describe, en tus palabras, una situación reciente en la que sentiste ansiedad fuerte.",
+        "categoria": "ansiedad"
+    },
+    {
+        "id": 6,
+        "type": "likert",
+        "text": "En las últimas dos semanas, ¿con qué frecuencia sientes que la ansiedad interfiere en tus actividades diarias?",
+        "categoria": "ansiedad"
+    },
+    {
+        "id": 7,
+        "type": "likert",
+        "text": "En las últimas dos semanas, ¿con qué frecuencia has sentido palpitaciones o tensión muscular relacionadas a la ansiedad?",
+        "categoria": "ansiedad"
+    },
+    {
+        "id": 8,
+        "type": "likert",
+        "text": "En las últimas dos semanas, ¿con qué frecuencia has tenido dificultad para conciliar el sueño a causa de pensamientos ansiosos?",
+        "categoria": "ansiedad"
+    },
+    {
+        "id": 9,
+        "type": "likert",
+        "text": "En las últimas dos semanas, ¿con qué frecuencia has sentido que tu respiración se acelera por problemas emocionales?",
+        "categoria": "ansiedad"
+    },
+    {
+        "id": 10,
+        "type": "texto",
+        "text": "¿Qué crees que desencadena tu ansiedad y cómo lo afrontas?",
+        "categoria": "ansiedad"
+    },
+    {
+        "id": 11,
+        "type": "likert",
+        "text": "En las últimas dos semanas, ¿con qué frecuencia te has sentido incapaz de controlar lo que sucede en tu vida?",
+        "categoria": "estrés"
+    },
+    {
+        "id": 12,
+        "type": "likert",
+        "text": "En las últimas dos semanas, ¿con qué frecuencia te has sentido nervioso(a) y estresado(a)?",
+        "categoria": "estrés"
+    },
+    {
+        "id": 13,
+        "type": "likert",
+        "text": "En las últimas dos semanas, ¿con qué frecuencia has sentido que las dificultades se amontonan y no puedes superarlas?",
+        "categoria": "estrés"
+    },
+    {
+        "id": 14,
+        "type": "likert",
+        "text": "En las últimas dos semanas, ¿con qué frecuencia te has sentido abrumado(a) por tus responsabilidades?",
+        "categoria": "estrés"
+    },
+    {
+        "id": 15,
+        "type": "texto",
+        "text": "Describe qué actividades o situaciones te generan más estrés en tu día a día.",
+        "categoria": "estrés"
+    },
+    {
+        "id": 16,
+        "type": "likert",
+        "text": "En las últimas dos semanas, ¿con qué frecuencia la espera de tu cita aumentó tu nivel de estrés?",
+        "categoria": "estrés"
+    },
+    {
+        "id": 17,
+        "type": "likert",
+        "text": "En las últimas dos semanas, ¿con qué frecuencia te has sentido tenso(a) mientras esperabas resultados de tu evaluación?",
+        "categoria": "estrés"
+    },
+    {
+        "id": 18,
+        "type": "likert",
+        "text": "En las últimas dos semanas, ¿con qué frecuencia has sentido que tu familia o trabajo contribuye a tu estrés?",
+        "categoria": "estrés"
+    },
+    {
+        "id": 19,
+        "type": "likert",
+        "text": "En las últimas dos semanas, ¿con qué frecuencia te has preocupado por tu desempeño en la terapia o tareas asignadas?",
+        "categoria": "estrés"
+    },
+    {
+        "id": 20,
+        "type": "texto",
+        "text": "¿Qué actividades haces para relajarte entre sesiones y qué tan efectivas consideras que son?",
+        "categoria": "estrés"
+    },
+    {
+        "id": 21,
+        "type": "likert",
+        "text": "En las últimas dos semanas, ¿con qué frecuencia has sentido que algo malo va a suceder sin razón aparente?",
+        "categoria": "ansiedad"
+    },
+    {
+        "id": 22,
+        "type": "likert",
+        "text": "¿Con qué frecuencia te cuesta concentrarte debido a preocupaciones constantes?",
+        "categoria": "ansiedad"
+    },
+    {
+        "id": 23,
+        "type": "likert",
+        "text": "¿Con qué frecuencia has sentido presión en el pecho sin causa médica aparente?",
+        "categoria": "ansiedad"
+    },
+    {
+        "id": 24,
+        "type": "likert",
+        "text": "¿Con qué frecuencia evitas situaciones sociales por miedo a sentir ansiedad?",
+        "categoria": "ansiedad"
+    },
+    {
+        "id": 25,
+        "type": "texto",
+        "text": "¿Qué pensamientos aparecen cuando sientes que estás perdiendo el control?",
+        "categoria": "ansiedad"
+    },
+    {
+        "id": 26,
+        "type": "likert",
+        "text": "¿Con qué frecuencia tus preocupaciones interfieren en tu capacidad para tomar decisiones?",
+        "categoria": "ansiedad"
+    },
+    {
+        "id": 27,
+        "type": "likert",
+        "text": "¿Con qué frecuencia experimentas tensión muscular durante el día?",
+        "categoria": "estrés"
+    },
+    {
+        "id": 28,
+        "type": "likert",
+        "text": "¿Con qué frecuencia sientes miedo sin saber por qué?",
+        "categoria": "ansiedad"
+    },
+    {
+        "id": 29,
+        "type": "likert",
+        "text": "¿Con qué frecuencia revisas varias veces algo por temor a haberlo hecho mal?",
+        "categoria": "ansiedad"
+    },
+    {
+        "id": 30,
+        "type": "texto",
+        "text": "Describe una situación reciente en la que sentiste pérdida de control emocional.",
+        "categoria": "estrés"
+    },
+    {
+        "id": 31,
+        "type": "likert",
+        "text": "¿Con qué frecuencia sientes que necesitas estar alerta constantemente?",
+        "categoria": "ansiedad"
+    },
+    {
+        "id": 32,
+        "type": "likert",
+        "text": "¿Con qué frecuencia sientes que no puedes disfrutar el presente por pensar en el futuro?",
+        "categoria": "ansiedad"
+    },
+    {
+        "id": 33,
+        "type": "likert",
+        "text": "¿Con qué frecuencia te sientes incapaz de manejar tus obligaciones?",
+        "categoria": "estrés"
+    },
+    {
+        "id": 34,
+        "type": "likert",
+        "text": "¿Con qué frecuencia sientes que el tiempo no te alcanza y eso te genera estrés?",
+        "categoria": "estrés"
+    },
+    {
+        "id": 35,
+        "type": "texto",
+        "text": "Describe una técnica que utilices para calmar tu mente en momentos de estrés.",
+        "categoria": "estrés"
+    },
+    {
+        "id": 36,
+        "type": "likert",
+        "text": "¿Con qué frecuencia experimentas pensamientos repetitivos o rumiantes?",
+        "categoria": "ansiedad"
+    },
+    {
+        "id": 37,
+        "type": "likert",
+        "text": "¿Con qué frecuencia te cuesta dormir por pensar en todo lo que tienes que hacer?",
+        "categoria": "estrés"
+    },
+    {
+        "id": 38,
+        "type": "likert",
+        "text": "¿Con qué frecuencia tienes cambios bruscos de ánimo durante el día?",
+        "categoria": "estrés"
+    },
+    {
+        "id": 39,
+        "type": "likert",
+        "text": "¿Con qué frecuencia sientes irritabilidad por cosas pequeñas?",
+        "categoria": "estrés"
+    },
+    {
+        "id": 40,
+        "type": "texto",
+        "text": "¿Qué señales físicas notas cuando estás bajo mucho estrés o ansiedad?",
+        "categoria": "mixto"
+    },
+    {
+        "id": 41,
+        "type": "likert",
+        "text": "¿Con qué frecuencia sientes que estás al límite de tus capacidades?",
+        "categoria": "estrés"
+    },
+    {
+        "id": 42,
+        "type": "likert",
+        "text": "¿Con qué frecuencia te aíslas para evitar situaciones que te estresan?",
+        "categoria": "estrés"
+    },
+    {
+        "id": 43,
+        "type": "likert",
+        "text": "¿Con qué frecuencia te duele el estómago en momentos de tensión emocional?",
+        "categoria": "ansiedad"
+    },
+    {
+        "id": 44,
+        "type": "likert",
+        "text": "¿Con qué frecuencia sientes que tus pensamientos van demasiado rápido?",
+        "categoria": "ansiedad"
+    },
+    {
+        "id": 45,
+        "type": "texto",
+        "text": "¿Cómo manejas la presión cuando tienes múltiples tareas al mismo tiempo?",
+        "categoria": "estrés"
+    },
+    {
+        "id": 46,
+        "type": "likert",
+        "text": "¿Con qué frecuencia te sientes agotado(a) emocionalmente?",
+        "categoria": "estrés"
+    },
+    {
+        "id": 47,
+        "type": "likert",
+        "text": "¿Con qué frecuencia tu estado de ánimo cambia según tus preocupaciones?",
+        "categoria": "ansiedad"
+    },
+    {
+        "id": 48,
+        "type": "likert",
+        "text": "¿Con qué frecuencia sientes que todo te sobrepasa aunque parezca pequeño?",
+        "categoria": "estrés"
+    },
+    {
+        "id": 49,
+        "type": "likert",
+        "text": "¿Con qué frecuencia tienes pensamientos negativos difíciles de controlar?",
+        "categoria": "ansiedad"
+    },
+    {
+        "id": 50,
+        "type": "texto",
+        "text": "¿Qué recursos personales usas para sobrellevar momentos de alta tensión?",
+        "categoria": "estrés"
+    },
+    {
+        "id": 51,
+        "type": "likert",
+        "text": "¿Con qué frecuencia evitas tareas por miedo al fracaso?",
+        "categoria": "ansiedad"
+    },
+    {
+        "id": 52,
+        "type": "likert",
+        "text": "¿Con qué frecuencia sientes que no eres lo suficientemente bueno/a?",
+        "categoria": "ansiedad"
+    },
+    {
+        "id": 53,
+        "type": "likert",
+        "text": "¿Con qué frecuencia sientes desesperanza sobre el futuro?",
+        "categoria": "ansiedad"
+    },
+    {
+        "id": 54,
+        "type": "likert",
+        "text": "¿Con qué frecuencia tu rendimiento baja por culpa del estrés?",
+        "categoria": "estrés"
+    },
+    {
+        "id": 55,
+        "type": "texto",
+        "text": "Describe qué apoyo externo (personas, actividades) te ayuda en momentos de ansiedad.",
+        "categoria": "ansiedad"
+    },
+    {
+        "id": 56,
+        "type": "likert",
+        "text": "¿Con qué frecuencia te esfuerzas por aparentar que todo está bien aunque no lo esté?",
+        "categoria": "ansiedad"
+    },
+    {
+        "id": 57,
+        "type": "likert",
+        "text": "¿Con qué frecuencia tienes miedo a expresar tus emociones por temor al juicio?",
+        "categoria": "ansiedad"
+    },
+    {
+        "id": 58,
+        "type": "likert",
+        "text": "¿Con qué frecuencia sientes que debes tener el control de todo para estar tranquilo/a?",
+        "categoria": "ansiedad"
+    },
+    {
+        "id": 59,
+        "type": "likert",
+        "text": "¿Con qué frecuencia usas comida, redes sociales u otras distracciones para evitar sentir ansiedad?",
+        "categoria": "ansiedad"
+    },
+    {
+        "id": 60,
+        "type": "texto",
+        "text": "¿Cómo notas que tu cuerpo te avisa cuando estás por llegar a un nivel alto de estrés?",
+        "categoria": "estrés"
+    },
+    {
+        "id": 61,
+        "type": "likert",
+        "text": "¿Con qué frecuencia tienes miedo de no cumplir con las expectativas de los demás?",
+        "categoria": "ansiedad"
+    },
+    {
+        "id": 62,
+        "type": "likert",
+        "text": "¿Con qué frecuencia has sentido que tus emociones están fuera de control?",
+        "categoria": "mixto"
+    },
+    {
+        "id": 63,
+        "type": "likert",
+        "text": "¿Con qué frecuencia experimentas dolor de cabeza por tensión emocional?",
+        "categoria": "estrés"
+    },
+    {
+        "id": 64,
+        "type": "likert",
+        "text": "¿Con qué frecuencia te esfuerzas demasiado por complacer a otros para evitar conflicto?",
+        "categoria": "ansiedad"
+    },
+    {
+        "id": 65,
+        "type": "texto",
+        "text": "¿Cuál ha sido tu mayor fuente de estrés en los últimos meses y cómo lo enfrentaste?",
+        "categoria": "estrés"
+    },
+    {
+        "id": 66,
+        "type": "likert",
+        "text": "¿Con qué frecuencia te preocupas por cosas que otros consideran insignificantes?",
+        "categoria": "ansiedad"
+    },
+    {
+        "id": 67,
+        "type": "likert",
+        "text": "¿Con qué frecuencia sientes que algo malo pasará si no haces las cosas 'perfectamente'?",
+        "categoria": "ansiedad"
+    },
+    {
+        "id": 68,
+        "type": "likert",
+        "text": "¿Con qué frecuencia sientes un vacío emocional cuando te relajas?",
+        "categoria": "mixto"
+    },
+    {
+        "id": 69,
+        "type": "likert",
+        "text": "¿Con qué frecuencia te cuesta decir 'no' por miedo a decepcionar?",
+        "categoria": "ansiedad"
+    },
+    {
+        "id": 70,
+        "type": "texto",
+        "text": "¿Cuáles son las señales internas que detectas antes de un episodio de ansiedad?",
+        "categoria": "ansiedad"
+    },
+    {
+        "id": 71,
+        "type": "likert",
+        "text": "¿Con qué frecuencia te exiges más de lo que puedes dar?",
+        "categoria": "estrés"
+    },
+    {
+        "id": 72,
+        "type": "likert",
+        "text": "¿Con qué frecuencia te sientes inseguro/a en situaciones nuevas?",
+        "categoria": "ansiedad"
+    },
+    {
+        "id": 73,
+        "type": "likert",
+        "text": "¿Con qué frecuencia sientes que no puedes fallar bajo ninguna circunstancia?",
+        "categoria": "ansiedad"
+    },
+    {
+        "id": 74,
+        "type": "likert",
+        "text": "¿Con qué frecuencia evitas hablar sobre tus emociones?",
+        "categoria": "mixto"
+    },
+    {
+        "id": 75,
+        "type": "texto",
+        "text": "Describe una experiencia en la que superaste una situación estresante con éxito.",
+        "categoria": "estrés"
+    },
+    {
+        "id": 76,
+        "type": "likert",
+        "text": "¿Con qué frecuencia experimentas fatiga constante, incluso después de descansar?",
+        "categoria": "estrés"
+    },
+    {
+        "id": 77,
+        "type": "likert",
+        "text": "¿Con qué frecuencia tu mente está tan activa que no puedes concentrarte?",
+        "categoria": "ansiedad"
+    },
+    {
+        "id": 78,
+        "type": "likert",
+        "text": "¿Con qué frecuencia evitas enfrentar tus problemas directamente?",
+        "categoria": "mixto"
+    },
+    {
+        "id": 79,
+        "type": "likert",
+        "text": "¿Con qué frecuencia sientes que tus emociones afectan tus relaciones personales?",
+        "categoria": "mixto"
+    },
+    {
+        "id": 80,
+        "type": "texto",
+        "text": "¿Qué estrategias has intentado para reducir tu nivel de ansiedad y con qué resultado?",
+        "categoria": "ansiedad"
+    },
+    {
+        "id": 81,
+        "type": "likert",
+        "text": "¿Con qué frecuencia sientes una carga emocional al despertar?",
+        "categoria": "estrés"
+    },
+    {
+        "id": 82,
+        "type": "likert",
+        "text": "¿Con qué frecuencia te sientes emocionalmente agotado(a) al final del día?",
+        "categoria": "estrés"
+    },
+    {
+        "id": 83,
+        "type": "likert",
+        "text": "¿Con qué frecuencia te preocupas por la opinión de los demás?",
+        "categoria": "ansiedad"
+    },
+    {
+        "id": 84,
+        "type": "likert",
+        "text": "¿Con qué frecuencia experimentas tensión durante encuentros sociales?",
+        "categoria": "ansiedad"
+    },
+    {
+        "id": 85,
+        "type": "texto",
+        "text": "¿Qué importancia le das a tu salud mental y cómo la cuidas diariamente?",
+        "categoria": "mixto"
+    },
+    {
+        "id": 86,
+        "type": "likert",
+        "text": "¿Con qué frecuencia te desconectas emocionalmente de tu entorno?",
+        "categoria": "estrés"
+    },
+    {
+        "id": 87,
+        "type": "likert",
+        "text": "¿Con qué frecuencia te sientes vacío/a sin razón aparente?",
+        "categoria": "ansiedad"
+    },
+    {
+        "id": 88,
+        "type": "likert",
+        "text": "¿Con qué frecuencia dudas de ti mismo/a cuando enfrentas decisiones simples?",
+        "categoria": "ansiedad"
+    },
+    {
+        "id": 89,
+        "type": "likert",
+        "text": "¿Con qué frecuencia el estrés te impide disfrutar actividades que antes te gustaban?",
+        "categoria": "estrés"
+    },
+    {
+        "id": 90,
+        "type": "texto",
+        "text": "¿Qué haces cuando sientes que estás por tener una crisis emocional?",
+        "categoria": "mixto"
+    },
+    {
+        "id": 91,
+        "type": "likert",
+        "text": "¿Con qué frecuencia tu estrés se manifiesta en síntomas físicos como sudoración o temblores?",
+        "categoria": "Estrés físico"
+    },
+    {
+        "id": 92,
+        "type": "likert",
+        "text": "¿Con qué frecuencia sientes frustración cuando no puedes controlar algo?",
+        "categoria": "estrés"
+    },
+    {
+        "id": 93,
+        "type": "likert",
+        "text": "¿Con qué frecuencia has sentido que no puedes más pero sigues adelante por obligación?",
+        "categoria": "estrés"
+    },
+    {
+        "id": 94,
+        "type": "likert",
+        "text": "¿Con qué frecuencia notas que se repiten los pensamientos negativos en tu mente?",
+        "categoria": "ansiedad"
+    },
+    {
+        "id": 95,
+        "type": "texto",
+        "text": "¿Qué consejo te darías a ti mismo si pudieras verte en un momento de alto estrés?",
+        "categoria": "Mixto / Reflexivo"
+    },
+    {
+        "id": 96,
+        "type": "likert",
+        "text": "¿Con qué frecuencia has querido dejar todo por sentirte abrumado/a?",
+        "categoria": "Estrés / Agobio"
+    },
+    {
+        "id": 97,
+        "type": "likert",
+        "text": "¿Con qué frecuencia haces cosas sin ganas solo por presión externa?",
+        "categoria": "Estrés / Ansiedad social"
+    },
+    {
+        "id": 98,
+        "type": "likert",
+        "text": "¿Con qué frecuencia sientes miedo al cambio?",
+        "categoria": "ansiedad"
+    },
+    {
+        "id": 99,
+        "type": "likert",
+        "text": "¿Con qué frecuencia notas que respiras superficialmente sin darte cuenta?",
+        "categoria": "Estrés físico"
+    },
+    {
+        "id": 100,
+        "type": "texto",
+        "text": "¿Qué cosas te ayudan a reconectar contigo mismo cuando te sientes ansioso o estresado?",
+        "categoria": "Mixto / Estrategias de afrontamiento"
+    }
+]

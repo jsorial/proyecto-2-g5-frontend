@@ -34,6 +34,7 @@ import TestResultDetail from './pages/Psychologist/TestResultDetail';
 import ProtectedRoute from './components/ProtectedRoute';
 import { AuthProvider } from './contexts/AuthContext';
 import PatientSurvey from './pages/Patient/PatientSurvey';
+import Forbidden from './pages/Forbidden';
 
 
 function App() {
@@ -148,6 +149,9 @@ function App() {
                 path="/psych/test-overview"
                 element={<ProtectedRoute allowedRoles={['psychologist']} element={<TestOverview />} />}
               />
+
+              {/* Pantalla acceso denegado */}
+              <Route path="/forbidden" element={<Forbidden />} />
 
 
               {/* 404 */}

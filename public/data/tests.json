@@ -1,0 +1,371 @@
+[
+  {
+    "id": 1,
+    "pacienteId": "12345678",
+    "date": "2025-03-01",
+    "ansiedad": 25,
+    "estres": 23,
+    "comments": "Primera evaluación tras la sesión introductoria",
+    "testType": "inicial"
+  },
+  {
+    "id": 2,
+    "pacienteId": "12345678",
+    "date": "2025-03-05",
+    "ansiedad": 20,
+    "estres": 18,
+    "comments": "Ligera mejoría tras práctica de respiración",
+    "testType": "seguimiento"
+  },
+  {
+    "id": 3,
+    "pacienteId": "12345678",
+    "date": "2025-03-09",
+    "ansiedad": 18,
+    "estres": 17,
+    "comments": "",
+    "testType": "seguimiento"
+  },
+  {
+    "id": 4,
+    "pacienteId": "12345678",
+    "date": "2025-03-13",
+    "ansiedad": 27,
+    "estres": 21,
+    "comments": "Subida de estrés por proyecto en el trabajo",
+    "testType": "seguimiento"
+  },
+  {
+    "id": 5,
+    "pacienteId": "12345678",
+    "date": "2025-03-17",
+    "ansiedad": 18,
+    "estres": 15,
+    "comments": "Buen uso de técnicas de mindfulness",
+    "testType": "seguimiento"
+  },
+  {
+    "id": 6,
+    "pacienteId": "12345678",
+    "date": "2025-03-21",
+    "ansiedad": 16,
+    "estres": 12,
+    "comments": "",
+    "testType": "seguimiento"
+  },
+  {
+    "id": 7,
+    "pacienteId": "12345678",
+    "date": "2025-03-25",
+    "ansiedad": 35,
+    "estres": 33,
+    "comments": "Pico de ansiedad por evento familiar",
+    "testType": "seguimiento"
+  },
+  {
+    "id": 8,
+    "pacienteId": "12345678",
+    "date": "2025-03-29",
+    "ansiedad": 21,
+    "estres": 8,
+    "comments": "Muy buen descanso nocturno esa semana",
+    "testType": "seguimiento"
+  },
+  {
+    "id": 9,
+    "pacienteId": "12345678",
+    "date": "2025-04-02",
+    "ansiedad": 16,
+    "estres": 7,
+    "comments": "",
+    "testType": "seguimiento"
+  },
+  {
+    "id": 10,
+    "pacienteId": "12345678",
+    "date": "2025-04-06",
+    "ansiedad": 14,
+    "estres": 15,
+    "comments": "Ligera tensión laboral",
+    "testType": "seguimiento"
+  },
+  {
+    "id": 11,
+    "pacienteId": "12345678",
+    "date": "2025-04-10",
+    "ansiedad": 26,
+    "estres": 19,
+    "comments": "Reacción alérgica generó estrés adicional",
+    "testType": "seguimiento"
+  },
+  {
+    "id": 12,
+    "pacienteId": "12345678",
+    "date": "2025-04-14",
+    "ansiedad": 11,
+    "estres": 18,
+    "comments": "",
+    "testType": "seguimiento"
+  },
+  {
+    "id": 13,
+    "pacienteId": "12345678",
+    "date": "2025-04-18",
+    "ansiedad": 13,
+    "estres": 14,
+    "comments": "Semana balanceada",
+    "testType": "seguimiento"
+  },
+  {
+    "id": 14,
+    "pacienteId": "12345678",
+    "date": "2025-04-22",
+    "ansiedad": 17,
+    "estres": 12,
+    "comments": "",
+    "testType": "seguimiento"
+  },
+  {
+    "id": 15,
+    "pacienteId": "12345678",
+    "date": "2025-04-26",
+    "ansiedad": 12,
+    "estres": 10,
+    "comments": "Mejoría sostenida",
+    "testType": "seguimiento"
+  },
+  {
+    "id": 16,
+    "pacienteId": "12345678",
+    "date": "2025-04-30",
+    "ansiedad": 25,
+    "estres": 23,
+    "comments": "Primera evaluación tras la sesión introductoria",
+    "testType": "inicial"
+  },
+  {
+    "id": 17,
+    "pacienteId": "12345678",
+    "date": "2025-05-01",
+    "ansiedad": 20,
+    "estres": 18,
+    "comments": "Ligera mejoría tras práctica de respiración",
+    "testType": "seguimiento"
+  },
+  {
+    "id": 18,
+    "pacienteId": "12345678",
+    "date": "2025-05-03",
+    "ansiedad": 18,
+    "estres": 17,
+    "comments": "",
+    "testType": "seguimiento"
+  },
+  {
+    "id": 19,
+    "pacienteId": "12345678",
+    "date": "2025-05-05",
+    "ansiedad": 27,
+    "estres": 21,
+    "comments": "Subida de estrés por proyecto en el trabajo",
+    "testType": "seguimiento"
+  },
+  {
+    "id": 20,
+    "pacienteId": "12345678",
+    "date": "2025-05-07",
+    "ansiedad": 18,
+    "estres": 15,
+    "comments": "Buen uso de técnicas de mindfulness",
+    "testType": "seguimiento"
+  },
+  {
+    "id": 21,
+    "pacienteId": "12345678",
+    "date": "2025-05-09",
+    "ansiedad": 16,
+    "estres": 12,
+    "comments": "",
+    "testType": "seguimiento"
+  },
+  {
+    "id": 22,
+    "pacienteId": "12345678",
+    "date": "2025-05-11",
+    "ansiedad": 35,
+    "estres": 33,
+    "comments": "Pico de ansiedad por evento familiar",
+    "testType": "seguimiento"
+  },
+  {
+    "id": 23,
+    "pacienteId": "12345678",
+    "date": "2025-05-13",
+    "ansiedad": 21,
+    "estres": 8,
+    "comments": "Muy buen descanso nocturno esa semana",
+    "testType": "seguimiento"
+  },
+  {
+    "id": 24,
+    "pacienteId": "12345678",
+    "date": "2025-05-14",
+    "ansiedad": 16,
+    "estres": 7,
+    "comments": "",
+    "testType": "seguimiento"
+  },
+  {
+    "id": 25,
+    "pacienteId": "12345678",
+    "date": "2025-05-15",
+    "ansiedad": 14,
+    "estres": 15,
+    "comments": "Ligera tensión laboral",
+    "testType": "seguimiento"
+  },
+  {
+    "id": 26,
+    "pacienteId": "33445566",
+    "date": "2025-05-17",
+    "ansiedad": 26,
+    "estres": 19,
+    "comments": "Reacción alérgica generó estrés adicional",
+    "testType": "seguimiento"
+  },
+  {
+    "id": 27,
+    "pacienteId": "12345678",
+    "date": "2025-05-18",
+    "ansiedad": 11,
+    "estres": 18,
+    "comments": "",
+    "testType": "seguimiento"
+  },
+  {
+    "id": 28,
+    "pacienteId": "11223344",
+    "date": "2025-05-20",
+    "ansiedad": 13,
+    "estres": 14,
+    "comments": "Semana balanceada",
+    "testType": "seguimiento"
+  },
+  {
+    "id": 29,
+    "pacienteId": "12345678",
+    "date": "2025-05-22",
+    "ansiedad": 17,
+    "estres": 12,
+    "comments": "",
+    "testType": "seguimiento"
+  },
+  {
+    "id": 30,
+    "pacienteId": "89012345",
+    "date": "2025-05-23",
+    "ansiedad": 12,
+    "estres": 10,
+    "comments": "Mejoría sostenida",
+    "testType": "seguimiento"
+  },
+  {
+    "id": 31,
+    "pacienteId": "89012345",
+    "date": "2025-05-24",
+    "ansiedad": 18,
+    "estres": 15,
+    "comments": "Buen uso de técnicas de mindfulness",
+    "testType": "seguimiento"
+  },
+  {
+    "id": 32,
+    "pacienteId": "12345678",
+    "date": "2025-05-26",
+    "ansiedad": 16,
+    "estres": 12,
+    "comments": "",
+    "testType": "seguimiento"
+  },
+  {
+    "id": 33,
+    "pacienteId": "67890123",
+    "date": "2025-05-27",
+    "ansiedad": 35,
+    "estres": 33,
+    "comments": "Pico de ansiedad por evento familiar",
+    "testType": "seguimiento"
+  },
+  {
+    "id": 34,
+    "pacienteId": "67890123",
+    "date": "2025-05-29",
+    "ansiedad": 21,
+    "estres": 8,
+    "comments": "Muy buen descanso nocturno esa semana",
+    "testType": "seguimiento"
+  },
+  {
+    "id": 35,
+    "pacienteId": "34567890",
+    "date": "2025-05-30",
+    "ansiedad": 16,
+    "estres": 7,
+    "comments": "",
+    "testType": "seguimiento"
+  },
+  {
+    "id": 36,
+    "pacienteId": "34567890",
+    "date": "2025-05-31",
+    "ansiedad": 14,
+    "estres": 15,
+    "comments": "Ligera tensión laboral",
+    "testType": "seguimiento"
+  },
+  {
+    "id": 37,
+    "pacienteId": "87654321",
+    "date": "2025-06-01",
+    "ansiedad": 26,
+    "estres": 19,
+    "comments": "Reacción alérgica generó estrés adicional",
+    "testType": "seguimiento"
+  },
+  {
+    "id": 38,
+    "pacienteId": "12345678",
+    "date": "2025-06-03",
+    "ansiedad": 11,
+    "estres": 18,
+    "comments": "",
+    "testType": "seguimiento"
+  },
+  {
+    "id": 39,
+    "pacienteId": "87654321",
+    "date": "2025-06-04",
+    "ansiedad": 13,
+    "estres": 14,
+    "comments": "Semana balanceada",
+    "testType": "seguimiento"
+  },
+  {
+    "id": 40,
+    "pacienteId": "12345678",
+    "date": "2025-06-05",
+    "ansiedad": 17,
+    "estres": 12,
+    "comments": "",
+    "testType": "seguimiento"
+  },
+  {
+    "id": 41,
+    "pacienteId": "87654321",
+    "date": "2025-06-06",
+    "ansiedad": 12,
+    "estres": 10,
+    "comments": "Mejoría sostenida",
+    "testType": "seguimiento"
+  }
+]

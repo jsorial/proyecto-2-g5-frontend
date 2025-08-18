@@ -1,0 +1,77 @@
+[
+  {
+    "id": "autocuidado",
+    "category": "pdf",
+    "title": "Consejos de Autocuidado",
+    "description": "Acciones diarias que mejoran tu bienestar mental y emocional.",
+    "image": "/images/relajacion3.jpeg",
+    "url": "/resources/self_care_tips.pdf"
+  },
+  {
+    "id": "diario_gratitud",
+    "category": "pdf",
+    "title": "Diario de Gratitud",
+    "description": "Plantilla para enfocarte en lo positivo cada día.",
+    "image": "/images/relajacion4.png",
+    "url": "/resources/gratitude_journal_template.pdf"
+  },
+  {
+    "id": "respiracion_478",
+    "category": "pdf",
+    "title": "Técnica 4-7-8 de Respiración",
+    "description": "Calma tu mente con la respiración 4-7-8. Útil para momentos de ansiedad.",
+    "image": "/images/relajacion2.jpeg",
+    "url": "/resources/4-7-8_breathing_technique.pdf"
+  },
+  {
+    "id": "mindfulness_video",
+    "category": "video",
+    "title": "Mindfulness Guiado",
+    "description": "Práctica de atención plena para reconectar con el presente.",
+    "image": "/images/relajacion1.jpeg",
+    "url": "https://www.youtube.com/watch?v=inpok4MKVLM",
+    "provider": "YouTube",
+    "tags": ["atención plena", "relajación"]
+  },
+  {
+    "id": "respiracion_box",
+    "category": "video",
+    "title": "Técnica de Respiración en Caja",
+    "description": "Otra técnica sencilla para controlar la ansiedad.",
+    "image": "/images/Blue.png",
+    "url": "https://www.youtube.com/watch?v=tEmt1Znux58",
+    "provider": "YouTube",
+    "tags": ["respiración", "control"]
+  },
+  {
+    "id": "mindful_science_guiada",
+    "category": "video",
+    "title": "La mejor meditación guiada para soltar el estrés y la ansiedad",
+    "description": "Guía paso a paso para conectar con tu respiración, relajar mente y cuerpo.",
+    "image": "https://img.youtube.com/vi/YuEBtH_FWQk/maxresdefault.jpg",
+    "url": "https://youtu.be/YuEBtH_FWQk?si=teQHnNh4YZINrJEx",
+    "provider": "Mindful Science",
+    "tags": ["estrés", "ansiedad", "guiada"],
+    "recommendedUse": [
+      "Antes de dormir",
+      "En un descanso laboral",
+      "Al sentir ansiedad"
+    ]
+  },
+  {
+    "id": "pinterest_guided_relax",
+    "category": "video",
+    "title": "Mindfulness Guiado (Pinterest)",
+    "description": "Video corto para visualizar y relajar tu mente con imágenes calmantes.",
+    "image": "/images/relajacion5.jpg",
+    "embed": {
+      "src": "blob:https://www.pinterest.com/48ce463c-59c1-4c9a-a469-8eeb7c079c7e",
+      "poster": "https://i.pinimg.com/videos/thumbnails/originals/f1/cd/8c/f1cd8c7da1265cd27afb57d08f87a657.0000000.jpg",
+      "preload": "auto",
+      "tracks": [
+        { "kind": "captions", "srclang": "es", "label": "Español", "src": "" }
+      ]
+    },
+    "provider": "Pinterest"
+  }
+]
