@@ -18,6 +18,10 @@ import { AuthProvider } from './contexts/AuthContext';
 
 import Forbidden from './pages/Forbidden';
 
+//import PatientProfile from './pages/Patient/PatientProfile';
+import PatientTest from './pages/Patient/PatientTest';
+//import PatientProgress from './pages/Patient/PatientProgress';
+//import PatientResources from './pages/Patient/PatientResources'; // ejemplo
 
 function App() {
   return (
@@ -36,9 +40,25 @@ function App() {
               <Route path="/consentimiento" element={<Consent />} />
 
 
+
+
+              {/* Rutas de paciente (protegidas) */}
+              <Route
+                path="/patient/home"
+                element={<ProtectedRoute allow={['PACIENTE']} element={<AuthChoice />} />}
+              />
+              <Route
+                path="/patient/profile"
+                element={<ProtectedRoute allow={['PACIENTE']} element={<AuthChoice />} />}
+              />
+
+               <Route
+                path="/patient/test"
+                element={<ProtectedRoute allow={['patient']} element={<PatientTest />} />}
+              />
+
               {/* Pantalla acceso denegado */}
               <Route path="/forbidden" element={<Forbidden />} />
-
 
               {/* 404 */}
               <Route path="*" element={<NotFoundPage />} />
