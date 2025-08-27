@@ -5,41 +5,80 @@ import { authenticate } from '../utils/auth';
 
 const AuthContext = createContext();
 
-export function AuthProvider({ children }) {
-  const [user, setUser]       = useState(undefined);
-  const [loading, setLoading] = useState(true);
-  const navigate              = useNavigate();
+// Claves de almacenamiento
+const STORAGE_USER_KEY = 'cem_user';
+const STORAGE_TOKEN_KEY = 'cem_token';
 
+// Asegura forma estable del user en el front
+function normalizeUser(raw) {
+  if (!raw) return null;
+  const rol = (raw.rol ?? raw.role ?? '').toString().trim().toUpperCase();
+  const id = raw.id ?? raw.id_paciente ?? raw.email; // ajusta si tu backend usa otro campo
+  return {
+    id: String(id),
+    rol,
+    email: raw.email ?? null,
+    nombres: raw.nombres ?? null,
+    apellidos: raw.apellidos ?? null,
+    genero: raw.genero ? String(raw.genero).toUpperCase() : null,
+    // ⚠️ No guardamos token aquí; va en STORAGE_TOKEN_KEY
+  };
+}
+
+export function AuthProvider({ children }) {
+  const [user, setUser] = useState(undefined);
+  const [loading, setLoading] = useState(true);
+  const navigate = useNavigate();
+
+  // Cargar sesión desde localStorage al iniciar
   useEffect(() => {
-    const raw = localStorage.getItem('usmp_user');
-    if (raw) setUser(JSON.parse(raw));
-    else     setUser(null);
+    try {
+      const raw = localStorage.getItem(STORAGE_USER_KEY); // ✅ nombre correcto
+      const parsed = raw ? JSON.parse(raw) : null;
+      const norm = normalizeUser(parsed);
+      console.log('[AuthContext] restored user:', norm);
+      setUser(norm);
+    } catch (e) {
+      console.warn('[AuthContext] failed to parse stored user:', e);
+      setUser(null);
+    }
     setLoading(false);
   }, []);
 
+  // Login contra el backend (usa utils/auth.authenticate)
   const login = async (email, password) => {
-    const u = await authenticate(email, password);
-    if (u) {
-      setUser(u);
-      localStorage.setItem('usmp_user', JSON.stringify(u));
+    console.log('[AuthContext] login -> calling authenticate', { email });
+    const res = await authenticate(email, password);
+    console.log('[AuthContext] login <- authenticate result:', res); // ✅ 'res' (no 'u')
 
-      // ⬇️ Redirección según rol (ajusta rutas a las tuyas reales)
+    if (res?.ok && res.user) {
+      const norm = normalizeUser(res.user);
+      setUser(norm);
+      localStorage.setItem(STORAGE_USER_KEY, JSON.stringify(norm));
+
+      // Guarda token si vino
+      const access = res.token?.access_token;
+      if (access) localStorage.setItem(STORAGE_TOKEN_KEY, access);
+
+      // Redirección según rol
       const nextByRole = {
-        'PACIENTE'  : '/',             // o '/paciente'
-        'PSICOLOGO' : '/',        // o '/psych/home'
-        'ADMIN'     : '/'
+        PACIENTE: '/patient/home',
+        PSICOLOGO: '/psych/home',
+        ADMIN: '/',
       };
-      const to = nextByRole[u.rol?.toUpperCase()] ?? '/';
+      const to = nextByRole[norm.rol] ?? '/';
       navigate(to, { replace: true });
 
-      return true;
+      return { ok: true };
     }
-    return false;
+
+    return { ok: false, error: res?.error || 'Credenciales inválidas' };
   };
 
   const logout = () => {
     setUser(null);
-    localStorage.removeItem('usmp_user');
+    localStorage.removeItem(STORAGE_USER_KEY);
+    localStorage.removeItem(STORAGE_TOKEN_KEY); // <-- borra también el token
     navigate('/login', { replace: true });
   };
 

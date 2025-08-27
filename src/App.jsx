@@ -2,15 +2,16 @@
 import React from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
-import Navbar from './components/Navbar';
-import Footer from './components/Footer';
+import Navbar from './components/NavFoo/Navbar';
+import Footer from './components/NavFoo/Footer';
 import Consent from './components/Consent';
 
 import AuthChoice from './pages/AuthChoice';
 import Nosotros from './pages/Nosotros';
 
-import Login from './pages/Login';
-import ForgotPassword from './pages/ForgotPassword';
+import Login from './pages/Login/Login';
+import ForgotPassword from './pages/Login/ForgotPassword';
+import ResetPassword from './pages/Login/ResetPassword';
 import NotFoundPage from './pages/NotFoundPage';
 
 import ProtectedRoute from './components/ProtectedRoute';
@@ -36,6 +37,7 @@ function App() {
               <Route path="/" element={<AuthChoice />} />
               <Route path="/nosotros" element={<Nosotros />} />
               <Route path="/forgot-password" element={<ForgotPassword />} />
+              <Route path="/reset-password" element={<ResetPassword />} />
               <Route path="/login" element={<Login />} />
               <Route path="/consentimiento" element={<Consent />} />
 
@@ -55,6 +57,13 @@ function App() {
                <Route
                 path="/patient/test"
                 element={<ProtectedRoute allow={['patient']} element={<PatientTest />} />}
+              />
+
+              {/* Rutas de psicologo (protegidas) */}
+
+              <Route
+                path="/psych/home"
+                element={<ProtectedRoute allow={['PSICOLOGO']} element={<AuthChoice />} />}
               />
 
               {/* Pantalla acceso denegado */}

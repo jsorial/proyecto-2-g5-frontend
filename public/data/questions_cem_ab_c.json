@@ -1,0 +1,424 @@
+[
+  {
+    "id": "A1",
+    "num": 1,
+    "type": "likert",
+    "text": "Me he sentido nervioso/a, ansioso/a o muy alterado/a",
+    "categoria": "ansiedad",
+    "scale": "0-3"
+  },
+  {
+    "id": "A2",
+    "num": 2,
+    "type": "likert",
+    "text": "He tenido dificultades para dejar de preocuparme o controlar mis preocupaciones",
+    "categoria": "ansiedad",
+    "scale": "0-3"
+  },
+  {
+    "id": "A3",
+    "num": 3,
+    "type": "likert",
+    "text": "Me he preocupado demasiado por diferentes cosas",
+    "categoria": "ansiedad",
+    "scale": "0-3"
+  },
+  {
+    "id": "A4",
+    "num": 4,
+    "type": "likert",
+    "text": "He tenido problemas para relajarme",
+    "categoria": "ansiedad",
+    "scale": "0-3"
+  },
+  {
+    "id": "A5",
+    "num": 5,
+    "type": "likert",
+    "text": "He estado tan inquieto/a que me resulta difícil permanecer sentado/a",
+    "categoria": "ansiedad",
+    "scale": "0-3"
+  },
+  {
+    "id": "A6",
+    "num": 6,
+    "type": "likert",
+    "text": "Me he molestado o irritado fácilmente",
+    "categoria": "ansiedad",
+    "scale": "0-3"
+  },
+  {
+    "id": "A7",
+    "num": 7,
+    "type": "likert",
+    "text": "He sentido miedo como si algo terrible fuera a suceder",
+    "categoria": "ansiedad",
+    "scale": "0-3"
+  },
+  {
+    "id": "A8",
+    "num": 8,
+    "type": "likert",
+    "text": "He experimentado síntomas físicos como palpitaciones, sudoración o temblores cuando me siento ansioso/a",
+    "categoria": "ansiedad",
+    "scale": "0-3"
+  },
+  {
+    "id": "A9",
+    "num": 9,
+    "type": "likert",
+    "text": "He evitado situaciones sociales debido a mi ansiedad",
+    "categoria": "ansiedad",
+    "scale": "0-3"
+  },
+  {
+    "id": "A10",
+    "num": 10,
+    "type": "likert",
+    "text": "He tenido pensamientos repetitivos de preocupación que no puedo controlar",
+    "categoria": "ansiedad",
+    "scale": "0-3"
+  },
+  {
+    "id": "B1",
+    "num": 11,
+    "type": "likert",
+    "text": "Me ha resultado difícil relajarme después del trabajo o actividades diarias",
+    "categoria": "estrés",
+    "scale": "0-3"
+  },
+  {
+    "id": "B2",
+    "num": 12,
+    "type": "likert",
+    "text": "He reaccionado de forma exagerada ante situaciones",
+    "categoria": "estrés",
+    "scale": "0-3"
+  },
+  {
+    "id": "B3",
+    "num": 13,
+    "type": "likert",
+    "text": "He sentido que estoy utilizando mucha energía nerviosa",
+    "categoria": "estrés",
+    "scale": "0-3"
+  },
+  {
+    "id": "B4",
+    "num": 14,
+    "type": "likert",
+    "text": "Me he sentido impaciente cuando algo se retrasa",
+    "categoria": "estrés",
+    "scale": "0-3"
+  },
+  {
+    "id": "B5",
+    "num": 15,
+    "type": "likert",
+    "text": "He experimentado sensaciones de agitación",
+    "categoria": "estrés",
+    "scale": "0-3"
+  },
+  {
+    "id": "B6",
+    "num": 16,
+    "type": "likert",
+    "text": "Me ha resultado difícil calmarme después de algo que me molestó",
+    "categoria": "estrés",
+    "scale": "0-3"
+  },
+  {
+    "id": "B7",
+    "num": 17,
+    "type": "likert",
+    "text": "He tenido dificultades para tolerar interrupciones en lo que estoy haciendo",
+    "categoria": "estrés",
+    "scale": "0-3"
+  },
+  {
+    "id": "B8",
+    "num": 18,
+    "type": "likert",
+    "text": "He estado tenso/a con frecuencia",
+    "categoria": "estrés",
+    "scale": "0-3"
+  },
+  {
+    "id": "B9",
+    "num": 19,
+    "type": "likert",
+    "text": "Me he preocupado por situaciones en las que podría fallar o no estar a la altura",
+    "categoria": "estrés",
+    "scale": "0-3"
+  },
+  {
+    "id": "B10",
+    "num": 20,
+    "type": "likert",
+    "text": "Me ha resultado difícil relajarme completamente",
+    "categoria": "estrés",
+    "scale": "0-3"
+  },
+  {
+    "id": "C1",
+    "num": 21,
+    "type": "select",
+    "text": "¿Cuántas horas duermes en promedio por noche?",
+    "categoria": "contexto",
+    "options": [
+      {
+        "value": "lt4",
+        "label": "Menos de 4 horas"
+      },
+      {
+        "value": "4-5",
+        "label": "4-5 horas"
+      },
+      {
+        "value": "6-7",
+        "label": "6-7 horas"
+      },
+      {
+        "value": "8-9",
+        "label": "8-9 horas"
+      },
+      {
+        "value": "gt9",
+        "label": "Más de 9 horas"
+      }
+    ]
+  },
+  {
+    "id": "C2",
+    "num": 22,
+    "type": "select",
+    "text": "¿Con qué frecuencia realizas actividad física por semana?",
+    "categoria": "contexto",
+    "options": [
+      {
+        "value": "0",
+        "label": "Nunca"
+      },
+      {
+        "value": "1-2",
+        "label": "1-2 veces"
+      },
+      {
+        "value": "3-4",
+        "label": "3-4 veces"
+      },
+      {
+        "value": "5-6",
+        "label": "5-6 veces"
+      },
+      {
+        "value": "7",
+        "label": "Todos los días"
+      }
+    ]
+  },
+  {
+    "id": "C3",
+    "num": 23,
+    "type": "select",
+    "text": "¿Cuántas bebidas con cafeína (café, té, energizantes) consumes al día?",
+    "categoria": "contexto",
+    "options": [
+      {
+        "value": "0",
+        "label": "Ninguna"
+      },
+      {
+        "value": "1-2",
+        "label": "1-2"
+      },
+      {
+        "value": "3-4",
+        "label": "3-4"
+      },
+      {
+        "value": "5-6",
+        "label": "5-6"
+      },
+      {
+        "value": "gt6",
+        "label": "Más de 6"
+      }
+    ]
+  },
+  {
+    "id": "C4",
+    "num": 24,
+    "type": "select",
+    "text": "¿Con qué frecuencia consumes alcohol?",
+    "categoria": "contexto",
+    "options": [
+      {
+        "value": "Nunca",
+        "label": "Nunca"
+      },
+      {
+        "value": "Ocasionalmente",
+        "label": "Ocasionalmente"
+      },
+      {
+        "value": "Moderadamente",
+        "label": "Moderadamente"
+      },
+      {
+        "value": "Frecuentemente",
+        "label": "Frecuentemente"
+      }
+    ]
+  },
+  {
+    "id": "C5",
+    "num": 25,
+    "type": "select",
+    "text": "¿Cómo calificarías tu nivel de apoyo social (familia, amigos)?",
+    "categoria": "contexto",
+    "options": [
+      {
+        "value": "Muy bajo",
+        "label": "Muy bajo"
+      },
+      {
+        "value": "Bajo",
+        "label": "Bajo"
+      },
+      {
+        "value": "Moderado",
+        "label": "Moderado"
+      },
+      {
+        "value": "Alto",
+        "label": "Alto"
+      },
+      {
+        "value": "Muy alto",
+        "label": "Muy alto"
+      }
+    ]
+  },
+  {
+    "id": "C6",
+    "num": 26,
+    "type": "select",
+    "text": "¿Cómo calificarías tu nivel de estrés en el trabajo/estudios?",
+    "categoria": "contexto",
+    "options": [
+      {
+        "value": "Muy bajo",
+        "label": "Muy bajo"
+      },
+      {
+        "value": "Bajo",
+        "label": "Bajo"
+      },
+      {
+        "value": "Moderado",
+        "label": "Moderado"
+      },
+      {
+        "value": "Alto",
+        "label": "Alto"
+      },
+      {
+        "value": "Muy alto",
+        "label": "Muy alto"
+      }
+    ]
+  },
+  {
+    "id": "C7",
+    "num": 27,
+    "type": "multi",
+    "text": "En los últimos 6 meses, ¿has experimentado alguno de estos eventos? (Selecciona todos los que apliquen)",
+    "categoria": "contexto",
+    "options": [
+      {
+        "value": "perdida_empleo",
+        "label": "Pérdida de empleo"
+      },
+      {
+        "value": "problemas_financieros",
+        "label": "Problemas financieros significativos"
+      },
+      {
+        "value": "muerte_serquerido",
+        "label": "Muerte de un ser querido"
+      },
+      {
+        "value": "divorcio_separacion",
+        "label": "Divorcio o separación"
+      },
+      {
+        "value": "enfermedad_grave",
+        "label": "Enfermedad grave (propia o familiar)"
+      },
+      {
+        "value": "mudanza",
+        "label": "Mudanza importante"
+      },
+      {
+        "value": "conflictos_familiares",
+        "label": "Conflictos familiares serios"
+      },
+      {
+        "value": "problemas_academicos",
+        "label": "Problemas académicos importantes"
+      },
+      {
+        "value": "ninguno",
+        "label": "Ninguno de los anteriores"
+      }
+    ]
+  },
+  {
+    "id": "C8",
+    "num": 28,
+    "type": "boolean",
+    "text": "¿Actualmente estás recibiendo tratamiento psicológico?",
+    "categoria": "contexto",
+    "options": [
+      {
+        "value": true,
+        "label": "Sí"
+      },
+      {
+        "value": false,
+        "label": "No"
+      }
+    ]
+  },
+  {
+    "id": "C9",
+    "num": 29,
+    "type": "select",
+    "text": "¿Actualmente tomas algún medicamento para ansiedad, depresión o estrés?",
+    "categoria": "contexto",
+    "options": [
+      {
+        "value": "Si",
+        "label": "Sí"
+      },
+      {
+        "value": "No",
+        "label": "No"
+      },
+      {
+        "value": "NR",
+        "label": "Prefiero no responder"
+      }
+    ]
+  },
+  {
+    "id": "C10",
+    "num": 30,
+    "type": "texto",
+    "text": "¿Hay algo más que te gustaría comentar sobre cómo te has sentido últimamente?",
+    "categoria": "contexto",
+    "maxLength": 500,
+    "optional": true
+  }
+]

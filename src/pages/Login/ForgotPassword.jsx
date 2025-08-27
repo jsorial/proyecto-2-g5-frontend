@@ -1,17 +1,33 @@
-// src/pages/ForgotPassword.jsx
+// src/pages/Login/ForgotPassword.jsx
 import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
-
+import { API_URL_PW_FORGOT } from '../../config';
 export default function ForgotPassword() {
     const navigate = useNavigate()
     const [email, setEmail] = useState('')
     const [sent, setSent] = useState(false)
 
-    const handleSubmit = e => {
+    /*const handleSubmit = e => {
         e.preventDefault()
         // Aquí llamarías a tu API para enviar el enlace de recuperación
         setSent(true)
-    }
+    }*/
+
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+        try {
+            await fetch(API_URL_PW_FORGOT, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ email }),
+            });
+            // siempre OK (no se expone si existe o no)
+            setSent(true);
+        } catch (err) {
+            // Incluso si falla la red, muestra el mismo estado para no revelar nada
+            setSent(true);
+        }
+    };
 
     return (
         <div className="flex h-[calc(100vh-10rem)]">

@@ -25,12 +25,23 @@ export default function AuthChoice() {
 
   /* ============= Nombres y Apellidos ============= */
   const rol = (user?.rol || '').toUpperCase();
+  const genero = (user?.genero || '').toUpperCase(); // 'M' | 'F' | otro
   const isGuest = !user;
   const isPaciente = user && rol === 'PACIENTE';
   const isPsico = user && rol === 'PSICOLOGO';
   const isAdmin = user && rol === 'ADMIN';
 
-  const displayName = user?.nombres || user?.apellidos || '';  // ya lo tienes
+  const displayName =
+    [user?.nombres, user?.apellidos].filter(Boolean).join(' ').trim()
+    || (user?.email ? user.email.split('@')[0] : '');
+
+  // Prefijo de trato para psicólog@s
+  const honorifico = genero === 'F' ? 'Dra.' : (genero === 'M' ? 'Dr.' : 'Dr(a).');
+
+  // Saludo inclusivo para paciente
+  const bienvenida = genero === 'F' ? 'Bienvenida'
+    : genero === 'M' ? 'Bienvenido'
+      : 'Bienvenid@';
 
   /* ============= Nombres y Apellidos ============= */
 
@@ -212,7 +223,7 @@ export default function AuthChoice() {
             {/* Texto */}
             <div className="lg:w-1/2 space-y-6">
               <h1 className="text-5xl font-black tracking-tight animate-fade-in">
-                ¡Bienvenido {displayName} a tu espacio de bienestar!
+                ¡{bienvenida} {displayName} a tu espacio de bienestar!
               </h1>
               <p className="text-lg text-gray-700 animate-fade-in delay-200">
                 Soy <strong>Blue</strong>, tu guía virtual. Aquí puedes realizar tu test,
@@ -357,7 +368,7 @@ export default function AuthChoice() {
             </h1>*/}
 
               <h1 className="text-5xl font-black tracking-tight animate-fade-in">
-                ¡Hola, Dr(a). {displayName}!
+                ¡Hola, {honorifico} {displayName}!
               </h1>
 
               {/* Mensaje secundario */}

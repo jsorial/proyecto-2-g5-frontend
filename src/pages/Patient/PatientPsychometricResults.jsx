@@ -1,4 +1,4 @@
-// src/components/PsychometricResults.jsx
+// src/pages/Patient//PatientPsychometricResults.jsx
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import {
@@ -8,7 +8,7 @@ import { API_URL_MIS_TEST_HISTORIAL } from '../../config';
 
 const categorize = v => (v <= 17 ? 'Bajo' : v <= 24 ? 'Moderado' : 'Alto');
 
-export default function PsychometricResults({ puntajeAnsiedad, puntajeEstres }) {
+export default function PatientPsychometricResults({ puntajeAnsiedad, puntajeEstres }) {
   const navigate = useNavigate();
   const [history, setHistory] = useState([]);
   const [loading, setLoading] = useState(true);

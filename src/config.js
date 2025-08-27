@@ -20,7 +20,23 @@ export const API_URL_CUESTIONARIO = import.meta.env.VITE_API_URL_CUESTIONARIO;
 export const API_URL_CUESTIONARIO_OPCIONES = import.meta.env.VITE_API_URL_CUESTIONARIO_OPCIONES;
 
 
+
+
 export const API_URL_USUARIOS = import.meta.env.VITE_API_URL_USUARIOS;
 
+/* ###################################################### */
 
+
+export const API_URL_TEST_ITEMS  = import.meta.env.VITE_API_URL_TEST_ITEMS;
+export const API_URL_TEST_SUBMIT = import.meta.env.VITE_API_URL_TEST_SUBMIT;
+
+
+/* ###################################################### */
+
+// src/config.js
+export const API_BASE_URL = "http://localhost:8000";
+
+export const API_URL_PW_FORGOT   = `${API_BASE_URL}/auth/password/forgot`;
+export const API_URL_PW_VALIDATE = `${API_BASE_URL}/auth/password/validate`;
+export const API_URL_PW_RESET    = `${API_BASE_URL}/auth/password/reset`;
 

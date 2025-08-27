@@ -1,6 +1,6 @@
-// src/pages/Login.jsx
+// src/pages/Login/Login.jsx
 import React, { useState } from 'react';
-import { useAuth } from '../contexts/AuthContext';
+import { useAuth } from '../../contexts/AuthContext';  // ojo: desde src/pages/Login.jsx usualmente es ../contexts/...
 import { useNavigate } from 'react-router-dom';
 
 export default function Login() {
@@ -17,8 +17,11 @@ export default function Login() {
     setError('');
     setSubmitting(true);
     try {
+      //const res = await login(email, password);
+      //if (!res?.ok) setError(res?.error || 'No se pudo iniciar sesión');
+
       const res = await login(email, password);
-      if (!res?.ok) setError(res?.error || 'No se pudo iniciar sesión');
+      if (!res.ok) setError(res.error || 'No se pudo iniciar sesión');
       // Si ok === true, AuthContext ya navegó según rol.
     } catch (err) {
       setError('Ocurrió un error inesperado');

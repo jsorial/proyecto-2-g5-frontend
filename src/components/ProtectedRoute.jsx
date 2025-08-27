@@ -2,6 +2,7 @@
 import React from 'react';
 import { Navigate } from 'react-router-dom';
 import { useAuth } from '../contexts/AuthContext';
+import LoadingScreen from './LoadingScreen';
 
 export default function ProtectedRoute({ allowedRoles = [], element }) {
   const { user, loading } = useAuth();
@@ -15,7 +16,7 @@ export default function ProtectedRoute({ allowedRoles = [], element }) {
     return <Navigate to="/login" replace />;
   }
 
-  if (allowedRoles.length > 0 && !allowedRoles.includes(user.USER_ROL)) {
+  if (allowedRoles.length > 0 && !allowedRoles.includes(user.rol)) {
     // autenticado pero no tiene rol permitido
     return <Navigate to="/forbidden" replace />;
   }
