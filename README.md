@@ -30,6 +30,12 @@ https://proyecto-final-2025-g5.netlify.app/
 
 # --------------------------------------------------------------- #
 
+# LINK DE LA PAGINA WEB DEPLOYADA EN NETLIFY PARA PRUEBAS CON LA CUENTA DE *jsorial@usmp.pe*
+
+https://centro-psicologico-cem.netlify.app/
+
+# --------------------------------------------------------------- #
+
 
 <p align="center">
   <img src="https://user-images.githubusercontent.com/73097560/115834477-dbab4500-a447-11eb-908a-139a6edaec5c.gif">
