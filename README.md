@@ -4,7 +4,7 @@
 
 # ------------------------------------------------------------------------------------------------------------- #
 
-# Comandos para subir el proyecto al repositorio 
+# Comandos para subir el proyecto al repositorio de *jsorial@usmp.pe*
 
 git init
 
@@ -12,20 +12,17 @@ git add .
 
 git commit -m "Archivos iniciales" -m "Co-authored-by: jesussoria12 < jesus_soria@usmp.pe >"
 
-git branch -M master
-
 git remote add origin https://github.com/jsorial/proyecto-2-g5-frontend.git
 
 git push -u origin master
   
-
 # ------------------------------------------------------------------------------------------------------------- #
 
 className="object-contain w-3/6 h-auto"
 
 # ------------------------------------------------------------------------------------------------------------- #
 
-# LINK DE LA PAGINA WEB DEPLOYADA
+# LINK DE LA PAGINA WEB DEPLOYADA EN NETLIFY PARA PRUEBAS CON LA CUENTA DE *jesus_soria@usmp.pe*
 
 https://proyecto-final-2025-g5.netlify.app/
 
