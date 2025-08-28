@@ -1,6 +1,9 @@
 // src/utils/auth.js
 
-const LOGIN_URL = import.meta.env.VITE_API_URL_AUTH_LOGIN || '';
+
+import { API_URL_AUTH_LOGIN } from '../config';
+
+const LOGIN_URL = API_URL_AUTH_LOGIN || '';
 
 function persistSession(user, token) {
   localStorage.setItem('cem_user', JSON.stringify(user));

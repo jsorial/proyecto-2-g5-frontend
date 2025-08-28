@@ -14,6 +14,11 @@ export const API_URL_RECURSOS = import.meta.env.VITE_API_URL_RECURSOS;*/
 
 
 /* CODIGO QUE SE USARA A PARTIR DE HAORA, LO DE ARRIBA ES LOQ UE SE USABA ANTES */
+
+// src/config.js
+export const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
+
+
 export const API_URL_MIS_TEST_HISTORIAL = import.meta.env.VITE_API_URL_MIS_TEST_HISTORIAL;
 
 export const API_URL_CUESTIONARIO = import.meta.env.VITE_API_URL_CUESTIONARIO;
@@ -26,15 +31,13 @@ export const API_URL_USUARIOS = import.meta.env.VITE_API_URL_USUARIOS;
 
 /* ###################################################### */
 
+export const API_URL_AUTH_LOGIN = `${API_BASE_URL}/auth/login`; 
+export const API_URL_AUTH_ME = `${API_BASE_URL}/auth/me`;
 
-export const API_URL_TEST_ITEMS  = import.meta.env.VITE_API_URL_TEST_ITEMS;
-export const API_URL_TEST_SUBMIT = import.meta.env.VITE_API_URL_TEST_SUBMIT;
-
+export const API_URL_TEST_ITEMS  = `${API_BASE_URL}/tests/attempts`;
+export const API_URL_TEST_SUBMIT = `${API_BASE_URL}/tests/tst_cem_ab_v1/items`;
 
 /* ###################################################### */
-
-// src/config.js
-export const API_BASE_URL = "http://localhost:8000";
 
 export const API_URL_PW_FORGOT   = `${API_BASE_URL}/auth/password/forgot`;
 export const API_URL_PW_VALIDATE = `${API_BASE_URL}/auth/password/validate`;
