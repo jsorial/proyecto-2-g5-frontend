@@ -15,6 +15,8 @@ git commit -m "Archivos iniciales" -m "Co-authored-by: jesussoria12 < jesus_sori
 git remote add origin https://github.com/jsorial/proyecto-2-g5-frontend.git
 
 git push -u origin master
+
+git commit -m "readme 1" -m "Co-authored-by: KristellFlores < kristell_flores@usmp.pe >"
   
 # --------------------------------------------------------------- #
 
